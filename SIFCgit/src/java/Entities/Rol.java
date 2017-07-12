@@ -47,10 +47,10 @@ public class Rol implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "nombreRol")
     private String nombreRol;
-    @ManyToMany(mappedBy = "rolList", fetch = FetchType.LAZY)
-    private List<Permiso> permisoList;
-    @ManyToMany(mappedBy = "rolList", fetch = FetchType.LAZY)
-    private List<Persona> personaList;
+    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
+    private List<Permiso> permisos;
+    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
+    private List<Persona> personas;
 
     public Rol() {
     }
@@ -81,21 +81,21 @@ public class Rol implements Serializable {
     }
 
     @XmlTransient
-    public List<Permiso> getPermisoList() {
-        return permisoList;
+    public List<Permiso> getPermisos() {
+        return permisos;
     }
 
-    public void setPermisoList(List<Permiso> permisoList) {
-        this.permisoList = permisoList;
+    public void setPermisos(List<Permiso> permisos) {
+        this.permisos = permisos;
     }
 
     @XmlTransient
-    public List<Persona> getPersonaList() {
-        return personaList;
+    public List<Persona> getPersonas() {
+        return personas;
     }
 
-    public void setPersonaList(List<Persona> personaList) {
-        this.personaList = personaList;
+    public void setPersonas(List<Persona> personas) {
+        this.personas = personas;
     }
 
     @Override

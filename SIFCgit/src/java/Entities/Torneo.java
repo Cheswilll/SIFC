@@ -58,7 +58,7 @@ public class Torneo implements Serializable {
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private TipoTorneo idTipoTorneo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTorneo", fetch = FetchType.LAZY)
-    private List<Partido> partidoList;
+    private List<Partido> partidos;
 
     public Torneo() {
     }
@@ -105,12 +105,12 @@ public class Torneo implements Serializable {
     }
 
     @XmlTransient
-    public List<Partido> getPartidoList() {
-        return partidoList;
+    public List<Partido> getPartidos() {
+        return partidos;
     }
 
-    public void setPartidoList(List<Partido> partidoList) {
-        this.partidoList = partidoList;
+    public void setPartidos(List<Partido> partidos) {
+        this.partidos = partidos;
     }
 
     @Override

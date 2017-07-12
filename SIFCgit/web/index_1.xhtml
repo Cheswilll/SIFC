@@ -1,0 +1,1356 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core" >
+    <h:head>
+        <title>Sistema de información</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+        <link rel="stylesheet" href="#{request.contextPath}/resources/index/css/index.css"/>
+        <link rel="stylesheet" href="#{request.contextPath}/resources/frameworks/bootstrap/css/bootstrap.css"/>
+        <link rel="stylesheet" href="#{request.contextPath}/resources/frameworks/fonts/css/font-awesome.min.css"/>
+        <link rel="shortcut icon" href="#{request.contextPath}/resources/index/imgs/logonuevo.png"/>
+        <script src="#{request.contextPath}/resources/frameworks/jquery/js/jquery.js"/>
+        <script src="#{request.contextPath}/resources/frameworks/jquery/js/jquery.slides.js"/>
+        <script src="#{request.contextPath}/resources/frameworks/bootstrap/js/bootstrap.min.js"/>
+
+        <script src="#{request.contextPath}/resources/index/js/index.js"/>
+        <script src="#{request.contextPath}/resources/index/js/validacion.js"/>
+        <script src="#{request.contextPath}/resources/index/js/enviarAdmin.js"/>
+        <script src="#{request.contextPath}/resources/index/js/enviarRegistro.js"/>
+        <script src="#{request.contextPath}/resources/index/js/enviarAspirante.js"/>
+        <script src="#{request.contextPath}/resources/index/js/enviarProfesor.js"/>
+
+        <script>
+            $(document).ready(function () {
+                $("#ingresar").click(function () {
+                    $(".modal_ingreso").animate({marginTop: "0%"});
+                    $(".contenedor_ingreso").animate({marginTop: "10%"});
+                    $("#cerrar").animate({marginTop: "-50px"});
+                    $(".contenido_formulario_ingreso").animate({marginTop: "70px"});
+                });
+            });
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                $("#registro").click(function () {
+                    $(".modal_ingreso").animate({marginTop: "0px"});
+                    $(".contenedor_registro").animate({marginTop: "100px"});
+                    $("#cerrar1").animate({marginTop: "-50px"});
+                    $(".contenido_formulario_registro").animate({marginTop: "70px"});
+                });
+            });
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                $("#close").click(function () {
+                    $(".contenedor_registro").animate({marginTop: "-1100px"});
+                    $(".modal_ingreso").animate({marginTop: "-700px"});
+                });
+            });
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                $("#cerrar").click(function () {
+                    $(".contenedor_ingreso").animate({marginTop: "-80%"});
+                    $(".modal_ingreso").animate({marginTop: "-130%"});
+                    $("#cerrar").animate({marginTop: "-700px"});
+                    $(".contenido_formulario_ingreso").animate({marginTop: "10px"});
+                });
+            });
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                $("#cerrar1").click(function () {
+                    $(".contenedor_registro").animate({marginTop: "-1100"});
+                    $(".modal_ingreso").animate({marginTop: "-700"});
+                    $("#cerrar1").animate({marginTop: "-200px"});
+                    $(".contenido_formulario_registro").animate({marginTop: "10px"});
+                });
+            });
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                $("#contorno-icono-right").click(function () {
+                    $(".libro-1").animate({marginLeft: "-1300px"});
+                    $(".libro-2").animate({marginLeft: "0px"});
+                });
+            });
+
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                $("#contorno-icono-left").click(function () {
+                    $(".libro-2").animate({marginLeft: "1260px"});
+                    $(".libro-1").animate({marginLeft: "0px"});
+                });
+            });
+        </script>
+
+        <script>
+            $(function () {
+                $(".slides").slidesjs({
+                    play: {
+                        // active: true,
+
+                        effect: "slide",
+                        // [string] Can be either "slide" or "fade".
+                        interval: 6000,
+                        // [number] Time spent on each slide in milliseconds.
+                        auto: true,
+                        // [boolean] Start playing the slideshow on load.
+                        swap: true,
+                        // [boolean] show/hide stop and play buttons
+                        pauseOnHover: true,
+                        // [boolean] pause a playing slideshow on hover
+                        restartDelay: 2500
+                                // [number] restart delay on inactive slideshow
+                    }
+                });
+            });
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                $(".mision_scroll").click(function () {
+                    $('body, html').animate({
+                        scrollTop: '600%'
+                    });
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $(".vision_scroll").click(function () {
+                    $('body').animate({
+                        scrollTop: '600%'
+                    });
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $("#scroll_inicio").click(function () {
+                    $('body,html').animate({
+                        scrollTop: '0px'
+                    });
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $(".personal_scroll").click(function () {
+                    $('body, html').animate({
+                        scrollTop: '1125%'
+                    });
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $(".reseña_scroll").click(function () {
+                    $('body, html').animate({
+                        scrollTop: '2000%'
+                    });
+                });
+            });
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                $(".torneos_scroll").click(function () {
+                    $('body, html').animate({
+                        scrollTop: '2400%'
+                    });
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $(".ubicacion_scroll").click(function () {
+                    $('body, html').animate({
+                        scrollTop: '4640%'
+                    });
+                });
+            });
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                $(".mision_scroll").click(background - color)
+            });
+
+        </script>
+
+        <script>
+            $('#myModal').modal('show');
+            // www.jquery2dotnet.com
+        </script>
+
+        <script>
+            function enviarmailCont() {
+                var mailCont;
+                mailCont = document.getElementById("email");
+                if (!/\w+@\w+\.+[a-z]/.test(mailCont)) {
+                    swal({
+                        title: "¡Error!",
+                        text: "Debe ingresar una dirección de correo electrónico válida",
+                        type: "error",
+                        confirmButtonText: "Aceptar",
+                        confirmButtonColor: "75EC32",
+                    });
+                    return true;
+                }
+            }
+        </script>
+
+    </h:head>
+
+    <header>
+        <nav class="navbar navbar-inverse" id="navbarsita">
+            <div class="container"> <!-- Container -->
+                <div class="nav navbar-nav navbar-left">
+                    <a class="" href="indexResponsive.html">
+                        <img src="#{request.contextPath}/resources/index/imgs/logonuevo.png" class="img-circle profile_img" id="logo" />
+
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-collapse-2">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li >
+                            <a href="#" class="mision_scroll text-center" name="btnTxtMision" id="mision" >
+                                <span>
+                                    <i class="fa fa-leanpub" aria-hidden="true" id="icon_reseña">
+                                    </i>
+                                </span>#{msjApp.btnTxtMision}</a>
+                        </li>
+                        <li><a href="#" class="mision_scroll text-center" name="btnTxtVision"><span><i class="fa fa-puzzle-piece" aria-hidden="true"></i>
+                                </span>#{msjApp.btnTxtVision}</a></li>
+                        <li><a href="#" class="personal_scroll text-center"  name="btnTxtPersonal"><span><i class="fa fa-users" aria-hidden="true"  id="icon_reseña"></i>
+                                </span>#{msjApp.btnTxtPersonal}</a></li>
+                        <li><a href="#" class="reseña_scroll text-center" name="btnTxtReseña"><span><i class="fa fa-pencil-square-o" aria-hidden="true" id="icon_reseña"></i>
+                                </span>#{msjApp.btnTxtReseña}</a></li>
+                        <li><a href="#" class="torneos_scroll text-center" name="btnTxtTorneos"> <span><i class="fa fa-trophy" aria-hidden="true" id="icon_reseña"></i></span>#{msjApp.btnTxtTorneos}</a></li>
+                        <li><a href="#" class="ubicacion_scroll text-center" name="btnTxtUbicanos"><span><i class="fa fa-globe" aria-hidden="true" id="icon_ubicacion"></i></span>#{msjApp.btnTxtUbicanos}</a></li>
+
+                    </ul>
+                </div>        
+            </div><!-- Container -->
+        </nav> 
+    </header>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <f:view locale="#{languageController.selectedLanguage}">
+        <b:container>
+            <b:form class="form-login" prependId="false">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        #{msjApp.idioma} <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <c:forEach items="#{languageController.supportLanguages}" var="l">
+                            <li>
+                                <h:commandLink value="#{msjApp[l.displayLanguage]}" action="#{languageController.cambiarIdioma(l)}">
+                                    <img src="#{request.contextPath}/resources/imgs/languages/#{l.language}.png" width="25px" alt="#{msjApp[l.displayLanguage]}"/>
+                                </h:commandLink>
+                            </li>
+                        </c:forEach>
+                    </ul>
+                </div>
+            </b:form>
+        </b:container>
+    </f:view>
+    <div id="logop" class="circle">
+        <img src="#{request.contextPath}/resources/index/imgs/logonuevo.png" class="img-circle profile_img" id="logomap"/>
+    </div>
+    <button class="btn btn-primary" id="ingresar" name="btnTxtIngresar"><b>#{msjApp.btnTxtIngresar}</b></button>
+    <button class="btn btn-primary" id="registro" name="btnTxtRegistrar"><b>#{msjApp.btnTxtRegistrar}</b></button>
+
+    <h:body id="body-fix">
+
+        <!-- Video -->
+        <div id="patallablanca"></div>
+        <div class="row"> 
+            <div id="contenedor_video">
+                <video id="Video" loop="true" autoplay="true" preload="true" poster="true">
+                    <source src="resources/videos/caterpillar.mp4" type="video/mp4" />
+                </video>
+            </div>
+        </div>
+        <!-- Video -->
+
+        <!-- Misión/Visión-->
+        <div class="container">
+            <div class="contenido_index shadow col col-xs-10 col-md-12">
+                <h3><b>#{msjApp.btnTxtMision}</b></h3>
+
+                <p>#{msjApp.labelContMision}</p> <br/> <br/> <br/>
+                <h3><b>#{msjApp.btnTxtVision}</b></h3>
+                <p>#{msjApp.labelContVision}</p> <br/>
+            </div>  
+        </div>
+        <br/><br/>
+        <!-- Misión/Visión-->
+
+        <!-- Personal -->
+        <section id="personal">
+            <div class="container-fluid">
+
+                <h2>#{msjApp.labelTxtPersonal}</h2>
+                <hr style="border-bottom: 1px solid #000; width: 90%; margin-left: 70px; "></hr>
+                <div class="row">
+                    <div class="container-fluid">
+                        <div class="col col-xs-8 col-md-3"> 
+                            <img src="#{request.contextPath}/resources/index/imgs/per1.jpg" id="user" class="user img-circle" name="per1.jpg"/>
+                        </div>
+                        <div class="col col-xs-4 col-md-3">  
+                            <br/> <br/> <br/>
+                            <p>Luz Helena Echeverry</p>
+                            <p>#{msjApp.labelTxtCoorAdmin}</p>
+                            <p>43 Años</p> 
+                        </div>
+                        <div class="col col-xs-8 col-md-3">
+                            <img src="#{request.contextPath}/resources/index/imgs/per2.jpg" id="userD" class="user img-circle" name="per2.jpg"/>
+                        </div>
+                        <div class="col col-xs-4 col-md-3">
+                            <br/><br/><br/>
+                            <p>Jonathan Contreras</p>
+                            <p>#{msjApp.labelTxtMetod}</p>
+                            <p>27 Años</p>
+                        </div>
+                    </div>
+                </div>
+                <hr style="border-bottom:1px solid #000; width: 90%; margin-left: 70px;"></hr>
+                <div class="row">
+                    <div class="container-fluid">
+                        <div class="col col-xs-8 col-md-3">
+                            <img src="#{request.contextPath}/resources/index/imgs/per3.jpg" id="userT" class="user img-circle" name="per3.jpg"/>
+                        </div>
+                        <div class="col col-xs-4 col-md-1">
+                            <br/><br/><br/>
+                            <p>Jhon Mosquera</p>
+                            <p>#{msjApp.labelTxtCat} 2002</p>
+                            <p>23 Años</p>  
+                        </div>
+                        <div class="col col-xs-8 col-md-3">
+                            <img src="#{request.contextPath}/resources/index/imgs/per5.jpg" id="UserCi" class="user img-circle" name="per5.jpg"/>
+                        </div>
+                        <div class="col col-xs-4 col-md-1">
+                            <br/><br/><br/>
+                            <p>Jonathan Chavarro</p>
+                            <p>#{msjApp.labelTxtCat} 2003</p>
+                            <p>21 Años</p>
+                        </div>
+                        <div class="col col-xs-8 col-md-3">
+                            <img src="#{request.contextPath}/resources/index/imgs/per4.jpg" id="UserCu" class="user img-circle" name="per4.jpg"/>
+                        </div>
+                        <div class="col col-xs-4 col-md-1">
+                            <br/><br/><br/>
+                            <p>Jonathan Ahumada</p>
+                            <p>#{msjApp.labelTxtCat} 2004- 2005</p>
+                            <p>27 Años</p>  
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="container-fluid">
+                        <div class="col col-xs-8 col-md-3">
+                            <img src="#{request.contextPath}/resources/index/imgs/per6.jpg" id="UserSe" class="user img-circle" name="per6.jpg"/>
+                        </div>
+                        <div class="col col-xs-4 col-md-1">
+                            <br/><br/><br/>
+                            <p>Julián Vergara</p>
+                            <p>#{msjApp.labelTxtCat} 2006</p>
+                            <p>31 Años</p> 
+                        </div>
+                        <div class="col col-xs-8 col-md-3">
+                            <img src="#{request.contextPath}/resources/index/imgs/per7.jpg" id="UserSi" class="user img-circle" name="per7.jpg"/>
+                        </div>
+                        <div class="col col-xs-4 col-md-1">
+                            <br/><br/><br/>
+                            <p>Nelson Gonzáles</p>
+                            <p>#{msjApp.labelTxtCat} 2007</p>
+                            <p>25 Años</p>
+                        </div>
+                        <div class="col col-xs-8 col-md-3">
+                            <img src="#{request.contextPath}/resources/index/imgs/per8.jpg" id="UserO" class="user img-circle" name="per8.jpg"/>
+                        </div>
+                        <div class="col col-xs-4 col-md-1">
+                            <br/><br/><br/>
+                            <p>Fabián Cespedes</p>
+                            <p>#{msjApp.labelTxtCat} 2008 - 2009</p>
+                            <p>19 Años</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="container-fluid">
+                        <div class="col col-xs-8 col-md-3">
+                            <img src="#{request.contextPath}/resources/index/imgs/per9.jpg" id="UserNu" class="user img-circle" name="per9.jpg"/>
+                        </div>
+                        <div class="col col-xs-4 col-md-1">
+                            <br/><br/><br/>
+                            <p>Jesus Herrera</p>
+                            <p>#{msjApp.labelTxtCat} 2009</p>
+                            <p>22 Años</p> 
+                        </div>
+                        <div class="col col-xs-8 col-md-3">
+                            <img src="#{request.contextPath}/resources/index/imgs/per10.jpg" id="UserDi" class="user img-circle" name="per10.jpg"/>
+                        </div>
+                        <div class="col col-xs-4 col-md-1">
+                            <br/><br/><br/>
+                            <p>Laura Diaz</p>
+                            <p>#{msjApp.labelTxtCat} 2010</p>
+                            <p>21 Años</p>
+                        </div>
+                        <div class="col col-xs-8 col-md-3">
+                            <img src="#{request.contextPath}/resources/index/imgs/per11.jpg" id="UserOn" class="user img-circle" name="per11.jpg"/>
+                        </div>
+                        <div class="col col-xs-4 col-md-1">
+                            <br/><br/><br/>
+                            <p>Fabian Caviedes</p>
+                            <p>Entrenador de arqueros</p>
+                            <p>31 Años</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Personal -->
+
+        <!-- Reseña histórica -->
+        <section id="reseña_historica">
+            <h2>#{msjApp.btnTxtReseña}</h2>
+            <hr style="width:110%; border-bottom: 1px solid #000; margin-left:-15px;"></hr>
+            <div class="container-fluid">
+                <div class="libro-1">
+
+                    <div class="col col-xs-10 col-lg-11">
+                        <p>#{msjApp.labelContReseña1}</p>
+
+                        <p>#{msjApp.labelContReseña2}
+                        </p>
+
+                    </div>
+                    <div class="col col-xs-1 col-lg-1">
+                        <div id="contorno-icono-right" class="cambiar-pagina">
+                            <span><i class="fa fa-angle-right" aria-hidden="true" id="pasar-libro"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="libro-2">
+                    <div class="col col-xs-1 col-lg-1">
+                        <div id="contorno-icono-left" class="cambiar-pagina">
+                            <span><i class="fa fa-angle-left" aria-hidden="true"  id="pasar-libro2" ></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col col-xs-10 col-lg-10"  id="libro_pagina-2">
+                        <p>#{msjApp.labelContReseña3}</p>
+
+                        <p>#{msjApp.labelContReseña4}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Reseña histórica -->
+
+        <!-- Torneos -->
+        <section id="torneos_escuela">
+            <h2>#{msjApp.labelTxtTorneos}</h2>
+            <hr style="border-bottom:1px solid #000; width: 120%; margin-left:-20px;"></hr>
+
+            <div class="thumbnail col-lg-12" id="torneos_especiales" >
+                <h1>#{msjApp.labelTxtTorneosE}</h1>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="thumbnail" id="olaya">
+                            <img src="#{request.contextPath}/resources/index/imgs/olaya.jpg" id="imagen1" class="imagen"/>
+                            <div class="caption">
+                                <h3 id="despliegue1">#{msjApp.labelTxtOlaya}</h3>
+                                <!-- <script>
+                                  $(document).ready(function(){
+                                  $("#despliegue1").click(function(){
+                                  if ($("#aparecer1").is(":hidden")) {
+                                        $("#aparecer1").show(500);
+                                    }
+                                else{
+                                    $("#aparecer1").hide(500); 
+                                }
+                                });
+                                    });
+                                  </script> -->
+
+                                <p id="aparecer1">#{msjApp.labelContOlaya}<!--  El Hexagonal del Olaya inicia en diciembre de 1959 por iniciativa de un grupo de amigos que conformaron un cuadrangular con motivo de las fiestas decembrinas y aprovechando el periodo vacacional de la época.En su primera edición participaron los equipos Sporting Zaid, Olaya A, Olaya B y Sastrería Navarrete. --></p>
+                                <button type="submit" id="ver_mas" class="btn btn-info">#{msjApp.labelTxtMas}</button>
+                                <script>
+                                    $(document).ready(function () {
+                                        $("#ver_mas").click(function () {
+                                            $(".modal-torneos").show(400);
+                                            $("#content").show(400);
+                                        });
+
+                                    });
+                                </script>
+                                <script>
+                                    $(document).ready(function () {
+                                        $("#cerrar-aviso-torneos").click(function () {
+                                            $(".modal-torneos").hide(400);
+                                            $("#content").hide(400);
+                                        });
+                                    });
+                                </script>
+
+                                <div class="modal-torneos">
+
+                                </div>
+                                <div class="modal-content" id="content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="myModalLabel">#{msjApp.labelContOlaya}</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        #{msjApp.labelAllContOlaya}
+
+
+                                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                                            <!-- Indicators -->
+                                            <ol class="carousel-indicators">
+                                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                                <li data-target="#myCarousel" data-slide-to="1"></li>
+                                                <li data-target="#myCarousel" data-slide-to="2"></li>
+                                                <li data-target="#myCarousel" data-slide-to="3"></li>
+                                            </ol>
+
+                                            <!-- Wrapper for slides -->
+                                            <div class="carousel-inner" role="listbox">
+                                                <div class="item active">
+                                                    <img src="#{request.contextPath}/resources/index/imgs/carr1.jpg" id="img-carrusel1" class="imagen_carrusel"/>
+                                                </div>
+
+                                                <div class="item">
+                                                    <img src="#{request.contextPath}/resources/index/imgs/carr2.JPG" id="img-carrusel2" class="imagen_carrusel"/>
+                                                </div>
+
+                                                <div class="item">
+                                                    <img src="#{request.contextPath}/resources/index/imgs/carr3.jpg" id="img-carrusel3" class="imagen_carrusel"/>
+                                                </div>
+
+                                                <div class="item">
+                                                    <img src="#{request.contextPath}/resources/index/imgs/carr4.jpg" id="img-carrusel4" class="imagen_carrusel"/>
+                                                </div>
+                                            </div>
+
+                                            <!-- Left and right controls -->
+                                            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-info" data-dismiss="modal" id="cerrar-aviso-torneos">Cerrar</button>
+                                    </div>
+                                </div>
+
+                                <!-- MODAL TORNEO 2 -->
+                                <!-- <button class="btn btn-danger btn btn-block" id="btn_eliminar"><span class="glyphicon glyphicon-remove-circle"></span>&nbsp; Eliminar</button> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-xs-10 col-lg-4">
+                        <div class="thumbnail" id="suroriente">
+                            <img src="#{request.contextPath}/resources/index/imgs/suroriente.png" id="imagen2" class="imagen"/>
+                            <div class="caption">
+                                <h3 id="despliegue2">#{msjApp.labelTxtSurO}</h3>
+
+                                <p id="aparecer2">#{msjApp.labelContSurO} <!-- El Hexagonal del Sur Oriente, el torneo joven de Colombia, Barrio San Cristobal Sur, tiene como misión principal servir como vitrina en la proyección de los jóvenes y nuevos talentos del fútbol aficionado de la capital, hacia el torneo profesional colombiano. --></p>
+                                <button type="submit" id="ver_mas2" class="btn btn-info">Ver mas</button>
+                                <!-- <button class="btn btn-danger btn btn-block" id="btn_eliminar"><span class="glyphicon glyphicon-remove-circle"></span>&nbsp; Eliminar</button> -->
+                                <script>
+                                    $(document).ready(function () {
+                                        $("#ver_mas2").click(function () {
+                                            $(".modal-torneos").show(400);
+                                            $("#content2").show(400);
+                                        });
+
+                                    });
+                                </script>
+                                <script>
+                                    $(document).ready(function () {
+                                        $("#cerrar-aviso-torneos1").click(function () {
+                                            $(".modal-torneos").hide(400);
+                                            $("#content2").hide(400);
+                                        });
+                                    });
+                                </script>
+
+
+
+                                <div class="modal-content" id="content2">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="myModalLabel">#{msjApp.labelTxtSurO}</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        #{msjApp.labelAllContSurO}
+
+                                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                                            <!-- Indicators -->
+                                            <ol class="carousel-indicators">
+                                                <li data-target="#myCarousel" data-slide-to="5" class="active"></li>
+                                                <li data-target="#myCarousel" data-slide-to="6"></li>
+                                                <li data-target="#myCarousel" data-slide-to="7"></li>
+                                                <li data-target="#myCarousel" data-slide-to="8"></li>
+                                            </ol>
+
+                                            <!-- Wrapper for slides -->
+                                            <div class="carousel-inner" role="listbox">
+                                                <div class="item active">
+                                                    <img src="#{request.contextPath}/resources/index/imgs/carr5.jpg" id="img-carrusel5" class="imagen_carrusel"/>
+                                                </div>
+
+                                                <div class="item">
+                                                    <img src="#{request.contextPath}/resources/index/imgs/carr6.png" id="img-carrusel6" class="imagen_carrusel"/>
+                                                </div>
+
+                                                <div class="item">
+                                                    <img src="#{request.contextPath}/resources/index/imgs/carr7.jpg" id="img-carrusel7" class="imagen_carrusel"/>
+                                                </div>
+
+                                                <div class="item">
+                                                    <img src="#{request.contextPath}/resources/index/imgs/carr8.jpg" id="img-carrusel8" class="imagen_carrusel"/>
+                                                </div>
+                                            </div>
+
+                                            <!-- Left and right controls -->
+                                            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-info" data-dismiss="modal" id="cerrar-aviso-torneos1">Cerrar</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="thumbnail" id="servita">
+                            <img src="#{request.contextPath}/resources/index/imgs/servita.jpg" id="imagen3" />
+                            <div class="caption">
+                                <h3 id="despliegue3">#{msjApp.labelTxtServita}</h3>
+
+
+                                <p id="aparecer3">#{msjApp.labelContServita}<!--  dejó todo en cada partido y logró ocupar el tercer lugar de la competencia luego de que terminará sus encuentros con tres victorias consecutivas. --></p>
+                                <button type="submit" id="ver_mas3" class="btn btn-info">Ver mas</button>
+                                <!-- <button class="btn btn-danger btn btn-block" id="btn_eliminar"><span class="glyphicon glyphicon-remove-circle"></span>&nbsp; Eliminar</button> -->
+                                <script>
+                                    $(document).ready(function () {
+                                        $("#ver_mas3").click(function () {
+                                            $(".modal-torneos").show(400);
+                                            $("#content3").show(400);
+                                        });
+
+                                    });
+                                </script>
+                                <script>
+                                    $(document).ready(function () {
+                                        $("#cerrar-aviso-torneos2").click(function () {
+                                            $(".modal-torneos").hide(400);
+                                            $("#content3").hide(400);
+                                        });
+                                    });
+                                </script>
+
+
+
+                                <div class="modal-content" id="content3">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="myModalLabel">#{msjApp.labelTxtServita}</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        #{msjApp.labelAllContServita}
+
+                                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                                            <!-- Indicators -->
+                                            <ol class="carousel-indicators">
+                                                <li data-target="#myCarousel" data-slide-to="5" class="active"></li>
+                                                <li data-target="#myCarousel" data-slide-to="6"></li>
+                                                <li data-target="#myCarousel" data-slide-to="7"></li>
+                                                <li data-target="#myCarousel" data-slide-to="8"></li>
+                                            </ol>
+
+                                            <!-- Wrapper for slides -->
+                                            <div class="carousel-inner" role="listbox">
+                                                <div class="item active">
+                                                    <img src="#{request.contextPath}/resources/index/imgs/carr9.jpg" id="img-carrusel9" class="imagen_carrusel" />
+                                                </div>
+
+                                                <div class="item">
+                                                    <img src="#{request.contextPath}/resources/index/imgs/carr10.jpg" id="img-carrusel10" class="imagen_carrusel" />
+                                                </div>
+
+                                                <div class="item">
+                                                    <img src="#{request.contextPath}/resources/index/imgs/carr12.jpg" id="img-carrusel12" class="imagen_carrusel" />
+                                                </div>
+
+                                            </div>
+
+                                            <!-- Left and right controls -->
+                                            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-info" data-dismiss="modal" id="cerrar-aviso-torneos2">Cerrar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-offset-1">
+                        <div class="thumbnail " id="tabora">
+                            <img src="#{request.contextPath}/resources/index/imgs/tabora.jpg" id="imagen5" class="imagen" />
+                            <div class="caption">
+                                <h3>#{msjApp.labelTxtTabora}</h3>
+                                <p>#{msjApp.labelContTabora}<!--  Un lote que, por el tesón de sus vecinos, se convirtió en centro de figuras del deporte colombiano y mundial está siendo reparado para recuperar su lugar entre los principales escenarios deportivos de la ciudad. --></p>
+                                <button type="submit" id="ver_mas4" class="btn btn-info">Ver mas</button>
+
+
+                                <script>
+                                    $(document).ready(function () {
+                                        $("#ver_mas4").click(function () {
+                                            $(".modal-torneos").show(400);
+                                            $("#content4").show(400);
+                                        });
+
+                                    });
+                                </script>
+                                <script>
+                                    $(document).ready(function () {
+                                        $("#cerrar-aviso-torneos3").click(function () {
+                                            $(".modal-torneos").hide(400);
+                                            $("#content4").hide(400);
+                                        });
+                                    });
+                                </script>
+
+
+
+                                <div class="modal-content" id="content4">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="myModalLabel">#{msjApp.labelTxtTabora}</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        #{msjApp.labelAllContTabora}
+
+                                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                                            <!-- Indicators -->
+                                            <ol class="carousel-indicators">
+                                                <li data-target="#myCarousel" data-slide-to="5" class="active"></li>
+                                                <li data-target="#myCarousel" data-slide-to="6"></li>
+                                                <li data-target="#myCarousel" data-slide-to="7"></li>
+                                                <li data-target="#myCarousel" data-slide-to="8"></li>
+                                            </ol>
+
+                                            <!-- Wrapper for slides -->
+                                            <div class="carousel-inner" role="listbox">
+                                                <div class="item active">
+                                                    <img src="#{request.contextPath}/resources/index/imgs/carr13.jpg" id="img-carrusel13" class="imagen_carrusel" />
+                                                </div>
+
+                                                <div class="item">
+                                                    <img src="#{request.contextPath}/resources/index/imgs/carr14.JPG" id="img-carrusel14" class="imagen_carrusel" />
+                                                </div>
+
+                                                <div class="item">
+                                                    <img src="#{request.contextPath}/resources/index/imgs/carr15.jpg" id="img-carrusel15" class="imagen_carrusel" />
+                                                </div>
+
+                                                <div class="item">
+                                                    <img src="#{request.contextPath}/resources/index/imgs/carr16.jpg" id="img-carrusel16" class="imagen_carrusel" />
+                                                </div>
+                                            </div>
+
+                                            <!-- Left and right controls -->
+                                            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-info" data-dismiss="modal" id="cerrar-aviso-torneos3">Cerrar</button>
+                                    </div>
+                                </div>
+                                <!-- <button class="btn btn-danger btn btn-block" id="btn_eliminar"><span class="glyphicon glyphicon-remove-circle"></span>&nbsp; Eliminar</button> -->
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4  col-md-offset-1">
+                        <div class="thumbnail " id="gaitana">
+                            <img src="#{request.contextPath}/resources/index/imgs/gaitana.png" id="imagen4" class="imagen" />
+                            <div class="caption">
+                                <h3>
+                                    #{msjApp.labelTxtLaGaitana}</h3>
+                                <p>#{msjApp.labelContLaGaitana}<!-- 
+
+                  Jugadores y padres de esta categoría, recibieron el premio con alegría y satisfacción por el buen trabajo realizado y lo demostraron dando la vuelta olímpica por el campo con el trofeo. --></p>
+                                <button type="submit" id="ver_mas5" class="btn btn-info">Ver más</button>
+                                <!-- <button class="btn btn-danger btn btn-block" id="btn_eliminar"><span class="glyphicon glyphicon-remove-circle"></span>&nbsp; Eliminar</button> -->
+                                <script>
+                                    $(document).ready(function () {
+                                        $("#ver_mas5").click(function () {
+                                            $(".modal-torneos").show(400);
+                                            $("#content5").show(400);
+                                        });
+
+                                    });
+                                </script>
+                                <script>
+                                    $(document).ready(function () {
+                                        $("#cerrar-aviso-torneos4").click(function () {
+                                            $(".modal-torneos").hide(400);
+                                            $("#content5").hide(400);
+                                        });
+                                    });
+                                </script>
+
+
+
+                                <div class="modal-content" id="content5">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="myModalLabel">#{msjApp.labelTxtLaGaitana}</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        #{msjApp.labelAllContLaGaitana}
+
+                                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                                            <!-- Indicators -->
+                                            <ol class="carousel-indicators">
+                                                <li data-target="#myCarousel" data-slide-to="5" class="active"></li>
+                                                <li data-target="#myCarousel" data-slide-to="6"></li>
+                                                <li data-target="#myCarousel" data-slide-to="7"></li>
+                                                <li data-target="#myCarousel" data-slide-to="8"></li>
+                                            </ol>
+
+                                            <!-- Wrapper for slides -->
+                                            <div class="carousel-inner" role="listbox">
+                                                <div class="item active">
+                                                    <img src="#{request.contextPath}/resources/index/imgs/carr17.jpg" id="img-carrusel17" class="imagen_carrusel" />
+                                                </div>
+
+                                                <div class="item">
+                                                    <img src="#{request.contextPath}/resources/index/imgs/carr18.jpg" id="img-carrusel18" class="imagen_carrusel" />
+                                                </div>
+
+                                                <div class="item">
+                                                    <img src="#{request.contextPath}/resources/index/imgs/carr19.jpg" id="img-carrusel19" class="imagen_carrusel" />
+                                                </div>
+
+
+                                            </div>
+
+                                            <!-- Left and right controls -->
+                                            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-info" data-dismiss="modal" id="cerrar-aviso-torneos4">Cerrar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="thumbnail col-lg-12" id="torneos_nacionales" >
+                <h1>#{msjApp.labelTxtTorneosN}</h1>
+                <div class="col-lg-4 roflContent    ">
+                    <div class="thumbnail" id="contenedor-del-torneo">
+                        <!-- <img src="imgs/olaya.jpg" id="imagen1"  alt=""> -->
+                        <div class="caption">
+                            <h3>#{msjApp.labelTxtCopaBogotá}</h3>
+                            #{msjApp.labelContCopaBogotá}
+                            <!-- <button class="btn btn-danger btn btn-block" id="btn_eliminar"><span class="glyphicon glyphicon-remove-circle"></span>&nbsp; Eliminar</button> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 roflContent">
+                    <div class="thumbnail" id="contenedor-del-torneo">
+                        <!-- <img src="imgs/suroriente.png" id="imagen1"  alt=""> -->
+                        <div class="caption">
+                            <h3>#{msjApp.labelTxtCopaCali}</h3>
+                            #{msjApp.labelContCopaCali}
+                            <!-- <button class="btn btn-danger btn btn-block" id="btn_eliminar"><span class="glyphicon glyphicon-remove-circle"></span>&nbsp; Eliminar</button> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 roflContent thumbnail">
+                    <div class="thumbnail" id="contenedor-del-torneo">
+                        <!-- img src="imgs/servita.jpg" id="imagen1"  alt=""> -->
+                        <div class="caption">
+                            <h3>#{msjApp.labelTxtMedellin}</h3>
+                            #{msjApp.labelContMedellin}
+                            <!-- <button class="btn btn-danger btn btn-block" id="btn_eliminar"><span class="glyphicon glyphicon-remove-circle"></span>&nbsp; Eliminar</button> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="thumbnail " id="contenedor-del-torneo">
+                        <!-- <img src="imgs/tabora.jpg" id="imagen1"  alt=""> -->
+                        <div class="caption">
+                            <h3> #{msjApp.labelTxtJuniorE}</h3>
+                            #{msjApp.labelContJuniorE}
+                            <!-- <button class="btn btn-danger btn btn-block" id="btn_eliminar"><span class="glyphicon glyphicon-remove-circle"></span>&nbsp; Eliminar</button> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="thumbnail " id="contenedor-del-torneo">
+                        <!-- <img src="imgs/gaitana.png" id="imagen1"  alt=""> -->
+                        <div class="caption">
+                            <h3>#{msjApp.labelTxtGN}</h3>
+                            #{msjApp.labelContGN}
+                            <!-- <button class="btn btn-danger btn btn-block" id="btn_eliminar"><span class="glyphicon glyphicon-remove-circle"></span>&nbsp; Eliminar</button> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="thumbnail " id="contenedor-del-torneo">
+                        <!-- <img src="imgs/gaitana.png" id="imagen1"  alt=""> -->
+                        <div class="caption">
+                            <h3>#{msjApp.labelTxtPijita}</h3>
+                            #{msjApp.labelContPijita} 
+                            <!-- <button class="btn btn-danger btn btn-block" id="btn_eliminar"><span class="glyphicon glyphicon-remove-circle"></span>&nbsp; Eliminar</button> -->
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-4">
+                    <div class="thumbnail " id="contenedor-del-torneo">
+                        <!-- <img src="imgs/gaitana.png" id="imagen1"  alt=""> -->
+                        <div class="caption">
+                            <h3>#{msjApp.labelTxtCartagena} </h3>
+                            #{msjApp.labelContCartagena} 
+                            <!-- <button class="btn btn-danger btn btn-block" id="btn_eliminar"><span class="glyphicon glyphicon-remove-circle"></span>&nbsp; Eliminar</button> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="thumbnail " id="contenedor-del-torneo">
+                        <!-- <img src="imgs/gaitana.png" id="imagen1"  alt=""> -->
+                        <div class="caption">
+                            <h3>#{msjApp.labelTxtCopaMar} </h3>
+                            #{msjApp.labelContCopaMar} 
+                            <!-- <button class="btn btn-danger btn btn-block" id="btn_eliminar"><span class="glyphicon glyphicon-remove-circle"></span>&nbsp; Eliminar</button> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="thumbnail " id="contenedor-del-torneo">
+                        <!-- <img src="imgs/gaitana.png" id="imagen1"  alt=""> -->
+                        <div class="caption">
+                            <h3> #{msjApp.labelTxtCopaAESFAL} </h3>
+                            #{msjApp.labelContCopaAESFAL}
+                            <!-- <button class="btn btn-danger btn btn-block" id="btn_eliminar"><span class="glyphicon glyphicon-remove-circle"></span>&nbsp; Eliminar</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Torneos -->
+
+        <!-- Ubicanos -->
+        <section id="ubicanos-seccion">
+            <h2>#{msjApp.labelTxtUbicanos}</h2>
+            <hr style="width:100.5%; border-bottom: 1px solid #000; margin-left: -50px; "></hr>
+            <div class="row">
+                <div class="col col-xs-12 col-md-6">
+
+                    <div class="contenedor-mapa-ubicacion" style="border: 1px solid #000;">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.609618212445!2d-74.08930148523783!3d4.663489796612488!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9ba8eb798ae5%3A0xa8c5762539095061!2sCentro+Recreodeportivo+El+Salitre!5e0!3m2!1ses!2ses!4v1480998332381" width="600" height="500" frameborder="0" style="border:0; float:left;" allowfullscreen="true"></iframe>
+                    </div>
+                </div>
+                <div class="col col-xs-12 col-md-6">
+
+                    <div class="info-ubicacion">
+                        <div class="thumbnail" style="box-shadow: 0 0 10px rgba(0,0,0,0.5);">
+                            <p>#{msjApp.labelTxtDireccion}</p>
+                            <p>#{msjApp.labelTxtHorAtencion} </p>
+                            <hr style="border-bottom:1px solid #999; width:100%; margin-left:-2px;"></hr>
+                            <p>#{msjApp.labelTxtAdmin}</p>
+                            <p>#{msjApp.labelTxtContacto}</p>
+                            <p>#{msjApp.labelTxtMasInfo}</p>
+                        </div>
+                        <p></p> 
+                    </div>
+                    <!-- CARRUSEL DEL UBICANOS -->
+                    <div class="contenedor_carrusel">
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            </ol>
+
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner" role="listbox">
+                                <div class="item active">
+                                    <img src="#{request.contextPath}/resources/index/imgs/cancha1.jpg" />
+                                    <div class="carousel-caption">
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="#{request.contextPath}/resources/index/imgs/canc2.jpg" />
+                                    <div class="carousel-caption">
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="#{request.contextPath}/resources/index/imgs/canc3.jpg" />
+                                    <div class="carousel-caption">
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="#{request.contextPath}/resources/index/imgs/canc4.jpg" />
+                                    <div class="carousel-caption">
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="#{request.contextPath}/resources/index/imgs/canc5.jpg" />
+                                    <div class="carousel-caption">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Controls -->
+                            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- CARRUSEL DEL UBICANOS -->
+            </div>
+
+        </section>
+        <!-- Ubicanos -->
+
+        <!-- Modal login -->
+        <div class="modal_ingreso">
+        </div>
+
+        <div class="contenedor_ingreso ">
+            <div class="contenido_formulario_ingreso">
+                <div>
+                    <a href="#" class="estilo-1">
+                        <span><i class="fa fa-times" aria-hidden="true" id="cerrar"></i></span></a>
+                </div>
+
+                <h2 style="margin-left: -5%;">#{msjApp.labelTxtIngresar}</h2>
+                <hr style="width:90%; margin-left:-13px;"></hr>
+                <!-- Usuario -->
+                <div class="form-group form_ingreso_usuario">
+                    <h:form id="form-ingresar"  prependId="false">
+
+                        <b:messages globalOnly="true" showSummary="true" show-detail="true"/>
+                        <b:message for="form-ingresar" showSummary="true" show-detail="true"/>
+                        <div class="col-lg-12" style="margin-top:4%;">
+                            <h:outputLabel style="margin-left: 1%;"  value="#{msjApp.labelTxtUsuario}"/>
+                        </div>
+                        <span style=" float: left; font-size:22px; margin-left:2%; margin-right: 5%; margin-top:1%;"><i class="fa fa-user" aria-hidden="true"></i></span><h:inputText class="form-control" style="width: 70%;" value="#{sessionController.noidentificacion}"/>
+                        <div class="col-lg-12" style="margin-top:4%;">
+                            <h:outputLabel style="margin-left: 1%;" value="#{msjApp.labelTxtContraseña}"/>
+                        </div>
+                        <span style=" float: left; font-size:22px; margin-left:2%; margin-right: 5%; margin-top:1%;"><i class="fa fa-lock" aria-hidden="true"></i></span><b:inputSecret class="form-control" style="width: 70%; margin-left: 30px;" value="#{sessionController.contraseña}"/>
+
+                        <h:commandButton class="btn btn-primary" style="margin-left: 25%; margin-top:4%;" value="#{msjApp.labelTxtIngresar}" action="#{sessionController.iniciarSesion()}"/>
+
+                    </h:form>
+                </div>
+
+
+
+
+            </div>
+
+        </div>
+        <!-- Modal login -->
+
+        <!-- Modal Sign up -->
+        <div class="contenedor_registro" style="width: 580px; height: 100%;">
+
+            <div class="contenido_formulario_registro">
+                <div class="contenedor-registro">
+                    <div class="modal-header">
+
+                        <a href="#" class="estilo-1">
+                            <span><i class="fa fa-times" aria-hidden="true" id="close"></i></span></a>
+
+                        <h4 class="modal-title" id="myModalLabel">#{msjApp.labelTxtRegistrar} <a href="#"></a></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12" style=";padding-right: 30px;">
+                                <!-- Nav tabs -->
+
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="Login">
+                                        <b:form id="form-crear">
+
+                                            <b:messages globalOnly="true" showSummary="true" show-detail="true"/>
+                                            <b:message for="form-crear" showSummary="true" show-detail="true"/>
+                                            <h:panelGrid columns="4">
+                                                <h:outputLabel value="#{msjApp.labelTxtUsuario}"/>
+                                                <b:inputText value="#{registroController.personaNueva.noIdentificacion}" placeholder="No. identificacion"/>
+                                                <h:outputLabel value="#{msjApp.labelTxtNombre}"/>
+                                                <b:inputText value="#{registroController.personaNueva.nombre1}" placeholder="Primer nombre"/>
+                                                <h:outputLabel value="#{msjApp.labelTxtNombre}"/>
+                                                <b:inputText value="#{registroController.personaNueva.nombre2}" placeholder="Segundo nombre"/>
+                                                <h:outputLabel value="#{msjApp.labelTxtApellido}"/>
+                                                <b:inputText value="#{registroController.personaNueva.apellido1}" placeholder="Primer apellido"/>
+                                                <h:outputLabel value="#{msjApp.labelTxtApellido}"/>
+                                                <b:inputText value="#{registroController.personaNueva.apellido2}" placeholder="Segundo Apellido"/>
+                                                <h:outputLabel value="#{msjApp.labelTxtFecha}"/>
+                                                <b:inputText class="form-control" id="fechaNacimiento" placeholder="AAAA/MM/DD" value="#{registroController.personaNueva.fechaNacimiento}" required="true" >
+                                                    <f:convertDateTime pattern="yyyy/MM/dd"  />
+                                                </b:inputText>
+
+                                                <h:outputLabel value="#{msjApp.labelTxtCorreo}"/>
+                                                <b:inputText value="#{registroController.personaNueva.correoElectronico}" placeholder="Example@gmail.com"/>
+                                                <h:outputLabel value="#{msjApp.labelTxtTel}"/>
+                                                <b:inputText value="#{registroController.personaNueva.telefonoCelular}" placeholder="Teléfono Celular"/>
+                                                <h:outputLabel value="#{msjApp.labelTxtTel}"/>
+                                                <b:inputText value="#{registroController.personaNueva.telefonoFijo}" placeholder="Teléfono fijo"/>
+                                                <h:outputLabel value="#{msjApp.labelTxtContraseña}"/>
+                                                <b:inputSecret value="#{registroController.personaNueva.contrasena}" placeholder="Contraseña"/>
+                                                <h:outputLabel value="#{msjApp.labelTxtDir} "/>
+                                                <b:inputText value="#{registroController.personaNueva.direccion}" placeholder="Dirección"/>
+                                                <h:outputLabel value="Barrio:  "/>
+                                                <b:inputText value="#{registroController.personaNueva.barrio}" placeholder="Barrio"/>
+                                                <h:outputLabel value="#{msjApp.labelTxtLocalidad} "/>
+
+                                                <h:selectOneMenu class="form-control" converter="localidadConverter" id="idLocalidad" value="#{registroController.personaNueva.idLocalidad}">
+                                                    <f:selectItems value="#{localidadController.localidades}" var="lc" itemLabel="#{lc.nombreLocalidad}"/>
+                                                </h:selectOneMenu>
+                                                <h:outputLabel value="Tipo de documento: "/>
+
+                                                <h:selectOneMenu class="form-control" converter="tipoDocumentoConverter" id="tipoDocumento" value="#{registroController.personaNueva.idTipoIdentificacion}">
+                                                    <f:selectItems value="#{tipoDocumentoController.tiposDeDocumentos}" var="td" itemLabel="#{td.sigla}" />
+                                                </h:selectOneMenu>
+
+
+                                            </h:panelGrid>
+
+
+                                            <b:commandButton class="btn btn-success" style="width: 100%; " value="#{msjApp.labelTxtRegistrar}" actionListener="#{registroController.registrar()}"/>
+
+                                        </b:form>
+
+                                    </div>
+                                </div>                        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Sign up -->
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6">
+                    <div id="contactenos1">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+
+
+
+
+
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="well well-sm" style="width: 100%; height: 40%; ">
+                                            <h:form>
+
+                                                <label for="name" style="margin-left: 5%;">
+                                                    Nombres y apellidos</label>
+                                                <h:inputText style="margin-left:4%; width: 80%;" class="input_field input_field-hoshi form-control" id="name" value="#{controllerEmail.nombresyAp}"/>
+
+                                                <label for="email" style="margin-left: 4%;">
+                                                    Teléfono</label>
+                                                <h:inputText style="margin-left: 4%; width: 80%;" class="input_field input_field-hoshi form-control"   id="input-3"  value="#{controllerEmail.telefono}" />
+
+                                                <label for="correo" style="margin-left: 4%;">
+                                                    Correo</label>
+
+                                                <h:inputText style="margin-left: 4%; width: 80%;" class="input_field input_field-hoshi form-control"  id="emailcorr"  value="#{controllerEmail.email}" />
+
+                                                <label for="asunto" style="margin-left: 4%;">
+                                                    Asunto</label>
+                                                <h:inputText style="margin-left: 4%; width: 80%;" class="input_field input_field-hoshi form-control"  id="asunto"  value="#{controllerEmail.asunto}" />
+                                                
+
+                                                <label style="margin-left: 4%;" for="name">
+                                                    Mensaje</label>
+                                                <h:inputTextarea style="color: #000; border-color: #bf2b55;  height: 120px;" id="textarea" class=" input_field-hoshi form-control" rows="1" value="#{controllerEmail.mensaje}"/>
+
+                                                <h:commandButton style="margin-left: 70%;" class="btn btn-capsul btn-transparent-white" type="submit"
+                                                                 action="#{controllerEmail.enviarMensaje()}" value="Enviar">
+                                                </h:commandButton>
+                                            </h:form>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <form style="margin-top:20%; margin-left: 10%; color: #fff;">
+                                            <legend style="color: #fff;"><span class="glyphicon glyphicon-globe" style="color: #fff;"></span>Contactenos</legend>
+                                            <address>
+                                                <strong>Caterpillar S.A</strong><br></br>
+                                                <abbr title="Phone">
+                                                    P:</abbr>
+                                                (123) 456-7890
+                                            </address>
+                                            <address>
+                                                <strong>Full Name</strong><br></br>
+                                                <a href="mailto:#">first.last@example.com</a>
+                                            </address>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="redes">
+                            <p><b id="siguenos">Síguenos</b></p> 
+                            <a href="https://www.facebook.com/CaterpillarMotor/?fref=ts" target="_blank"><i class="fa fa-facebook" aria-hidden="true" id="iconos"></i></a>
+                            <a href="https://twitter.com/CLUBCATERPILLAR?lang=es" target="_blank"><i class="fa fa-twitter" aria-hidden="true" id="iconos"></i></a>
+                            <a href="https://www.youtube.com/user/caterpillarmotor" target="_blank"><i class="fa fa-youtube-play" aria-hidden="true" id="iconos"></i></a>
+                            <a href="https://www.instagram.com/clubcaterpillarmotor/?hl=es" target="_blank"><i class="fa fa-instagram" aria-hidden="true" id="iconos"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="contactenos2">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <h4>#{msjApp.labelTxtCorp}</h4>
+                        <p><a href="http://clubcaterpillarmotor.com/" target="_blank">#{msjApp.labelTxtQuienesSomos}</a></p>
+                        <p><a href="#">#{msjApp.labelTxtConocenos}</a></p>
+                        <p><a href="#">#{msjApp.labelTxtSocios}</a></p>
+                    </div> 
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <h4 style="margin-left:-20px;">#{msjApp.labelTxtPrensa}</h4>
+                        <p><a href="#">#{msjApp.labelTxtPremios}</a></p>
+                        <p><a href="#">#{msjApp.labelTxtRevista}</a></p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <h4>#{msjApp.labelTxtMas}</h4>
+                        <p><a href="#"><i class="fa fa-map-marker" aria-hidden="true" id="iconos2"></i></a>
+                            Transversal 48 # 63-65,
+                            Sábado de 10:00 am – 12:00 am</p>
+                        <p>Domingo de 8:00 – 10:00 am<a>
+                                Coordinadora: Luz Helena Echeverry</a></p>
+                        <p><a href="#"><i class="fa fa-phone" aria-hidden="true" id="iconos2"></i>Celular: 3214352764
+                            </a></p>
+                        <p><a href="#"><i class="fa fa-envelope-o" aria-hidden="true" id="iconos2"></i>
+                                salitre@clubcaterpillarmotor.com.co
+                            </a></p>
+                    </div>
+                </div>
+                <hr></hr>     
+                <p id="letrapequeña"><i>(R) 2016 Sistema de información futbolístico de calidad</i></p>
+            </div>
+        </footer>
+        <!-- Footer -->
+
+        <!-- SCRIPTS! -->
+
+        <!--Frameworks-->
+
+
+
+        <!-- SCRIPTS! -->
+
+    </h:body>
+
+
+
+
+</html>
+

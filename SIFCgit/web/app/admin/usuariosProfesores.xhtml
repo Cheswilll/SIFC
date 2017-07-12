@@ -1,0 +1,144 @@
+<ui:composition template="/WEB-INF/resources/template/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:b="http://bootsfaces.net/ui">
+
+    <ui:define name="body_pag">
+        <div class="container body">
+            <div class="main_container" style="background-color: #fff;">
+                <div class="col-md-3 left_col menu_fixed">
+                    <div class="left_col scroll-view">
+                        <div class="navbar nav_title" style="border: 0;">
+                            <a href="index.html" class="site_title"><img src="#{request.contextPath}/resources/imgs/logonuevo.png" style="width: 50px; height: 50px;"/>
+                                <span style="margin-left:5%;">S.I.F.C</span>
+                            </a>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <!-- menu profile quick info -->
+                        <div class="profile clearfix">
+                            <div class="profile_pic">
+                                <img src="#{request.contextPath}/resources/imgs/user.png" alt=""  class="img-circle profile_img"/>
+                            </div>
+                            <div class="profile_info">
+                                <span>Bienvenido,</span>
+                                <h2>#{sessionController.persona.nombre1} #{sessionController.persona.nombre2}</h2>
+                            </div>
+                        </div>
+                        <!-- /menu profile quick info -->
+
+                        <br />
+
+                        <!-- sidebar menu -->
+                        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                            <div class="menu_section">
+                                <h3>General</h3>
+                                <ul class="nav side-menu">
+                                <li><a><i class="fa fa-home"></i> Inicio <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="admin.xhtml">Inicio</a></li>
+                                        <li><a href="informacionPersonal.xhtml">Información Personal</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-edit"></i>Validación<span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="asignarRoles.xhtml">Asignar roles</a></li>
+                                        <li><a href="cambiarEstado.xhtml">Cambiar Estado usuarios</a></li>
+                                    </ul>
+                                </li>
+                                <li><a><i class="fa fa-desktop"></i> Listado de usuarios <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="usuariosJugadores.xhtml">Usuarios Jugadores</a></li>
+                                        <li><a href="usuariosProfesores.xhtml">Usuarios Profesores</a></li>
+                                        <li><a href="usuariosAdmins.xhtml">Usuarios Administradores</a></li>
+                                        <li><a href="usuariosNormales.xhtml">Usuarios</a></li>
+                                    </ul>
+                                </li>
+                                <li><a><i class="fa fa-table"></i>Formularios<span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="formulariosSend.xhtml">Formularios enviados </a></li>
+                                    </ul>
+                                </li>
+                                
+
+                            </ul>
+                            </div>
+
+                        </div>
+                        <!-- /sidebar menu -->
+
+                        <!-- /menu footer buttons -->
+                        <div class="sidebar-footer hidden-small">
+                            <h:form>
+                                <h:commandButton value="Salir" action="#{sessionController.cerrarSesion()}" style="background-color: rgb(15, 23, 34); border-color: rgb(15, 23, 34); width: 100%; color: #fff; height: 40px;"/>
+                            </h:form>
+                        </div>
+                        <!-- /menu footer buttons -->
+                    </div>
+                </div>
+
+                <!-- top navigation -->
+                <div class="top_nav">
+                    <div class="nav_menu">
+                        <nav>
+                            <div class="nav toggle">
+                                <a id="menu_toggle" style="color:#BECEDE;"><i class="fa fa-bars"></i></a>
+                            </div>
+
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="">
+                                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        <img src="#{request.contextPath}/resources/imgs/user.png" alt=""/>#{sessionController.persona.nombre1} #{sessionController.persona.apellido1}
+                                        <span class=" fa fa-angle-down"></span>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                        <li><a href="informacionPersonal.xhtml"> Perfil</a></li>
+                                        <li>
+                                             <h:form>
+                                            <h:commandButton style="background-color: transparent; border-color:  transparent; margin-left: 10px; width: 100%; text-align: left;" value="Salir" action="#{sessionController.cerrarSesion()}" ></h:commandButton>  
+                                        </h:form>
+                                    
+                                        
+                                        </li>
+                                    </ul>
+                                </li>
+
+
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <!-- /top navigation -->
+
+                <!-- page content -->
+                <div class="container" style="background-color: #fff;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <b:message for="tabla_personas" show-summary="true" show-detail="true"/>
+                            <h:form id="tabla_personas" prependId="false" style="margin-left: 20%; width: 75%; margin-top: 4%; background-color: #fff; color: #080808;">
+                                <b:dataTable value="#{listarPersonasController.listarRolProfesor()}" var="p">
+                                    <b:dataTableColumn label="T.D" value="#{p.idTipoIdentificacion.sigla}"/>
+                                    <b:dataTableColumn label="No. identificación" value="#{p.noIdentificacion}"/>
+                                    <b:dataTableColumn label="Nombres" value="#{p.nombre1} #{p.nombre2}"/>
+                                    <b:dataTableColumn label="Apellidos" value="#{p.apellido1} #{p.apellido2}"/>
+                                    <b:dataTableColumn label="Correo electronico" value="#{p.correoElectronico}"/>
+                                </b:dataTable>
+
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </ui:define>
+
+
+
+</ui:composition>

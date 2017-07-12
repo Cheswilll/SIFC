@@ -49,7 +49,7 @@ public class Categoria implements Serializable {
     @Column(name = "nombreCategoria")
     private String nombreCategoria;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "categoria", fetch = FetchType.LAZY)
-    private List<Equipo> equipoList;
+    private List<Equipo> equipos;
 
     public Categoria() {
     }
@@ -80,12 +80,12 @@ public class Categoria implements Serializable {
     }
 
     @XmlTransient
-    public List<Equipo> getEquipoList() {
-        return equipoList;
+    public List<Equipo> getEquipos() {
+        return equipos;
     }
 
-    public void setEquipoList(List<Equipo> equipoList) {
-        this.equipoList = equipoList;
+    public void setEquipos(List<Equipo> equipos) {
+        this.equipos = equipos;
     }
 
     @Override

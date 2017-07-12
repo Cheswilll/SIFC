@@ -1,0 +1,171 @@
+<ui:composition template="/WEB-INF/resources/template/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:b="http://bootsfaces.net/ui">
+
+    <ui:define name="body_pag">
+        <div class="container body">
+            <div class="main_container">
+                <div class="col-md-3 left_col menu_fixed">
+                    <div class="left_col scroll-view">
+                        <div class="navbar nav_title" style="border: 0;">
+                            <a href="index.html" class="site_title"><img src="#{request.contextPath}/resources/imgs/logonuevo.png" style="width: 50px; height: 50px;"/>
+                                <span style="margin-left:5%;">S.I.F.C</span>
+                            </a>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <!-- menu profile quick info -->
+                        <div class="profile clearfix">
+                            <div class="profile_pic">
+                                <img src="#{request.contextPath}/resources/imgs/user.png" alt=""  class="img-circle profile_img"/>
+                            </div>
+                            <div class="profile_info">
+                                <span>Bienvenido,</span>
+                                <h2>#{sessionController.persona.nombre1} #{sessionController.persona.nombre2}</h2>
+                            </div>
+                        </div>
+                        <!-- /menu profile quick info -->
+
+                        <br />
+
+                        <!-- sidebar menu -->
+                        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                            <div class="menu_section">
+                                <h3>General</h3>
+                                <ul class="nav side-menu">
+                                    <li><a><i class="fa fa-home"></i> Inicio <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="profesor.xhtml">Inicio</a></li>
+                                            <li><a href="informacionPersonalProfesor.xhtml">Información Personal</a></li>
+
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a><i class="fa fa-edit"></i>Partidos<span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="registrarPlantillaPartido.xhtml">Registrar plantilla de partido</a></li>
+                                            <li><a href="listarPartidos.xhtml">Partidos jugados</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a><i class="fa fa-desktop"></i> Seguimiento <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="nuevoSeguimiento.xhtml">Nuevo registro de seguimiento</a></li>
+                                            <li><a href="listarSeguimientos.xhtml">Ver seguimientos</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a><i class="fa fa-desktop"></i> Test Físicos <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="registrarTest.xhtml">Nuevo registro de test</a></li>
+                                            <li><a href="listarTest.xhtml">Test físicos realizados</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a><i class="fa fa-desktop"></i> Asistencias <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="registrarAsistencia.xhtml">Nueva asistencia</a></li>
+                                            <li><a href="listarAsistencias.xhtml">Ver asistencias</a></li>
+                                        </ul>
+                                    </li>
+
+
+
+                                </ul>
+                            </div>
+
+                        </div>
+                        <!-- /sidebar menu -->
+
+                        <!-- /menu footer buttons -->
+                        <div class="sidebar-footer hidden-small">
+                            <h:form>
+                                <h:commandButton value="Salir" action="#{sessionController.cerrarSesion()}" style="background-color: rgb(15, 23, 34); border-color: rgb(15, 23, 34); width: 100%; color: #fff; height: 40px;"/>
+                            </h:form>
+                        </div>
+                        <!-- /menu footer buttons -->
+                    </div>
+                </div>
+
+                <!-- top navigation -->
+                <div class="top_nav">
+                    <div class="nav_menu" style="margin-left: -115px; width: 124.8%;" >
+                        <nav>
+                            <div class="nav toggle">
+                                <a id="menu_toggle" style="color:#BECEDE;"><i class="fa fa-bars"></i></a>
+                            </div>
+
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="">
+                                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        <img src="#{request.contextPath}/resources/imgs/user.png" alt=""/>#{sessionController.persona.nombre1} #{sessionController.persona.apellido1}
+                                        <span class=" fa fa-angle-down"></span>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                        <li><a href="informacionPersonalProfesor.xhtml"> Perfil</a></li>
+                                        <li>
+                                             <h:form>
+                                            <h:commandButton style="background-color: transparent; border-color:  transparent; margin-left: 10px; width: 100%; text-align: left;" value="Salir" action="#{sessionController.cerrarSesion()}" ></h:commandButton>  
+                                        </h:form>
+                                    
+                                        
+                                        </li>
+                                    </ul>
+                                </li>
+
+
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <!-- /top navigation -->
+
+                <!-- page content -->
+                <div class="container">
+                    <div class="col-md-12">
+                        <h3 style="text-align: center;">Seguimiento</h3>
+                        <hr style="margin-left: 15%;"></hr>
+                        <b:message for="form-editar" showSummary="true" show-detail="true"/>
+                        <b:form style="margin-left:15%; color: #000; margin-top: 5%;" id="form-editar" prependId="false" >
+                            <b:panelGrid col-sm="12" columns="4">
+
+                                <h:outputText value="Tipo documento: "/>
+                                <b:inputText class="form-control" style="" value="#{modificarSeguimientoController.seguimientoSeleccionado.idSeguimiento}"/>
+                                <h:outputText value="No. de documento: "/>
+                                <b:inputText class="form-control" style="" value="#{modificarSeguimientoController.seguimientoSeleccionado.nombresJugador}"/>
+                                <h:outputText value="Primer nombre: "/>
+                                <b:inputText class="form-control" style="" value="#{modificarSeguimientoController.seguimientoSeleccionado.partidosJugados}"/>
+                                <h:outputText value="Segundo nombre: "/>
+                                <b:inputText class="form-control" style="" value="#{modificarSeguimientoController.seguimientoSeleccionado.tallaGuayos}" />
+                                <h:outputText value="Primer apellido: "/>
+                                <b:inputText class="form-control" style="" value="#{modificarSeguimientoController.seguimientoSeleccionado.testRealizados}" />
+                                <h:outputText value="Segundo apellido: "/>
+                                <b:inputText class="form-control" style="" value="#{modificarSeguimientoController.seguimientoSeleccionado.tallaCamisa}" />
+                                <h:outputText value="Fecha de nacimiento: "/>
+                                <b:inputText class="form-control" style="" value="#{modificarSeguimientoController.seguimientoSeleccionado.tallaPantaloneta}" />
+                                <h:outputText value="Correro electronico: "/>
+                                <h:inputText id="fechaInicio" value="#{modificarSeguimientoController.seguimientoSeleccionado.fechaIngreso}"  required="true" >
+                                    <f:convertDateTime pattern="yyyy/MM/dd" />
+                                </h:inputText>
+
+
+
+
+                            </b:panelGrid>
+                            <br></br>
+                            <b:commandButton value="Actualizar información" icon="floppy-disk" class="btn btn-warning" actionListener="#{modificarSeguimientoController.actulaizarDatosSeguimiento()}" />
+
+                        </b:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </ui:define>
+
+
+
+</ui:composition>
