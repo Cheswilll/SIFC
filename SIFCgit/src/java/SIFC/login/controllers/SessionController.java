@@ -94,6 +94,55 @@ public class SessionController implements Serializable {
     
     
     public String iniciarSesion(){
+        String urlDestino = "";
+        persona = sr.iniciar(noidentificacion, contraseña);
+        if(persona != null){
+            rolSeleccionado = sr.validarRol(persona);
+            if(rolSeleccionado != null){
+                urlDestino = "/app/index.xhtml?faces-redirect=true";
+            } else{
+                persona = null;
+            }
+        }
+        return urlDestino;
+    }
+    
+    public String cerrarSesion(){
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        persona = null;
+        rolSeleccionado = null;
+        contraseña = "";
+        noidentificacion = null;
+        return "/index_1.xhtml?faces-redirect=true";
+    }
+    
+    public Boolean inicioSesion(){
+        return (persona != null);
+    }
+    
+    
+    public Boolean tienePermiso(String urlRecurso){
+        if(urlRecurso.endsWith("app/index.xhtml")){
+            return true;
+        }
+        for (Permiso p : rolSeleccionado.getPermisos()) {
+            if(p.getUrl() != null && urlRecurso.endsWith(p.getUrl())){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    
+    @PreDestroy
+    public void perDestroy(){
+        cerrarSesion();
+    }
+    
+    
+    
+    /*
+    public String iniciarSesion(){
         FacesContext fc = FacesContext.getCurrentInstance();
         ExternalContext ec = fc.getExternalContext();
         String url = "";
@@ -173,5 +222,5 @@ public class SessionController implements Serializable {
         cerrarSesion();
     }
     
-    
+    */
 }
