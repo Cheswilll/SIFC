@@ -3,200 +3,80 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
-
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
                 xmlns:b="http://bootsfaces.net/ui">
 
-    <ui:define name="body_pag">
-        <div class="container body">
-            <div class="main_container" style="background-color: #fff;">
-                <div class="col-md-3 left_col menu_fixed">
-                    <div class="left_col scroll-view">
-                        <div class="navbar nav_title" style="border: 0;">
-                            <a href="profesor.xhtml" class="site_title"><img src="#{request.contextPath}/resources/imgs/logonuevo.png" style="width: 50px; height: 50px;"/>
-                                <span style="margin-left:5%;">S.I.F.C</span>
-                            </a>
-                        </div>
 
-                        <div class="clearfix"></div>
+    <ui:define name="content" >
+        <b:form style="margin-top: 5%; color: #080808; width: 75%; margin-left: 20%;">
+            <b:panelGrid colSm="12" columns="4">
 
-                        <!-- menu profile quick info -->
-                        <div class="profile clearfix">
-                            <div class="profile_pic">
-                                <img src="#{request.contextPath}/resources/imgs/user.png" alt=""  class="img-circle profile_img"/>
-                            </div>
-                            <div class="profile_info">
-                                <span>Bienvenido,</span>
-                                <h2>#{sessionController.persona.nombre1} #{sessionController.persona.nombre2}</h2>
-                            </div>
-                        </div>
-                        <!-- /menu profile quick info -->
+                <h:outputText value="Tipo partido:"/>
 
-                        <br />
+                <h:selectOneMenu class="form-control" converter="tipoPartidoConverter" id="idTipoPartido" value="#{registrarPartidoController.nuevoPartido.idTipoPartido}">
+                    <f:selectItems value="#{listarTipoPartidoController.tiposPartidos}" var="tp" itemLabel="#{tp.nombreTipoPartido}"/>
+                </h:selectOneMenu>
 
-                        <!-- sidebar menu -->
-                        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-                            <div class="menu_section">
-                                <h3>General</h3>
-                                <ul class="nav side-menu">
-                                    <li><a><i class="fa fa-home"></i> Inicio <span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="profesor.xhtml">Inicio</a></li>
-                                            <li><a href="informacionPersonalProfesor.xhtml">Información Personal</a></li>
+                <h:outputText value="No. identificacion profesor: "/>
 
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a><i class="fa fa-edit"></i>Partidos<span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="registrarPlantillaPartido.xhtml">Registrar plantilla de partido</a></li>
-                                            <li><a href="listarPartidos.xhtml">Partidos jugados</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a><i class="fa fa-desktop"></i> Seguimiento <span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="nuevoSeguimiento.xhtml">Nuevo registro de seguimiento</a></li>
-                                            <li><a href="listarSeguimientos.xhtml">Ver seguimientos</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a><i class="fa fa-desktop"></i> Test Físicos <span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="registrarTest.xhtml">Nuevo registro de test</a></li>
-                                            <li><a href="listarTest.xhtml">Test físicos realizados</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a><i class="fa fa-desktop"></i> Asistencias <span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="registrarAsistencia.xhtml">Nueva asistencia</a></li>
-                                            <li><a href="listarAsistencias.xhtml">Ver asistencias</a></li>
-                                        </ul>
-                                    </li>
+                <h:selectOneMenu class="form-control" converter="personaConverter" id="noIdentificacionProfesor" value="#{registrarPartidoController.nuevoPartido.noIdentificacionProfesor}">
+                    <f:selectItems value="#{listarPersonasJugadorController.personasJugadores}" var="pju" itemLabel="#{pju.noIdentificacion}"/>
+                </h:selectOneMenu>
 
 
+                <h:outputText value="Tiempo Jugado: "/>
+                <h:inputText class="form-control" id="tiempoJuado" value="#{registrarPartidoController.nuevoPartido.tiempoJuado}" >
+                    <f:convertDateTime pattern="HH:mm:ss" />
+                </h:inputText>
 
-                                </ul>
-                            </div>
+                <h:outputText value="Amonestaciones: "/>
+                <b:inputText value="#{registrarPartidoController.nuevoPartido.amonestaciones}"/>
 
-                        </div>
-                        <!-- /sidebar menu -->
+                <h:outputText value="Nombre equipo rival"/>
+                <b:inputText value="#{registrarPartidoController.nuevoPartido.nombreEquipoRival}"/>
 
-                        <!-- /menu footer buttons -->
-                        <div class="sidebar-footer hidden-small">
-                            <h:form>
-                                <h:commandButton value="Salir" action="#{sessionController.cerrarSesion()}" style="background-color: rgb(15, 23, 34); border-color: rgb(15, 23, 34); width: 100%; color: #fff; height: 40px;"/>
-                            </h:form>
-                        </div>
-                        <!-- /menu footer buttons -->
-                    </div>
-                </div>
+                <h:outputText value="Hora del partido"/>
 
-                <!-- top navigation -->
-                <div class="top_nav">
-                    <div class="nav_menu">
-                        <nav>
-                            <div class="nav toggle">
-                                <a id="menu_toggle" style="color:#BECEDE;"><i class="fa fa-bars"></i></a>
-                            </div>
+                <h:inputText class="form-control" id="horaDelPartido" value="#{registrarPartidoController.nuevoPartido.horaDelPartido}" required="true">
+                    <f:convertDateTime pattern="HH:mm:ss" />
+                </h:inputText>
 
-                            <ul class="nav navbar-nav navbar-right">
-                                <li class="">
-                                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                        <img src="#{request.contextPath}/resources/imgs/user.png" alt=""/>#{sessionController.persona.nombre1} #{sessionController.persona.apellido1}
-                                        <span class=" fa fa-angle-down"></span>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                        <li><a href="informacionPersonalProfesor.xhtml"> Perfil</a></li>
-                                        <li>
-                                             <h:form>
-                                            <h:commandButton style="background-color: transparent; border-color:  transparent; margin-left: 10px; width: 100%; text-align: left;" value="Salir" action="#{sessionController.cerrarSesion()}" ></h:commandButton>  
-                                        </h:form>
-                                    
-                                        
-                                        </li>
-                                    </ul>
-                                </li>
+                <h:outputText value="Observaciones: "/>
+                <b:inputTextarea value="#{registrarPartidoController.nuevoPartido.observaciones}"/>
+
+                <h:outputText value="Fecha del partido"/>
+                <h:inputText class="form-control" id="fechaDelPartido" value="#{registrarPartidoController.nuevoPartido.fechaDelPartido}"  required="true">
+                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                </h:inputText>
+
+                <h:outputText  value="Tipo de alineacion: "/>
+                <h:selectOneMenu class="form-control" converter="tipoAlineacionConverter" id="idTipoAlineacion" value="#{registrarPartidoController.nuevoPartido.idTipoAlineacion}">
+                    <f:selectItems value="#{listarTipoAlineacionController.tiposAlineaciones}" var="ta" itemLabel="#{ta.nombreAlineacion}"/>
+                </h:selectOneMenu>
 
 
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <!-- /top navigation -->
+                <h:outputText value="Goles a favor: "/>
+                <b:inputText value="#{registrarPartidoController.nuevoPartido.golesAfavor}" />
 
-                <!-- page content -->
-                <div class="container" style="width: 80%; background-color: #fff;">
-                    <b:form style="margin-top: 5%; color: #080808; width: 75%; margin-left: 20%;">
-                        <b:panelGrid colSm="12" columns="4">
-
-                            <h:outputText value="Tipo partido:"/>
-
-                            <h:selectOneMenu class="form-control" converter="tipoPartidoConverter" id="idTipoPartido" value="#{registrarPartidoController.nuevoPartido.idTipoPartido}">
-                                <f:selectItems value="#{listarTipoPartidoController.tiposPartidos}" var="tp" itemLabel="#{tp.nombreTipoPartido}"/>
-                            </h:selectOneMenu>
-
-                            <h:outputText value="No. identificacion profesor: "/>
-                            
-                            <h:selectOneMenu class="form-control" converter="personaConverter" id="noIdentificacionProfesor" value="#{registrarPartidoController.nuevoPartido.noIdentificacionProfesor}">
-                                <f:selectItems value="#{listarPersonasJugadorController.personasJugadores}" var="pju" itemLabel="#{pju.noIdentificacion}"/>
-                            </h:selectOneMenu>
-                            
-
-                            <h:outputText value="Tiempo Jugado: "/>
-                            <h:inputText class="form-control" id="tiempoJuado" value="#{registrarPartidoController.nuevoPartido.tiempoJuado}" >
-                                <f:convertDateTime pattern="HH:mm:ss" />
-                            </h:inputText>
-
-                            <h:outputText value="Amonestaciones: "/>
-                            <b:inputText value="#{registrarPartidoController.nuevoPartido.amonestaciones}"/>
-
-                            <h:outputText value="Nombre equipo rival"/>
-                            <b:inputText value="#{registrarPartidoController.nuevoPartido.nombreEquipoRival}"/>
-
-                            <h:outputText value="Hora del partido"/>
-
-                            <h:inputText class="form-control" id="horaDelPartido" value="#{registrarPartidoController.nuevoPartido.horaDelPartido}" required="true">
-                                <f:convertDateTime pattern="HH:mm:ss" />
-                            </h:inputText>
-
-                            <h:outputText value="Observaciones: "/>
-                            <b:inputTextarea value="#{registrarPartidoController.nuevoPartido.observaciones}"/>
-
-                            <h:outputText value="Fecha del partido"/>
-                            <h:inputText class="form-control" id="fechaDelPartido" value="#{registrarPartidoController.nuevoPartido.fechaDelPartido}"  required="true">
-                                <f:convertDateTime pattern="MM/dd/yyyy" />
-                            </h:inputText>
-
-                            <h:outputText  value="Tipo de alineacion: "/>
-                            <h:selectOneMenu class="form-control" converter="tipoAlineacionConverter" id="idTipoAlineacion" value="#{registrarPartidoController.nuevoPartido.idTipoAlineacion}">
-                                <f:selectItems value="#{listarTipoAlineacionController.tiposAlineaciones}" var="ta" itemLabel="#{ta.nombreAlineacion}"/>
-                            </h:selectOneMenu>
+                <h:outputText value="Goles en contra: "/>
+                <b:inputText value="#{registrarPartidoController.nuevoPartido.golesEnContra}" />
 
 
-                            <h:outputText value="Goles a favor: "/>
-                            <b:inputText value="#{registrarPartidoController.nuevoPartido.golesAfavor}" />
+                <h:outputText value="Lugar del partido: "/>
+                <b:inputText value="#{registrarPartidoController.nuevoPartido.lugarPartido}"/>
 
-                            <h:outputText value="Goles en contra: "/>
-                            <b:inputText value="#{registrarPartidoController.nuevoPartido.golesEnContra}" />
+                <h:outputText value="Torneo: "/>
+                <h:selectOneMenu class="form-control" converter="torneoConverter" id="idTorneo" value="#{registrarPartidoController.nuevoPartido.idTorneo}">
+                    <f:selectItems value="#{listarTorneoController.torneos}" var="trn" itemLabel="#{trn.idTipoTorneo.nombreTipoTorneo}"/>
+                </h:selectOneMenu>
 
+                <h:outputText value="Dirección: "/>
+                <b:inputText value="#{registrarPartidoController.nuevoPartido.direccion}"/>
 
-                            <h:outputText value="Lugar del partido: "/>
-                            <b:inputText value="#{registrarPartidoController.nuevoPartido.lugarPartido}"/>
-
-                            <h:outputText value="Torneo: "/>
-                            <h:selectOneMenu class="form-control" converter="torneoConverter" id="idTorneo" value="#{registrarPartidoController.nuevoPartido.idTorneo}">
-                                <f:selectItems value="#{listarTorneoController.torneos}" var="trn" itemLabel="#{trn.idTipoTorneo.nombreTipoTorneo}"/>
-                            </h:selectOneMenu>
-
-                            <h:outputText value="Dirección: "/>
-                            <b:inputText value="#{registrarPartidoController.nuevoPartido.direccion}"/>
-
-                            <b:commandButton value="Registrar" actionListener="#{registrarPartidoController.registrarPartido()}"/>
-                        </b:panelGrid>
-                    </b:form>
-                </div>
-            </div>
-        </div>
-
+                <b:commandButton value="Registrar" actionListener="#{registrarPartidoController.registrarPartido()}"/>
+            </b:panelGrid>
+        </b:form>
     </ui:define>
 
 

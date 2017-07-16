@@ -7,129 +7,67 @@
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
                 xmlns:b="http://bootsfaces.net/ui">
 
-    <ui:define name="body_pag">
-        <div class="container body">
-            <div class="main_container" style="background-color: #fff;">
-                <div class="col-md-3 left_col menu_fixed">
-                    <div class="left_col scroll-view">
-                        <div class="navbar nav_title" style="border: 0;">
-                            <a href="index.html" class="site_title"><img src="#{request.contextPath}/resources/imgs/logonuevo.png" style="width: 50px; height: 50px;"/>
-                                <span style="margin-left:5%;">S.I.F.C</span>
-                            </a>
 
-                            <span>
-                                <h:form id="form-rol">
-                                    <h:selectOneMenu class="form-control" style="margin-top:5%; margin-bottom: 5%;"  value="#{sessionController.rolSeleccionado}" onchange="submit();">
-                                        <f:selectItems value="#{sessionController.persona.roles}" var="r"
-                                                       itemLabel="#{r.nombreRol}"/>
-                                        <f:converter converterId="rolConverter"/>
-                                    </h:selectOneMenu>
-                                </h:form>
-                            </span>
-                        </div>
+    <ui:define name="content" >
+        <div id="contenido" style="margin-left: 10%; color:#000;" >
+            <h1 style="text-align: center;">Escuela desportiva Caterpillar Motor</h1>
 
-                        <div class="clearfix"></div>
 
-                        <!-- menu profile quick info -->
-                        <div class="profile clearfix" style="margin-top:15%;">
-                            <div class="profile_pic">
-                                <img src="#{request.contextPath}/resources/imgs/user.png" alt=""  class="img-circle profile_img"/>
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="width: 70%; height: 5%; margin-left: 20%; ">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox" >
+                    <div class="item active">
+                        <img src="#{request.contextPath}/resources/imgs/img1.jpg" alt="" style="width: 100%; height: 350px;"/>
+                            <div class="carousel-caption">
+                                <H3>Por encima del talento, estan los valores</H3>
+                                <P>Caterpillar Motor</P>
                             </div>
-                            <div class="profile_info">
-                                <span>Bienvenido,</span>
-                                <h2>#{sessionController.persona.nombre1} #{sessionController.persona.nombre2}</h2>
+                    </div>
+                    <div class="item">
+                        <img src="#{request.contextPath}/resources/imgs/img2.jpg" alt="" style="width: 100%; height:350px;"/>
+                            <div class="carousel-caption">
+                                <H3>Valores</H3>
+                                <P>Amor, respeto, comunicación y liderazgo</P>
                             </div>
-                        </div>
-                        <!-- /menu profile quick info -->
-
-                        <br />
-
-                        <!-- sidebar menu -->
-                        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-                            <div class="menu_section">
-                                <h3>General</h3>
-                                <ul class="nav side-menu">
-                                    <li>
-                                        <a><i class="fa fa-home"></i> Inicio <span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="index.xhtml">Inicio</a></li>
-                                        </ul>
-                                    </li>
-                                    <c:forEach items="#{sessionController.rolSeleccionado.permisos}"
-                                               var="p">
-                                            <li class="sub-menu">
-                                                <a><i class="fa fa-home"></i> #{p.nombre} <span class="fa fa-chevron-down"></span></a>
-                                                <ul class="nav child_menu">
-                                                    <c:forEach items="#{p.subPermisos}" var="sp">
-                                                        <c:forEach items="#{sessionController.rolSeleccionado.permisos}" var="op">
-                                                            <c:if test="#{(sp.id eq op.id)}">
-                                                                <li><h:link class="" outcome="/#{sp.url}">#{sp.nombre}</h:link></li>
-                                                            </c:if>
-                                                        </c:forEach>
-                                                    </c:forEach>
-                                                </ul>
-                                            </li>
-                                    </c:forEach>
-                                </ul>
+                    </div>
+                    <div class="item">
+                        <img src="#{request.contextPath}/resources/imgs/img3.jpg" alt="" style="width: 100%; height: 350px;"/>
+                            <div class="carousel-caption">
+                               <H3>Mejor esuela de fútbol</H3>
+                                <P>2014</P>
                             </div>
-
-                        </div>
-                        <!-- /sidebar menu -->
-
-                        <!-- /menu footer buttons -->
-                        <div class="sidebar-footer hidden-small">
-                            <h:form>
-                                <h:commandButton value="Salir" action="#{sessionController.cerrarSesion()}" style="background-color: rgb(15, 23, 34); border-color: rgb(15, 23, 34); width: 100%; color: #fff; height: 40px;"/>
-                            </h:form>
-                        </div>
-                        <!-- /menu footer buttons -->
+                    </div>
+                    <div class="item">
+                        <img src="#{request.contextPath}/resources/imgs/img4.jpg" alt="" style="width: 100%; height: 350px;"/>
+                            <div class="carousel-caption">
+                                <H3>¿Que esperars paara hcer parte de esta gran familia?</H3>
+                                <P></P>
+                            </div>
                     </div>
                 </div>
 
-                <!-- top navigation -->
-                <div class="top_nav">
-                    <div class="nav_menu">
-                        <nav>
-                            <div class="nav toggle">
-                                <a id="menu_toggle" style="color:#BECEDE;"><i class="fa fa-bars"></i></a>
-                            </div>
-
-                            <ul class="nav navbar-nav navbar-right">
-                                <li class="">
-                                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                        <img src="#{request.contextPath}/resources/imgs/user.png" alt=""/>#{sessionController.persona.nombre1} #{sessionController.persona.apellido1}
-                                        <span class=" fa fa-angle-down"></span>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                        <li><a href="informacionPersonal.xhtml"> Perfil</a></li>
-                                        <li>
-                                            <h:form>
-                                                <h:commandButton style="background-color: transparent; border-color:  transparent; margin-left: 10px; width: 100%; text-align: left;" value="Salir" action="#{sessionController.cerrarSesion()}" ></h:commandButton>  
-                                            </h:form>
-
-
-                                        </li>
-                                    </ul>
-                                </li>
-
-
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <!-- /top navigation -->
-
-                <!-- page content -->
-                <div class="container" style="background-color: #fff;">
-                    <div class="row">
-                        <div class="col-md-12">
-                            El inicio va bien ^_^ 
-                        </div>
-                    </div>
-                </div>
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
-        </div>
 
+
+
+        </div>
     </ui:define>
 
 

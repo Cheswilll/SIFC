@@ -1,149 +1,134 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
-             xmlns:h="http://xmlns.jcp.org/jsf/html"
-             xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    
-    
-    
-   
-        <div class="container body">
-            <div class="main_container">
-                <div class="col-md-3 left_col menu_fixed">
-                    <div class="left_col scroll-view">
-                        <div class="navbar nav_title" style="border: 0;">
-                            <a href="index.html" class="site_title"><img src="#{request.contextPath}/resources/admin/imgs/logonuevo.png" style="width: 50px; height: 50px;"/>
-                                <span style="margin-left:5%;">S.I.F.C</span>
-                            </a>
-                        </div>
+<ui:fragment    xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:b="http://bootsfaces.net/ui">
 
-                        <div class="clearfix"></div>
+    <div class="container body">
+        <div class="main_container" style="background-color: #fff;">
+            <div class="col-md-3 left_col menu_fixed">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="index.html" class="site_title"><img src="#{request.contextPath}/resources/imgs/logonuevo.png" style="width: 50px; height: 50px;"/>
+                            <span style="margin-left:5%;">S.I.F.C</span>
+                        </a>
 
-                        <!-- menu profile quick info -->
-                        <div class="profile clearfix">
-                            <div class="profile_pic">
-                                <img src="#{request.contextPath}/resources/admin/imgs/user.png" alt=""  class="img-circle profile_img"/>
-                            </div>
-                            <div class="profile_info">
-                                <span>Bienvenido,</span>
-                                <h2>#{sessionController.persona.nombre1} #{sessionController.persona.nombre2}</h2>
-                            </div>
-                        </div>
-                        <!-- /menu profile quick info -->
-
-                        <br />
-
-                        <!-- sidebar menu -->
-                        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-                            <div class="menu_section">
-                                <h3>General</h3>
-                                <ul class="nav side-menu">
-                                    <li><a><i class="fa fa-home"></i> Inicio <span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="index.html">Información Personal</a></li>
-                                            <li><a href="index2.html">Actualizar Información</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a><i class="fa fa-edit"></i> Test Físicos <span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="form.html">General Form</a></li>
-                                            <li><a href="form_advanced.html">Advanced Components</a></li>
-                                            <li><a href="form_validation.html">Form Validation</a></li>
-                                            <li><a href="form_wizards.html">Form Wizard</a></li>
-                                            <li><a href="form_upload.html">Form Upload</a></li>
-                                            <li><a href="form_buttons.html">Form Buttons</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a><i class="fa fa-desktop"></i> Asistencia  <span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="general_elements.html">General Elements</a></li>
-                                            <li><a href="media_gallery.html">Media Gallery</a></li>
-                                            <li><a href="typography.html">Typography</a></li>
-                                            <li><a href="icons.html">Icons</a></li>
-                                            <li><a href="glyphicons.html">Glyphicons</a></li>
-                                            <li><a href="widgets.html">Widgets</a></li>
-                                            <li><a href="invoice.html">Invoice</a></li>
-                                            <li><a href="inbox.html">Inbox</a></li>
-                                            <li><a href="calendar.html">Calendar</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a><i class="fa fa-table"></i> Seguimientos <span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="tables.html">Tables</a></li>
-                                            <li><a href="tables_dynamic.html">Table Dynamic</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a><i class="fa fa-bar-chart-o"></i>Partidos<span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="chartjs.html">Chart JS</a></li>
-                                            <li><a href="chartjs2.html">Chart JS2</a></li>
-                                            <li><a href="morisjs.html">Moris JS</a></li>
-                                            <li><a href="echarts.html">ECharts</a></li>
-                                            <li><a href="other_charts.html">Other Charts</a></li>
-                                        </ul>
-                                    </li>
-
-                                </ul>
-                            </div>
-
-                        </div>
-                        <!-- /sidebar menu -->
-
-                        <!-- /menu footer buttons -->
-                        <div class="sidebar-footer hidden-small">
-
-                            <a data-toggle="tooltip" data-placement="top" title="Salir" href="login.html">
-                                <span class="glyphicon glyphicon-off" aria-hidden="true" style="width:100%;"></span>
-                            </a>
-                        </div>
-                        <!-- /menu footer buttons -->
+                        <span>
+                            <h:form id="form-rol">
+                                <h:selectOneMenu class="form-control" style="margin-top:5%; margin-bottom: 5%;"  value="#{sessionController.rolSeleccionado}" onchange="submit();">
+                                    <f:selectItems value="#{sessionController.persona.roles}" var="r"
+                                                   itemLabel="#{r.nombreRol}"/>
+                                    <f:converter converterId="rolConverter"/>
+                                </h:selectOneMenu>
+                            </h:form>
+                        </span>
                     </div>
-                </div>
 
-                <!-- top navigation -->
-                <div class="top_nav">
-                    <div class="nav_menu">
-                        <nav>
-                            <div class="nav toggle">
-                                <a id="menu_toggle" style="color:#BECEDE;"><i class="fa fa-bars"></i></a>
-                            </div>
+                    <div class="clearfix"></div>
 
-                            <ul class="nav navbar-nav navbar-right">
-                                <li class="">
-                                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                        <img src="#{request.contextPath}/resources/admin/imgs/user.png" alt=""/>#{sessionController.persona.nombre1} #{sessionController.persona.apellido1}
-                                        <span class=" fa fa-angle-down"></span>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                        <li><a href="javascript:;"> Perfil</a></li>
-                                        <li>
-                                            <a href="javascript:;">
-                                                <span>Información</span>
-                                            </a>
+                    <!-- menu profile quick info -->
+                    <div class="profile clearfix" style="margin-top:15%;">
+                        <div class="profile_pic">
+                            <img src="#{request.contextPath}/resources/imgs/user.png" alt=""  class="img-circle profile_img"/>
+                        </div>
+                        <div class="profile_info">
+                            <span>Bienvenido,</span>
+                            <h2>#{sessionController.persona.nombre1} #{sessionController.persona.nombre2}</h2>
+                        </div>
+                    </div>
+                    <!-- /menu profile quick info -->
+
+                    <br />
+
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3>General</h3>
+                            <ul class="nav side-menu">
+                                <c:forEach items="#{sessionController.rolSeleccionado.permisos}"
+                                           var="p">
+                                    
+                                     <li class="sub-menu">
+                                                <a><i class="fa fa-home"></i>
+                                                    <span>#{p.nombre}</span>
+                                                    <span class="fa fa-chevron-down"></span>
+                                                </a>
+                                                
+                                            <ul class="nav child_menu">
+                                                <c:forEach items="#{p.subPermisos}" var="sp">
+                                                    <c:forEach items="#{sessionController.rolSeleccionado.permisos}" var="op">
+                                                        <c:if test="#{(sp.id eq op.id)}">
+                                                            <li><h:link class="" outcome="/#{sp.url}">#{sp.nombre}</h:link></li>
+                                                        </c:if>
+                                                    </c:forEach>
+                                                </c:forEach>
+                                            </ul>
                                         </li>
-                                        <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Cerrar Sesión</a></li>
-                                    </ul>
-                                </li>
-
-                                
+                                </c:forEach>
                             </ul>
-                        </nav>
+                        </div>
+
+                    </div>
+                    <!-- /sidebar menu -->
+
+                    <!-- /menu footer buttons -->
+                    <div class="sidebar-footer hidden-small">
+                        <h:form>
+                            <h:commandButton value="Salir" action="#{sessionController.cerrarSesion()}" style="background-color: rgb(15, 23, 34); border-color: rgb(15, 23, 34); width: 100%; color: #fff; height: 40px;"/>
+                        </h:form>
+                    </div>
+                    <!-- /menu footer buttons -->
+                </div>
+            </div>
+
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle" style="color:#BECEDE;"><i class="fa fa-bars"></i></a>
+                        </div>
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="">
+                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <img src="#{request.contextPath}/resources/imgs/user.png" alt=""/>#{sessionController.persona.nombre1} #{sessionController.persona.apellido1}
+                                    <span class=" fa fa-angle-down"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                    <li><a href="informacionPersonal.xhtml"> Perfil</a></li>
+                                    <li>
+                                        <h:form>
+                                            <h:commandButton style="background-color: transparent; border-color:  transparent; margin-left: 10px; width: 100%; text-align: left;" value="Salir" action="#{sessionController.cerrarSesion()}" ></h:commandButton>  
+                                        </h:form>
+
+
+                                    </li>
+                                </ul>
+                            </li>
+
+
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+
+            <!-- page content -->
+            <div class="container" style="background-color: #fff;" >
+                <div class="row">
+                    <div class="col-md-12">
+                        <ui:insert name="content">
+                        </ui:insert>
                     </div>
                 </div>
-                <!-- /top navigation -->
-
-                <!-- page content -->
-                <ui:insert name="contenido"/>
             </div>
         </div>
+    </div>
 
 
-  
+
+
 </ui:fragment>
-

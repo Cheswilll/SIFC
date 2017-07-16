@@ -7,177 +7,62 @@
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
                 xmlns:b="http://bootsfaces.net/ui">
 
-    <ui:define name="body_pag">
-        <div class="container body">
-            <div class="main_container" style="background-color: #fff;">
-                <div class="col-md-3 left_col menu_fixed">
-                    <div class="left_col scroll-view">
-                        <div class="navbar nav_title" style="border: 0;">
-                            <a href="index.html" class="site_title"><img src="#{request.contextPath}/resources/imgs/logonuevo.png" style="width: 50px; height: 50px;"/>
-                                <span style="margin-left:5%;">S.I.F.C</span>
-                            </a>
-                        </div>
 
-                        <div class="clearfix"></div>
+    <ui:define name="content" >
+        <h:form style="width: 75%; margin-left: 20%; margin-top: 4%; background-color: #fff; color: #080808; " enctype="multipart/form-data">
+            <b:panelGrid columns="2" colSm="12">
 
-                        <!-- menu profile quick info -->
-                        <div class="profile clearfix">
-                            <div class="profile_pic">
-                                <img src="#{request.contextPath}/resources/imgs/user.png" alt=""  class="img-circle profile_img"/>
-                            </div>
-                            <div class="profile_info">
-                                <span>Bienvenido,</span>
-                                <h2>#{sessionController.persona.nombre1} #{sessionController.persona.nombre2}</h2>
-                            </div>
-                        </div>
-                        <!-- /menu profile quick info -->
-
-                        <br />
-
-                        <!-- sidebar menu -->
-                        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-                            <div class="menu_section">
-                                <h3>General</h3>
-                                <ul class="nav side-menu">
-                                    <li><a><i class="fa fa-home"></i> Inicio <span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="aspirante.xhtml">Inicio</a></li>
-                                            <li><a href="informacionPersonalAspirante.xhtml">Actualizar Información</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a><i class="fa fa-edit"></i> Inscripción <span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu">
-                                            <li><a href="adjuntarComprobante.xhtml">Adjuntar comprobante de pago</a></li>
-                                            <li><a href="adjuntarBoletin.xhtml">Adjuntar boletin</a></li>
-                                            <li><a href="formulario.xhtml">Formulario de inscripción</a></li>
-                                        </ul>
-                                    </li>
-
-                                </ul>
-                            </div>
-
-                        </div>
-                        <!-- /sidebar menu -->
-
-                        <!-- /menu footer buttons -->
-                        <div class="sidebar-footer hidden-small">
-                            <h:form>
-                                <h:commandButton value="Salir" action="#{sessionController.cerrarSesion()}" style="background-color: rgb(15, 23, 34); border-color: rgb(15, 23, 34); width: 100%; color: #fff; height: 40px;"/>
-                            </h:form>
-                        </div>
-                        <!-- /menu footer buttons -->
-                    </div>
-                </div>
-
-                <!-- top navigation -->
-                <div class="top_nav">
-                    <div class="nav_menu">
-                        <nav>
-                            <div class="nav toggle">
-                                <a id="menu_toggle" style="color:#BECEDE;"><i class="fa fa-bars"></i></a>
-                            </div>
-
-                            <ul class="nav navbar-nav navbar-right">
-                                <li class="">
-                                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                        <img src="#{request.contextPath}/resources/imgs/user.png" alt=""/>#{sessionController.persona.nombre1} #{sessionController.persona.apellido1}
-                                        <span class=" fa fa-angle-down"></span>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                        <li><a href="informacionPersonal.xhtml"> Perfil</a></li>
-                                        <li>
-                                            <h:form>
-                                                <h:commandButton style="background-color: transparent; border-color:  transparent; margin-left: 10px; width: 100%; text-align: left;" value="Salir" action="#{sessionController.cerrarSesion()}" ></h:commandButton>  
-                                            </h:form>
+                <h:outputText value="No. identificación: " />
+                <h:selectOneMenu class="form-control" converter="personaConverter" id="noIdentificacionJugador" value="#{registrarFormularioController.formularioNuevo.noIdentificacion}">
+                    <f:selectItems value="#{listarPersonasJugadorController.personasJugadores}" var="pju" itemLabel="#{pju.noIdentificacion}"/>
+                </h:selectOneMenu>
+                <h:outputText value="Nombres: "/>
+                <b:inputText value="#{registrarFormularioController.formularioNuevo.nombres}" placeholder="Nombres"/>
+                <h:outputText value="Apellidos: "/>
+                <b:inputText value="#{registrarFormularioController.formularioNuevo.apellidos}" placeholder="Apellidos"/>
+                <h:outputText value="Fecha de nacimiento: "/>
+                <b:inputText id="fechaN" value="#{registrarFormularioController.formularioNuevo.fechaNacimiento}"  required="true" placeholder="yyyy/mm/dd">
+                    <f:convertDateTime pattern="yyyy/MM/dd" />
+                </b:inputText>
+                <h:outputText value="Jornada de estudio: "/>
+                <b:inputText value="#{registrarFormularioController.formularioNuevo.jornadaEstudio}" placeholder="(Mañana-Tarde-Noche)"/>
+                <h:outputText value="Entidad de salud: "/> 
+                <h:selectOneMenu class="form-control" converter="entidadDeSaludConverter" id="idEntidad" value="#{registrarFormularioController.formularioNuevo.entidadSalud}">
+                    <f:selectItems value="#{listarEntidadesSaludController.entidadesDeSalud}" var="eds" itemLabel="#{eds.nombreEntidad}"/>
+                </h:selectOneMenu>
 
 
-                                        </li>
-                                    </ul>
-                                </li>
+                <h:outputText value="RH: "/>
 
+                <h:selectOneMenu class="form-control" converter="tipoDeSangreConverter" id="idRH" value="#{registrarFormularioController.formularioNuevo.rh}">
+                    <f:selectItems value="#{listarRhController.tiposDeSangre}" var="tds" itemLabel="#{tds.rh}"/>
+                </h:selectOneMenu>
 
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <!-- /top navigation -->
+                <h:outputText value="Alergias: "/> 
+                <b:inputText value="#{registrarFormularioController.formularioNuevo.alergias}" placeholder="Alergias"/>
+                <h:outputText value="Lesiones: "/> 
+                <b:inputText value="#{registrarFormularioController.formularioNuevo.lesiones}" placeholder="Lesiones"/>
+                <h:outputText value="Nombre de la madre: "/> 
+                <b:inputText value="#{registrarFormularioController.formularioNuevo.nombreMama}" placeholder="Nombre de la madre"/>
+                <h:outputText value="Empresa donde labora: "/> 
+                <b:inputText value="#{registrarFormularioController.formularioNuevo.empresaMama}" placeholder="Empresa"/>
+                <h:outputText value="Cargo: "/> 
+                <b:inputText value="#{registrarFormularioController.formularioNuevo.cargoMama}" placeholder="Cargo"/>
+                <h:outputText value="Teléfono: "/> 
+                <b:inputText value="#{registrarFormularioController.formularioNuevo.telefonoMama}" placeholder="Teléfono"/>
+                <h:outputText value="Nombre del padre: "/> 
+                <b:inputText value="#{registrarFormularioController.formularioNuevo.nombrePadre}" placeholder="Nombre"/>
+                <h:outputText value="Empresa donde labora: "/> 
+                <b:inputText value="#{registrarFormularioController.formularioNuevo.empresaPadre}" placeholder="Empresa"/>
+                <h:outputText value="Cargo: "/> 
+                <b:inputText value="#{registrarFormularioController.formularioNuevo.cargoPadre}" placeholder="Cargo"/>
+                <h:outputText value="Teléfono: "/> 
+                <b:inputText value="#{registrarFormularioController.formularioNuevo.telefonoPadre}" placeholder="Teléfono"/>
 
-                <!-- page content -->
-                <div class="container" style="background-color: #fff;">
-                    <div class="col-md-12">
-                        <h:form style="width: 75%; margin-left: 20%; margin-top: 4%; background-color: #fff; color: #080808; " enctype="multipart/form-data">
-                            <b:panelGrid columns="2" colSm="12">
+            </b:panelGrid>
 
-                                <h:outputText value="No. identificación: " />
-                                <h:selectOneMenu class="form-control" converter="personaConverter" id="noIdentificacionJugador" value="#{registrarFormularioController.formularioNuevo.noIdentificacion}">
-                                    <f:selectItems value="#{listarPersonasJugadorController.personasJugadores}" var="pju" itemLabel="#{pju.noIdentificacion}"/>
-                                </h:selectOneMenu>
-                                <h:outputText value="Nombres: "/>
-                                <b:inputText value="#{registrarFormularioController.formularioNuevo.nombres}" placeholder="Nombres"/>
-                                <h:outputText value="Apellidos: "/>
-                                <b:inputText value="#{registrarFormularioController.formularioNuevo.apellidos}" placeholder="Apellidos"/>
-                                <h:outputText value="Fecha de nacimiento: "/>
-                                <b:inputText id="fechaN" value="#{registrarFormularioController.formularioNuevo.fechaNacimiento}"  required="true" placeholder="yyyy/mm/dd">
-                                    <f:convertDateTime pattern="yyyy/MM/dd" />
-                                </b:inputText>
-                                <h:outputText value="Jornada de estudio: "/>
-                                <b:inputText value="#{registrarFormularioController.formularioNuevo.jornadaEstudio}" placeholder="(Mañana-Tarde-Noche)"/>
-                                <h:outputText value="Entidad de salud: "/> 
-                                <h:selectOneMenu class="form-control" converter="entidadDeSaludConverter" id="idEntidad" value="#{registrarFormularioController.formularioNuevo.entidadSalud}">
-                                    <f:selectItems value="#{listarEntidadesSaludController.entidadesDeSalud}" var="eds" itemLabel="#{eds.nombreEntidad}"/>
-                                </h:selectOneMenu>
-
-
-                                <h:outputText value="RH: "/>
-
-                                <h:selectOneMenu class="form-control" converter="tipoDeSangreConverter" id="idRH" value="#{registrarFormularioController.formularioNuevo.rh}">
-                                    <f:selectItems value="#{listarRhController.tiposDeSangre}" var="tds" itemLabel="#{tds.rh}"/>
-                                </h:selectOneMenu>
-
-                                <h:outputText value="Alergias: "/> 
-                                <b:inputText value="#{registrarFormularioController.formularioNuevo.alergias}" placeholder="Alergias"/>
-                                <h:outputText value="Lesiones: "/> 
-                                <b:inputText value="#{registrarFormularioController.formularioNuevo.lesiones}" placeholder="Lesiones"/>
-                                <h:outputText value="Nombre de la madre: "/> 
-                                <b:inputText value="#{registrarFormularioController.formularioNuevo.nombreMama}" placeholder="Nombre de la madre"/>
-                                <h:outputText value="Empresa donde labora: "/> 
-                                <b:inputText value="#{registrarFormularioController.formularioNuevo.empresaMama}" placeholder="Empresa"/>
-                                <h:outputText value="Cargo: "/> 
-                                <b:inputText value="#{registrarFormularioController.formularioNuevo.cargoMama}" placeholder="Cargo"/>
-                                <h:outputText value="Teléfono: "/> 
-                                <b:inputText value="#{registrarFormularioController.formularioNuevo.telefonoMama}" placeholder="Teléfono"/>
-                                <h:outputText value="Nombre del padre: "/> 
-                                <b:inputText value="#{registrarFormularioController.formularioNuevo.nombrePadre}" placeholder="Nombre"/>
-                                <h:outputText value="Empresa donde labora: "/> 
-                                <b:inputText value="#{registrarFormularioController.formularioNuevo.empresaPadre}" placeholder="Empresa"/>
-                                <h:outputText value="Cargo: "/> 
-                                <b:inputText value="#{registrarFormularioController.formularioNuevo.cargoPadre}" placeholder="Cargo"/>
-                                <h:outputText value="Teléfono: "/> 
-                                <b:inputText value="#{registrarFormularioController.formularioNuevo.telefonoPadre}" placeholder="Teléfono"/>
-
-                            </b:panelGrid>
-
-                            <b:commandButton value="Enviar" actionListener="#{registrarFormularioController.registrarFormulario()}" />
-                        </h:form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <b:modal id="amodal" title="Modal Example" styleClass="modalPseudoClass">
-            <h:panelGroup id="message-modal-confirm" layout="block">
-                <p>¿Está seguro de eliminar el usuario #{listarPersonasController.personaSeleccionada.noIdentificacion} #{listarPersonasController.personaSeleccionada.nombre1} ?
-                </p>
-            </h:panelGroup>
-            <f:facet name="footer">
-                <h:form id="form-eliminar" prependId="false">
-                    <b:button value="Close" dismiss="modal" />
-                    <b:commandButton value="Ok" look="primary"
-                                     actionListener="#{listarPersonasController.eliminarPersona()}"/>
-
-                </h:form>
-            </f:facet>
-        </b:modal>
+            <b:commandButton value="Enviar" actionListener="#{registrarFormularioController.registrarFormulario()}" />
+        </h:form>
     </ui:define>
 
 
