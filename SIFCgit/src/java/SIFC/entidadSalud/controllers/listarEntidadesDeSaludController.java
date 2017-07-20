@@ -15,11 +15,13 @@ import javax.enterprise.context.RequestScoped;
 
 /**
  *
- * @author APRENDIZ
+ * @author Cheswill
  */
-@Named(value = "listarEntidadesSaludController")
+@Named(value = "listarEntidadesDeSaludController")
 @RequestScoped
-public class listarEntidadesSaludController {
+public class listarEntidadesDeSaludController {
+
+    
     
     @EJB
     private EntidadDeSaludFacadeLocal efl;
@@ -27,7 +29,7 @@ public class listarEntidadesSaludController {
     private List<EntidadDeSalud> entidadesDeSalud;
     private EntidadDeSalud entidadDeSalud;
     
-    public listarEntidadesSaludController() {
+    public listarEntidadesDeSaludController() {
     }
     
     @PostConstruct
@@ -38,7 +40,6 @@ public class listarEntidadesSaludController {
     public List<EntidadDeSalud> getEntidadesDeSalud() {
         return entidadesDeSalud;
     }
-    
     
     
     
