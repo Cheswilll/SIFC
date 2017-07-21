@@ -47,25 +47,26 @@
                         <div class="menu_section">
                             <h3>General</h3>
                             <ul class="nav side-menu">
+                                
                                 <c:forEach items="#{sessionController.rolSeleccionado.permisos}"
                                            var="p">
-                                    
-                                     <li class="sub-menu">
+
+                                    <c:forEach items="#{p.subPermisos}" var="sp">
+                                        <c:if test="#{(sp.id eq p.id)}">
+                                            <li class="sub-menu">
                                                 <a><i class="fa fa-home"></i>
                                                     <span>#{p.nombre}</span>
                                                     <span class="fa fa-chevron-down"></span>
                                                 </a>
-                                                
-                                            <ul class="nav child_menu">
-                                                <c:forEach items="#{p.subPermisos}" var="sp">
-                                                    <c:forEach items="#{sessionController.rolSeleccionado.permisos}" var="op">
-                                                        <c:if test="#{(sp.id eq op.id)}">
-                                                            <li><h:link class="" outcome="/#{sp.url}">#{sp.nombre}</h:link></li>
-                                                        </c:if>
+                                                <ul class="nav child_menu">
+                                                    <c:forEach  items="#{p.subPermisos}" var="sub">
+                                                        <li><h:link class="" outcome="/#{sub.url}">#{sub.nombre}</h:link></li>
                                                     </c:forEach>
-                                                </c:forEach>
-                                            </ul>
-                                        </li>
+                                                </ul>
+                                            </li>
+                                                
+                                        </c:if>
+                                    </c:forEach>
                                 </c:forEach>
                             </ul>
                         </div>
