@@ -9,13 +9,9 @@
 
 
     <ui:define name="content" >
-        <h:form style="width: 75%; margin-left: 20%; margin-top: 4%; background-color: #fff; color: #080808; " enctype="multipart/form-data">
+        <h:form style="width: 75%; margin-left: 20%; margin-top: 4%; background-color: #fff; color: #080808; " enctype="multipart/form-data" id="form-crear">
             <b:panelGrid columns="2" colSm="12">
 
-                <h:outputText value="No. identificación: " />
-                <h:selectOneMenu class="form-control" converter="personaConverter" id="noIdentificacionJugador" value="#{registrarFormularioController.formularioNuevo.noIdentificacion}">
-                    <f:selectItems value="#{listarPersonasJugadorController.personasJugadores}" var="pju" itemLabel="#{pju.noIdentificacion}"/>
-                </h:selectOneMenu>
                 <h:outputText value="Nombres: "/>
                 <b:inputText value="#{registrarFormularioController.formularioNuevo.nombres}" placeholder="Nombres"/>
                 <h:outputText value="Apellidos: "/>

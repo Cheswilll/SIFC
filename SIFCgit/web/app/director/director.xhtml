@@ -9,7 +9,29 @@
 
 
     <ui:define name="content" >
-        jUGADOR
+        <b:form style="background-color: #fff; color: #080808; width: 80%; margin-left: 20%; margin-top: 4%;">
+            <b:panelGrid colSm="12" columns="4">
+                <h:outputText value="Codigo de equipo: "/>
+                <b:inputText value="#{registrarEquipoController.nuevoEquipo.codigoEquipo}"/>
+                <h:outputText value="Categoría: "/>
+                <h:selectOneMenu class="form-control" converter="categoriaConverter" id="idCategoria" value="#{registrarEquipoController.nuevoEquipo.categoria}">
+                    <f:selectItems value="#{listarEquipoController.listarCategoria}" var="cat" itemLabel="#{cat.categoria}"/>
+                </h:selectOneMenu>
+                
+                
+                <h:outputText value="No. identificacion jugador "/>
+                <h:selectOneMenu class="form-control" id="noIdjug" value="#{registrarEquipoController.nuevoEquipo.noIdentificacionJugador}">
+                    <f:selectItems value="#{listarPersonasJugadorController.personasJugadores}" var="pj" itemLabel="#{pj.noIdentificacion}"/>
+                </h:selectOneMenu>
+                
+                <h:outputText value="No. identificacion profesor "/>
+                <h:selectOneMenu class="form-control" id="noIdprof" value="#{registrarEquipoController.nuevoEquipo.noIdentificacionnProfesor}">
+                    <f:selectItems value="#{listarPersonasJugadorController}" var="pp" itemLabel="#{pp.noIdentificacion}"/>
+                </h:selectOneMenu>
+
+            </b:panelGrid>
+            <b:commandButton value="Registrar" />
+        </b:form>
     </ui:define>
 
 
