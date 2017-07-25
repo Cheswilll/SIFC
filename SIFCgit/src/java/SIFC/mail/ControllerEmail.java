@@ -77,7 +77,7 @@ public class ControllerEmail{
     
     public void enviarMensaje(){
     
-      EnviarMail enviarEmail = new EnviarMail("sifccatepillarmotor@gmail.com", "sistemadeinformacion", "wfmora98@misena.edu.co", nombresyAp, telefono, email, asunto, mensaje);
+      EnviarMail enviarEmail = new EnviarMail("sifccatepillarmotor@gmail.com", "sistemadeinformacion", "sifccatepillarmotor@gmail.com", nombresyAp, telefono, email, asunto, mensaje);
       enviarEmail.enviarBasic();
       enviarEmail.enviarAnswer();
     }
