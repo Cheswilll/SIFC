@@ -1238,32 +1238,25 @@
                                     <div class="col-md-8">
                                         <div class="well well-sm" style="width: 100%; height: 40%; ">
                                             <h:form>
-
-                                                <label for="name" style="margin-left: 5%;">
-                                                    Nombres y apellidos</label>
-                                                <h:inputText style="margin-left:4%; width: 80%;" class="input_field input_field-hoshi form-control" id="name" value="#{controllerEmail.nombresyAp}"/>
-
-                                                <label for="email" style="margin-left: 4%;">
-                                                    Teléfono</label>
-                                                <h:inputText style="margin-left: 4%; width: 80%;" class="input_field input_field-hoshi form-control"   id="input-3"  value="#{controllerEmail.telefono}" />
-
-                                                <label for="correo" style="margin-left: 4%;">
-                                                    Correo</label>
-
-                                                <h:inputText style="margin-left: 4%; width: 80%;" class="input_field input_field-hoshi form-control"  id="emailcorr"  value="#{controllerEmail.email}" />
-
-                                                <label for="asunto" style="margin-left: 4%;">
-                                                    Asunto</label>
-                                                <h:inputText style="margin-left: 4%; width: 80%;" class="input_field input_field-hoshi form-control"  id="asunto"  value="#{controllerEmail.asunto}" />
                                                 
+                                                <h3 style="text-align: center; ">Contactenos</h3>
+                                                <h:panelGrid columns="4" style="margin-top: 5%;">
+                                                    
+                                                <h:outputLabel value="Nombres y apellidos : "/>
+                                                <h:inputText  class="input_field input_field-hoshi form-control" id="input-4" value="#{controllerEmail.nombresyAp}"/>
+                                                <h:outputLabel style="margin-left: 3%;" value="Teléfono:"/>
+                                                <h:inputText class="input_field input_field-hoshi form-control"  id="input-3"  value="#{controllerEmail.telefono}" />
+                                                <h:outputLabel value="E-mail :"/>
+                                                <h:inputText style="margin-top: 10%;" class="input_field input_field-hoshi form-control"  id="input-2" value="#{controllerEmail.email}" />
+                                                <h:outputLabel style="margin-left: 3%;" value="Asunto: "/>
+                                                <h:inputText style="margin-top: 10%;" class="form-control" value="#{controllerEmail.asunto}"/>
+                                                <h:outputLabel value="Texto: "/>
+                                                <h:inputTextarea class="form-control" style="color: #000; border-color: #bf2b55; height: 100px; margin-top: 10%;" id="textarea" rows="1" value="#{controllerEmail.mensaje}"/>
+                                                </h:panelGrid>
+                                                <img src="#{request.contextPath}/resources/index/imgs/logonuevo.png" style="margin-left: 400px; margin-top: -100px; width: 150px; height: 150px;" />
+                                                <hr style="color: #000; border-bottom: 2px; background-color: #000; border-style: solid; border-width: 1px;"></hr>
+                                                <h:commandButton style="width: 100%; margin-top: 5%; background-color: yellow; color: #000;" class="btn btn-capsul btn-transparent-white" action="#{controllerEmail.enviarMensaje()}" value="Enviar"/>
 
-                                                <label style="margin-left: 4%;" for="name">
-                                                    Mensaje</label>
-                                                <h:inputTextarea style="color: #000; border-color: #bf2b55;  height: 120px;" id="textarea" class=" input_field-hoshi form-control" rows="1" value="#{controllerEmail.mensaje}"/>
-
-                                                <h:commandButton style="margin-left: 70%;" class="btn btn-capsul btn-transparent-white" type="submit"
-                                                                 action="#{controllerEmail.enviarMensaje()}" value="Enviar">
-                                                </h:commandButton>
                                             </h:form>
                                         </div>
                                     </div>

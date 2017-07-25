@@ -207,10 +207,10 @@ public class EnviarMail {
     }
       public boolean enviarAnswer(){
     
-        this.asuntoAns = "Hola! " + this.nombresyAp +" tu pregunta nos ha llegado ";
+        this.asuntoAns = "Hola! " + this.nombresyAp +" gracias por contactar con Caterpillar Motor ";
         this.contenidoAns = 
-          "<h1>¡Hola hemos recibido tu pregunta y estaremos dispuestos a contestarte!</h1>" +
-       "<p>Tu mensaje ha sido enviado a la oficina de Maternity Club, un asesor te respondera dentro de 24 horas maximo. </br> Hemos dejado una copia de tu mensaje para efecto de calidad</p>"+
+          "<h1>Hemos recibido tu pregunta y estaremos dispuestos a contestarte!</h1>" +
+       "<p>Tu mensaje ha sido enviado a la oficina de prensa de Caterpillar Motor, un asesor te respondera dentro de 24 horas maximo. </br> Hemos dejado una copia de tu mensaje para efecto de calidad</p>"+
           "</br><p>Nombres y apellidos: " + this.nombresyAp +"</p>" + "</br> <p> Telefono de contacto: " + this.telefono
           + "</p>" + "</br><p>Correo electronico: "+ this.email+"</br><p>Este es el mensaje: " + this.mensaje +"</p></br>"
                 + "<p><b>Este correo se genero automaticamente, por favor no responder este mensaje.</b></p>";
