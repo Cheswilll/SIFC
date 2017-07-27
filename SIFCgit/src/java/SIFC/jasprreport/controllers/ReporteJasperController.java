@@ -24,7 +24,6 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-
 /**
  *
  * @author Ismael
@@ -49,14 +48,14 @@ public class ReporteJasperController {
     }
     
     private void prepararExport() throws JRException {
-        Map<String, Object> params = new HashMap<>();
-        params.put("UsuarioDelReporte", "Wilson Mora");
+       Map<String, Object> params = new HashMap<>();
+        params.put("UsuarioDelReporte", "Ismael Suárez");
         JRBeanCollectionDataSource bcds = new JRBeanCollectionDataSource(personas);
-        String reportPath = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/") + "/WEB-INF/reportes/jasper/Reporte1.jasper";
+        String reportPath = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/") + "/WEB-INF/reportes/jasper/reporteusuarios.jasper";
         jp = JasperFillManager.fillReport(reportPath, params, bcds);
     }
     public void exportarPDF() throws IOException, JRException {
-        prepararExport();
+           prepararExport();
         ServletOutputStream out = null;
         String contentType = "application/pdf";
         FacesContext fc = FacesContext.getCurrentInstance();

@@ -7,6 +7,8 @@ package SIFC.equipo.controllers;
 
 import DAO.EquipoFacadeLocal;
 import Entities.Equipo;
+import SIFC.login.controllers.SessionController;
+import SIFC.util.MessageUtil;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -23,6 +25,8 @@ public class RegistrarEquipoController {
     @EJB
     private EquipoFacadeLocal efl;
     private Equipo nuevoEquipo;
+    
+    private SessionController sc;
     
     public RegistrarEquipoController() {
     }
@@ -51,8 +55,13 @@ public class RegistrarEquipoController {
     
     public void registrarEquipo()
     {
-       efl.create(nuevoEquipo);
-       init();
+        if (nuevoEquipo != null) {
+            efl.create(nuevoEquipo);
+            MessageUtil.enviarMensajeInformacion("form-crear", "Registro exitoso", "El usuasrio ha sido registrado correctamente");
+            init();
+        }else{
+        MessageUtil.enviarMensajeError("form-crear", "Error", "No se han diligenciado datos");
+        }
     }
     
     

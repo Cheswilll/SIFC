@@ -9,7 +9,7 @@
 
 
     <ui:define name="content" >
-        <b:form style="background-color: #fff; color: #080808; width: 80%; margin-left: 20%; margin-top: 4%;">
+        <b:form id="form-crear" style="background-color: #fff; color: #080808; width: 80%; margin-left: 20%; margin-top: 4%;">
             <b:panelGrid colSm="12" columns="4">
                 <h:outputText value="Codigo de equipo: "/>
                 <b:inputText value="#{registrarEquipoController.nuevoEquipo.codigoEquipo}"/>
@@ -26,11 +26,11 @@
                 
                 <h:outputText value="No. identificacion profesor "/>
                 <h:selectOneMenu class="form-control" id="noIdprof" value="#{registrarEquipoController.nuevoEquipo.noIdentificacionnProfesor}">
-                    <f:selectItems value="#{listarPersonasJugadorController}" var="pp" itemLabel="#{pp.noIdentificacion}"/>
+                    <f:selectItems value="#{listarPersonasController.listarRolProfesor}" var="pp" itemLabel="#{pp.noIdentificacion}"/>
                 </h:selectOneMenu>
 
             </b:panelGrid>
-            <b:commandButton value="Registrar" />
+            <b:commandButton value="Registrar" actionListener="#{registrarEquipoController.registrarEquipo()}"/>
         </b:form>
     </ui:define>
 
