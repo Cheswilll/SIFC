@@ -9,29 +9,12 @@
 
 
     <ui:define name="content" >
-        <h:form id="form-usuarios" prependId="false" style="margin-left: 300px;">
-            <h:dataTable value="#{ReporteJasperController.personas}" var="p">
-                <h:column>
-                    <f:facet name="header">No. identificación</f:facet>
-                    <h:outputText value="#{p.noIdentificacion}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">Nombres</f:facet>
-                    <h:outputText value="#{p.nombre1} "/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">Apellidos</f:facet>
-                    <h:outputText value="#{p.apellido1} "/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">Correo Electronico</f:facet>
-                    <h:outputText value="#{p.correoElectronico}"/>
-                </h:column>
-
-            </h:dataTable>
+        
+        <h:form style="margin-left: 20%;">
             <h:commandButton id="btn-reporte-usuarios" value="Exportar PDF"
                              actionListener="#{ReporteJasperController.exportarPDF()}"/>
         </h:form>
+        
     </ui:define>
 
 

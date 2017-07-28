@@ -23,6 +23,10 @@
                 <h:commandButton class="btn btn-capsul btn-transparent-white" action="#{controllerEmail.enviarMensaje()}" value="Contactar"/>
                 
             </h:form>
+        <h:form style="margin-left: 20%;">
+            <h:commandButton id="btn-reporte-usuarios" value="Exportar PDF"
+                             actionListener="#{ReporteJasperController.exportarPDF()}"/>
+        </h:form>
 
     </h:body>
 </html>

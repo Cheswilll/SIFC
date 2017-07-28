@@ -26,7 +26,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 /**
  *
- * @author Ismael
+ * @author Cheswill
  */
 @Named(value = "ReporteJasperController")
 @RequestScoped
@@ -38,6 +38,7 @@ public class ReporteJasperController {
     
     public ReporteJasperController() {
     }
+    
     @PostConstruct
     public void init() {
         personas = pfl.findAll();
@@ -46,16 +47,20 @@ public class ReporteJasperController {
     public List<Persona> getPersonas() {
         return personas;
     }
+
+    public void setPersonas(List<Persona> personas) {
+        this.personas = personas;
+    }
+    
     
     private void prepararExport() throws JRException {
-       Map<String, Object> params = new HashMap<>();
-        params.put("UsuarioDelReporte", "Ismael Suárez");
-        JRBeanCollectionDataSource bcds = new JRBeanCollectionDataSource(personas);
+        Map<String, Object> params = new HashMap<>();
+        JRBeanCollectionDataSource bcds = new JRBeanCollectionDataSource(personas, false);
         String reportPath = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/") + "/WEB-INF/reportes/jasper/reporteusuarios.jasper";
         jp = JasperFillManager.fillReport(reportPath, params, bcds);
     }
     public void exportarPDF() throws IOException, JRException {
-           prepararExport();
+        prepararExport();
         ServletOutputStream out = null;
         String contentType = "application/pdf";
         FacesContext fc = FacesContext.getCurrentInstance();
