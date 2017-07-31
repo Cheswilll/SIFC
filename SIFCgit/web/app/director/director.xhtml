@@ -5,33 +5,15 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-                xmlns:b="http://bootsfaces.net/ui">
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:p="http://primefaces.org/ui">
 
 
     <ui:define name="content" >
-        <b:form id="form-crear" style="background-color: #fff; color: #080808; width: 80%; margin-left: 20%; margin-top: 4%;">
-            <b:panelGrid colSm="12" columns="4">
-                <h:outputText value="Codigo de equipo: "/>
-                <b:inputText value="#{registrarEquipoController.nuevoEquipo.codigoEquipo}"/>
-                <h:outputText value="Categoría: "/>
-                <h:selectOneMenu class="form-control" converter="categoriaConverter" id="idCategoria" value="#{registrarEquipoController.nuevoEquipo.categoria}">
-                    <f:selectItems value="#{listarEquipoController.listarCategoria}" var="cat" itemLabel="#{cat.categoria}"/>
-                </h:selectOneMenu>
-                
-                
-                <h:outputText value="No. identificacion jugador "/>
-                <h:selectOneMenu class="form-control" id="noIdjug" value="#{registrarEquipoController.nuevoEquipo.noIdentificacionJugador}">
-                    <f:selectItems value="#{listarPersonasJugadorController.personasJugadores}" var="pj" itemLabel="#{pj.noIdentificacion}"/>
-                </h:selectOneMenu>
-                
-                <h:outputText value="No. identificacion profesor "/>
-                <h:selectOneMenu class="form-control" id="noIdprof" value="#{registrarEquipoController.nuevoEquipo.noIdentificacionnProfesor}">
-                    <f:selectItems value="#{listarPersonasController.listarRolProfesor}" var="pp" itemLabel="#{pp.noIdentificacion}"/>
-                </h:selectOneMenu>
 
-            </b:panelGrid>
-            <b:commandButton value="Registrar" actionListener="#{registrarEquipoController.registrarEquipo()}"/>
-        </b:form>
+        <p:chart type="donut" model="#{chartView.donutModel1}" style="width:400px;height:300px" />
+
+        <p:chart type="donut" model="#{chartView.donutModel2}" style="width:400px;height:300px" />
     </ui:define>
 
 

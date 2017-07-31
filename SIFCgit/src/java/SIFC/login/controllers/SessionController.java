@@ -72,10 +72,6 @@ public class SessionController implements Serializable {
         this.rolSeleccionado = rolSeleccionado;
     }
 
-    
-
-    
-
     public Persona getPersona() {
         return persona;
     }
@@ -106,6 +102,12 @@ public class SessionController implements Serializable {
         }
         return urlDestino;
     }
+    
+    public Persona usuarioSesion(){
+        persona.getNoIdentificacion();
+        return persona;
+    }
+    
     
     public String cerrarSesion(){
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();

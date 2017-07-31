@@ -2,31 +2,36 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
 
-       
+
 
     </h:head>
     <h:body style=" font-family: Handlee-Regular;">
-            <h:form>
-                <h:outputLabel value="Nombres y apellidos"/>
-                <h:inputText class="input_field input_field-hoshi" id="input-4" value="#{controllerEmail.nombresyAp}"/>
-                <h:outputLabel value="Telefono"/>
-                <h:inputText class="input_field input_field-hoshi"  id="input-3"  value="#{controllerEmail.telefono}" />
-                <h:outputLabel value="Email"/>
-                <h:inputText class="input_field input_field-hoshi"  id="input-2" value="#{controllerEmail.email}" />
-                <h:outputLabel value="Asunto"/>
-                <h:inputText value="#{controllerEmail.asunto}"/>
-                <h:outputLabel value="Texto"/>
-                <h:inputTextarea style="color: white; border-color: #bf2b55;" id="textarea" class=" input_field-hoshi" rows="1" value="#{controllerEmail.mensaje}"/>
-                <h:commandButton class="btn btn-capsul btn-transparent-white" action="#{controllerEmail.enviarMensaje()}" value="Contactar"/>
-                
-            </h:form>
+        <h:form>
+            <h:outputLabel value="Nombres y apellidos"/>
+            <h:inputText class="input_field input_field-hoshi" id="input-4" value="#{controllerEmail.nombresyAp}"/>
+            <h:outputLabel value="Telefono"/>
+            <h:inputText class="input_field input_field-hoshi"  id="input-3"  value="#{controllerEmail.telefono}" />
+            <h:outputLabel value="Email"/>
+            <h:inputText class="input_field input_field-hoshi"  id="input-2" value="#{controllerEmail.email}" />
+            <h:outputLabel value="Asunto"/>
+            <h:inputText value="#{controllerEmail.asunto}"/>
+            <h:outputLabel value="Texto"/>
+            <h:inputTextarea style="color: white; border-color: #bf2b55;" id="textarea" class=" input_field-hoshi" rows="1" value="#{controllerEmail.mensaje}"/>
+            <h:commandButton class="btn btn-capsul btn-transparent-white" action="#{controllerEmail.enviarMensaje()}" value="Contactar"/>
+
+        </h:form>
         <h:form style="margin-left: 20%;">
             <h:commandButton id="btn-reporte-usuarios" value="Exportar PDF"
                              actionListener="#{ReporteJasperController.exportarPDF()}"/>
         </h:form>
+
+        <p:chart type="donut" model="#{chartView.donutModel1}" style="width:400px;height:300px" />
+
+        <p:chart type="donut" model="#{chartView.donutModel2}" style="width:400px;height:300px" />
 
     </h:body>
 </html>

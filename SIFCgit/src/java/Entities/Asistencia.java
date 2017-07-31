@@ -127,6 +127,10 @@ public class Asistencia implements Serializable {
     public void setNoIdentificacionProfesor(Persona noIdentificacionProfesor) {
         this.noIdentificacionProfesor = noIdentificacionProfesor;
     }
+    
+    
+
+    
 
     @Override
     public int hashCode() {

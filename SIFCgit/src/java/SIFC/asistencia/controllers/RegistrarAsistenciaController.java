@@ -7,6 +7,8 @@ package SIFC.asistencia.controllers;
 
 import DAO.AsistenciaFacadeLocal;
 import Entities.Asistencia;
+import Entities.Persona;
+import SIFC.login.controllers.SessionController;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -24,6 +26,10 @@ public class RegistrarAsistenciaController {
     @EJB
     private AsistenciaFacadeLocal afl;
     private Asistencia asistenciaNueva;
+    
+    private Persona persona;
+    
+    private SessionController sc;
     
     
     public RegistrarAsistenciaController() {
@@ -51,6 +57,7 @@ public class RegistrarAsistenciaController {
     }
     
     public void registrarAsistencia(){
+    asistenciaNueva.setNoIdentificacionProfesor(sc.usuarioSesion());
     afl.create(asistenciaNueva);
         init();
     }

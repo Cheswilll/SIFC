@@ -9,7 +9,9 @@
 
 
     <ui:define name="content" >
+        
         <b:form style="margin-left: 20%; margin-top: 7%; background-color: #fff; color: #080808; width: 75%;">
+            <legend>Registrar asistencia</legend>
             <b:panelGrid colSm="12" columns="2">
 
                 <h:outputText value="Fecha:"/>
@@ -25,7 +27,7 @@
 
                 <h:outputText value="Asistencia: "/>
 
-                <b:inputText value="#{registrarAsistenciaController.asistenciaNueva.asistencia}"/>
+                <b:inputText value="#{registrarAsistenciaController.asistenciaNueva.asistencia}" placeholder="(A-F-R-E)"/>
 
                 <h:outputText value="No. identificacion Jugador: "/>
 
@@ -33,10 +35,6 @@
                     <f:selectItems value="#{listarPersonasJugadorController.personasJugadores}" var="pju" itemLabel="#{pju.noIdentificacion}"/>
                 </h:selectOneMenu>
 
-                <h:outputText value="No. identificacion Profesor"/>
-                <h:selectOneMenu class="form-control" converter="personaConverter" id="noIdentificacionProfesor" value="#{registrarAsistenciaController.asistenciaNueva.noIdentificacionProfesor}">
-                    <f:selectItems value="#{listarPersonasJugadorController.personasJugadores}" var="pju" itemLabel="#{pju.noIdentificacion}"/>
-                </h:selectOneMenu>
 
 
 
