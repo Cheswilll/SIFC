@@ -52,7 +52,6 @@ public class registrarFormularioController {
     
     
     public void registrarFormulario(){
-        persona =sc.getPersona();
             formularioNuevo.setNoIdentificacion(sc.getPersona());
             ffl.create(formularioNuevo);
             init();

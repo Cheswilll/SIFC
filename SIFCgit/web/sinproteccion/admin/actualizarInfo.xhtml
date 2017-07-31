@@ -17,9 +17,12 @@
         <b:form id="form-editar" prependId="false">
             <b:panelGrid colSm="12" columns="4">
                 <h:outputText value="T.D: "/>
-                <b:inputText value="#{sessionController.persona.idTipoIdentificacion.sigla}" disabled="true"/>
+
+                <h:selectOneMenu class="form-control" converter="tipoDocumentoConverter" id="tipoDocumento" value="#{modificarController.personaSeleccionada.idTipoIdentificacion}">
+                    <f:selectItems value="#{tipoDocumentoController.tiposDeDocumentos}" var="td" itemLabel="#{td.sigla}" />
+                </h:selectOneMenu>
                 <h:outputText value="No. de documento: "/>
-                <b:inputText value="#{sessionController.persona.noIdentificacion}" disabled="true"/>
+                <b:inputText value="#{modificarController.personaSeleccionada.noIdentificacion}" placeholder="#{sessionController.persona.noIdentificacion}"/>
                 <h:outputText value="Primer nombre: "/>
                 <b:inputText value="#{sessionController.persona.nombre1}" disabled="true"/>
                 <h:outputText value="Segundo nombre: "/>
@@ -39,15 +42,17 @@
                 <h:outputText value="Teléfono fijo: "/>
                 <b:inputText value="#{modificarController.personaSeleccionada.telefonoFijo}" placeholder="#{sessionController.persona.telefonoFijo}"/>
                 <h:outputText value="Localidad: "/>
-                <b:inputText value="#{modificarController.personaSeleccionada.idLocalidad}" placeholder="#{sessionController.persona.idLocalidad.nombreLocalidad}"/>
+                <h:selectOneMenu class="form-control" converter="localidadConverter" id="idLocalidad" value="#{modificarController.personaSeleccionada.idLocalidad}">
+                    <f:selectItems value="#{localidadController.localidades}" var="lc" itemLabel="#{lc.nombreLocalidad}"/>
+                </h:selectOneMenu>
                 <h:outputText value="Dirección: "/>
                 <b:inputText value="#{modificarController.personaSeleccionada.direccion}" placeholder="#{sessionController.persona.direccion}"/>
                 <h:outputText value="Barrio: "/>
-                <b:inputText value="#{modificarController.personaSeleccionada.barrio}" placeholder="#{sessionController.persona.barrio}"/>
+                <b:inputText value="#{modificarController.personaSeleccionada.barrio}" placeholder="#{sessionController.persona.barrio}" />
 
             </b:panelGrid>
-            <h:link styleClass="btn btn-primary" outcome="/app/admin/admin.xhtml" value="Volver"/>
-            <b:commandButton value="Guardar" icon="floppy-disk" actionListener="#{modificarController.actulaizarDatos()}"/>
+            <h:link  style="margin-left: 20%;" styleClass="btn btn-primary" outcome="/app/admin/admin.xhtml" value="Volver"/>
+            <b:commandButton style="margin-left: 30%;" value="Guardar" icon="floppy-disk" actionListener="#{modificarController.actulaizarDatos()}"/>
         </b:form>
 
 

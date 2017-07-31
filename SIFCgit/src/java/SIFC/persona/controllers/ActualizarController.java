@@ -8,6 +8,7 @@ package SIFC.persona.controllers;
 import DAO.PersonaFacadeLocal;
 import Entities.Persona;
 import SIFC.login.controllers.SessionController;
+import SIFC.util.MessageUtil;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -20,13 +21,13 @@ import javax.enterprise.context.SessionScoped;
  */
 @Named(value = "actualizarController")
 @SessionScoped
-public class ActualizarController implements Serializable{
+public class ActualizarController implements Serializable {
 
     @EJB
     private PersonaFacadeLocal pfl;
     private Persona personaAct;
     private SessionController sc;
-    
+
     public ActualizarController() {
     }
 
@@ -45,16 +46,30 @@ public class ActualizarController implements Serializable{
     public void setPersonaAct(Persona personaAct) {
         this.personaAct = personaAct;
     }
-    
-    public String preEditar(){
-        setPersonaAct(sc.getPersona());
-        return "/app/admin/actualizarInfoPersonal.xhtml?faces-redirect=true";
+
+    public String preModificar(Persona p){
+        setPersonaAct(p);
+        return "/sinproteccion/admin/actualizarInfoPersonal.xhtml?faces-redirect=true";
     }
     
-    public void ActualizarInfoPersonal(){
-    pfl.edit(personaAct);
+    public void ActualizarInfoPersonal() {
+        try {
+            personaAct.setIdTipoIdentificacion(sc.getPersona().getIdTipoIdentificacion());
+            personaAct.setNoIdentificacion(sc.getPersona().getNoIdentificacion());
+            personaAct.setNombre1(sc.getPersona().getNombre1());
+            personaAct.setNombre2(sc.getPersona().getNombre2());
+            personaAct.setApellido1(sc.getPersona().getApellido1());
+            personaAct.setApellido2(sc.getPersona().getApellido2());
+            personaAct.setFechaNacimiento(sc.getPersona().getFechaNacimiento());
+            personaAct.setIdLocalidad(sc.getPersona().getIdLocalidad());
+            personaAct.setDireccion(sc.getPersona().getDireccion());
+            personaAct.setBarrio(sc.getPersona().getBarrio());
+            pfl.edit(personaAct);
+            MessageUtil.enviarMensajeInformacion("form-editar", "Actualización", "Los datos del usuarios se han actualizado correctamente.");
+        } catch (Exception e) {
+            MessageUtil.enviarMensajeErrorGlobal("Error al modificar los datos del usuario", e.getStackTrace().toString());
+        }
+
     }
-    
-   
-    
+
 }

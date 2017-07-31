@@ -54,7 +54,7 @@ public class ModificarController implements Serializable {
     
     public String preModificar(Persona p){
         setPersonaSeleccionada(p);
-        return "/app/admin/actualizarInfo.xhtml?faces-redirect=true";
+        return "/sinproteccion/admin/actualizarInfo.xhtml?faces-redirect=true";
     }
     
     
