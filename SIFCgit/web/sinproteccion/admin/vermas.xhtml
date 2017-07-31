@@ -10,7 +10,8 @@
 
     <ui:define name="content" >
 
-        <h:form id="tabla_personas" prependId="false" style="margin-left: 10%; width: 95%;">
+        <h:form id="tabla_personas" prependId="false" style="margin-left: 20%; width: 75%; color: #000;">
+            <legend>Información del usuario</legend>
             <b:panelGrid colSm="12" columns="2">
                 <h:outputText value="TD"/>
                 <b:inputText value="#{verPersonaController.persona.noIdentificacion}" disabled="true"/>
@@ -35,7 +36,7 @@
                 <h:outputText value="Direccion"/>
                 <b:inputText value="#{verPersonaController.persona.direccion}" disabled="true"/>
             </b:panelGrid>
-            <h:link styleClass="btn btn-primary" outcome="cambiarEstado.xhtml" value="Volver"/>
+            <h:link styleClass="btn btn-primary" outcome="/app/admin/cambiarEstado.xhtml" value="Volver"/>
         </h:form>
     </ui:define>
 

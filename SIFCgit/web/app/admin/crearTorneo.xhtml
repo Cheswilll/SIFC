@@ -9,14 +9,16 @@
 
 
     <ui:define name="content" >
-        <h:form>
+        <div style="width: 100%;">
+        <h:form style="margin-left: 20%; color: #000;">
+            <legend>Registrar un nuevo torneo</legend>
             <h:panelGrid columns="2">
                 <h:outputLabel value="Lugar del torneo: "/>
-                <b:inputText value="#{registrarTorneoController.nuevoTorneo.lugarTorneo}"/>
+                <b:inputText class="form-control" value="#{registrarTorneoController.nuevoTorneo.lugarTorneo}" style="margin-left: 5px; width:300px;"/>
                 <h:outputLabel value="Duración: "/>
-                <b:inputText value="#{registrarTorneoController.nuevoTorneo.duracion}"/>
+                <b:inputText class="form-control" value="#{registrarTorneoController.nuevoTorneo.duracion}" style="margin-left: 5px; width:300px;"/>
                 <h:outputLabel value="Tipo de torneo: "/>
-                <h:selectOneMenu class="form-control" converter="tipoTorneoConverter" id="TipoTorneo" value="#{registrarTorneoController.nuevoTorneo.idTipoTorneo}">
+                <h:selectOneMenu  class="form-control" converter="tipoTorneoConverter" id="TipoTorneo" value="#{registrarTorneoController.nuevoTorneo.idTipoTorneo}" style="margin-left: 5px; width:300px;">
                     <f:selectItems value="#{listarTipoTorneo.tiposDeTorneo}" var="tt" itemLabel="#{tt.nombreTipoTorneo}"/>
                 </h:selectOneMenu>
 
@@ -24,6 +26,7 @@
 
             <b:commandButton value="Registrar" actionListener="#{registrarTorneoController.registrarTorneo()}"/>
         </h:form>
+    </div>
     </ui:define>
 
 

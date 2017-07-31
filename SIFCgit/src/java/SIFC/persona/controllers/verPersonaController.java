@@ -38,7 +38,7 @@ public class verPersonaController implements Serializable {
     
     public String verPersona(Persona p){
     this.persona  = p;
-    return "vermas.xhtml?faces-redirect=true";
+    return "/sinproteccion/admin/vermas.xhtml?faces-redirect=true";
     }
     
 

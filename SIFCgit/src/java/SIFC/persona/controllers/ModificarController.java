@@ -60,7 +60,7 @@ public class ModificarController implements Serializable {
     
     public String preModificarRol(Persona p){
         setPersonaSeleccionada(p);
-        return "/app/admin/ponerRoles.xhtml?faces-redirect=true";
+        return "/sinproteccion/admin/ponerRoles.xhtml?faces-redirect=true";
     }
     
     public void cambioDeEstado(Persona p){

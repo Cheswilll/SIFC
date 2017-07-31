@@ -5,7 +5,8 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-                xmlns:b="http://bootsfaces.net/ui">
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:p="http://primefaces.org/ui">
 
 
     <ui:define name="content" >
@@ -35,10 +36,10 @@
                 <h:outputText value="Contraseña: "/>
                 <b:inputSecret value="#{modificarController.personaSeleccionada.contrasena}" disabled="true"/>
                 <h:outputText value="Roles del usuario: "/>
-                <h:selectManyCheckbox value="#{modificarController.personaSeleccionada.roles}" class="form-control"
-                                      converter="rolConverter">
-                    <f:selectItems value="#{rolController.roles}" var="r" itemLabel="#{r.nombreRol}"/>
-                </h:selectManyCheckbox>
+                <p:selectManyCheckbox value="#{modificarController.personaSeleccionada.roles}"
+                                      converter="rolConverter" layout="pageDirection" columns="1">
+                    <f:selectItems value="#{rolController.roles}" var="r" itemLabel="#{r.nombreRol}" />
+                </p:selectManyCheckbox>
             </b:panelGrid>
             <h:link styleClass="btn btn-primary" outcome="/app/admin/admin.xhtml" value="Volver"/>
             <b:commandButton value="Guardar" icon="floppy-disk" actionListener="#{modificarController.actulaizarDatos()}"/>
