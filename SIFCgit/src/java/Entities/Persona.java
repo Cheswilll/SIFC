@@ -423,9 +423,11 @@ public class Persona implements Serializable {
         return true;
     }
 
-    @Override
+    @Override 
     public String toString() {
-        return "Entities.Persona[ noIdentificacion=" + noIdentificacion + " ]";
+        return "Persona: " + "noIdentificacion:" + noIdentificacion + ", Nombre: " + nombre1+ " " + "Apellido: "+apellido1;
     }
+
+    
     
 }

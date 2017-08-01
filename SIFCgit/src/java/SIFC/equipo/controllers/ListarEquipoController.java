@@ -25,6 +25,7 @@ public class ListarEquipoController implements Serializable{
     private EquipoFacadeLocal efl;
     
     private List<Equipo> categoria;
+    private List<Equipo> equipos;
     
     public ListarEquipoController() {
     }
@@ -41,6 +42,11 @@ public class ListarEquipoController implements Serializable{
     public List<Equipo> listarCategoria(){
         categoria = efl.listarCategoria();
         return categoria;
+    }
+    
+    public List<Equipo> equipos(){
+        equipos = efl.findAll();
+        return equipos;
     }
     
     

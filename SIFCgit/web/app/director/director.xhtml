@@ -10,10 +10,35 @@
 
 
     <ui:define name="content" >
+        <h:form style="margin-left: 20%; width: 75%; color: #000;">
+            <legend>Registrar equipos</legend>
+            <h:outputText value="Codigo de equipo: "/>
+            <h:inputText class="form-control" value="#{registrarEquipoController.nuevoEquipo.codigoEquipo}"/>
+            <h:outputText value="No. identificación jugador: "/>
+            <h:selectOneMenu class="form-control" converter="personaConverter" id="noIdentificacionJugador" value="#{registrarEquipoController.nuevoEquipo.noIdentificacionJugador}">
+                    <f:selectItems value="#{listarPersonasJugadorController.personasJugadores}" var="pju" itemLabel="#{pju.noIdentificacion}"/>
+            </h:selectOneMenu>
+            
+            <h:outputText value="Categoria: "/>
+            <h:selectOneMenu class="form-control" converter="categoriaConverter" id="categoria" value="#{registrarEquipoController.nuevoEquipo.categoria}">
+                <f:selectItems value="#{listarCategoriaController.categorias}" var="cat" itemLabel="#{cat.nombreCategoria}"/>
+            </h:selectOneMenu>
+            <h:outputText value="No. identificación profesor: "/>
+            <h:selectOneMenu class="form-control" converter="personaConverter" id="noIdentificacionProfesor" value="#{registrarEquipoController.nuevoEquipo.noIdentificacionnProfesor}">
+                    <f:selectItems value="#{listarPersonasJugadorController.personasJugadores}" var="pju" itemLabel="#{pju.noIdentificacion}"/>
+            </h:selectOneMenu>
+            
+            <h:commandButton value="Registrar" style="margin-top: 5%;" class="btn btn-primary" actionListener="#{registrarEquipoController.registrarEquipo()}"/>
+        </h:form>
+        
+        <h:form id="tbl-equipos" prependId="false" style="margin-left: 20%; width: 70%; margin-top: 3%; color: #080808; 
+                background-color: #fff;">
+            <b:dataTable value="#{listarEquipoController.equipos()}" var="p">
+                <b:dataTableColumn label="Codigo equipo" value="#{p.codigoEquipo}"/>
+                <b:dataTableColumn label="Jugador" value="#{p.noIdentificacionJugador}"/>
+            </b:dataTable>
 
-        <p:chart type="donut" model="#{chartView.donutModel1}" style="width:400px;height:300px" />
-
-        <p:chart type="donut" model="#{chartView.donutModel2}" style="width:400px;height:300px" />
+        </h:form>
     </ui:define>
 
 
