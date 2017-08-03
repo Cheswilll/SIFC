@@ -13,6 +13,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 
 /**
  *
@@ -29,7 +30,7 @@ public class RegistrarAsistenciaController {
     
     private Persona persona;
     
-    private SessionController sc;
+    @Inject private SessionController sc;
     
     
     public RegistrarAsistenciaController() {

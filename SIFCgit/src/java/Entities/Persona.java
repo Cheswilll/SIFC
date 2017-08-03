@@ -60,10 +60,19 @@ public class Persona implements Serializable {
     @NotNull
     @Column(name = "noIdentificacion")
     private Long noIdentificacion;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "idEstado")
     private int idEstado;
+    
+    
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "estadoUsuario")
+    private int estadoUsuario;
+    
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
@@ -154,17 +163,42 @@ public class Persona implements Serializable {
         this.noIdentificacion = noIdentificacion;
     }
 
-    public Persona(Long noIdentificacion, int idEstado, String nombre1, String apellido1, Date fechaNacimiento, String telefonoCelular, String correoElectronico, String barrio, String direccion) {
+    public Persona(Long noIdentificacion, int idEstado, int estadoUsuario, String nombre1, String nombre2, String apellido1, String apellido2, Date fechaNacimiento, String telefonoCelular, String telefonoFijo, String contrasena, String correoElectronico, String barrio, String direccion) {
         this.noIdentificacion = noIdentificacion;
         this.idEstado = idEstado;
+        this.estadoUsuario = estadoUsuario;
         this.nombre1 = nombre1;
+        this.nombre2 = nombre2;
         this.apellido1 = apellido1;
+        this.apellido2 = apellido2;
         this.fechaNacimiento = fechaNacimiento;
         this.telefonoCelular = telefonoCelular;
+        this.telefonoFijo = telefonoFijo;
+        this.contrasena = contrasena;
         this.correoElectronico = correoElectronico;
         this.barrio = barrio;
         this.direccion = direccion;
     }
+
+    public Persona(Long noIdentificacion, int idEstado, int estadoUsuario, String nombre1, String nombre2, String apellido1, String apellido2, Date fechaNacimiento, String telefonoCelular, String telefonoFijo, String contrasena, String correoElectronico, String barrio, String direccion, List<Rol> roles) {
+        this.noIdentificacion = noIdentificacion;
+        this.idEstado = idEstado;
+        this.estadoUsuario = estadoUsuario;
+        this.nombre1 = nombre1;
+        this.nombre2 = nombre2;
+        this.apellido1 = apellido1;
+        this.apellido2 = apellido2;
+        this.fechaNacimiento = fechaNacimiento;
+        this.telefonoCelular = telefonoCelular;
+        this.telefonoFijo = telefonoFijo;
+        this.contrasena = contrasena;
+        this.correoElectronico = correoElectronico;
+        this.barrio = barrio;
+        this.direccion = direccion;
+        this.roles = roles;
+    }
+
+    
 
     public Long getNoIdentificacion() {
         return noIdentificacion;
@@ -269,6 +303,16 @@ public class Persona implements Serializable {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+
+    public int getEstadoUsuario() {
+        return estadoUsuario;
+    }
+
+    public void setEstadoUsuario(int estadoUsuario) {
+        this.estadoUsuario = estadoUsuario;
+    }
+    
+    
 
     @XmlTransient
     public List<Rol> getRoles() {
