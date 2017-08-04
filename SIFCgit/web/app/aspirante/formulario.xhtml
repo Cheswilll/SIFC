@@ -9,6 +9,19 @@
 
 
     <ui:define name="content" >
+        <script type="text/javascript">
+
+            var txt;
+            var person = prompt("Por favor ingrese el codigo enviado a su correo personal");
+            if (person == null || person == "") {
+                window.location.href = 'aspirante.xhtml';
+            } else {
+                txt = "Formulario de inscripción.";
+            }
+
+        </script> 
+
+
         <h:form style="width: 75%; margin-left: 20%; margin-top: 4%; background-color: #fff; color: #080808; " enctype="multipart/form-data" id="form-crear">
             <b:panelGrid columns="2" colSm="12">
 
