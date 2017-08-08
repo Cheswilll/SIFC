@@ -7,11 +7,14 @@ package SIFC.partido.controllers;
 
 import DAO.PartidoFacadeLocal;
 import Entities.Partido;
+import SIFC.login.controllers.SessionController;
+import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 
 /**
  *
@@ -19,14 +22,15 @@ import javax.enterprise.context.RequestScoped;
  */
 @Named(value = "registrarPartidoController")
 @RequestScoped
-public class registrarPartidoController {
+public class registrarPartidoController implements Serializable {
 
-    
     @EJB
     private PartidoFacadeLocal pdfl;
-    
-    
+
     private Partido nuevoPartido;
+
+    @Inject
+    private SessionController sc;
 
     public PartidoFacadeLocal getPdfl() {
         return pdfl;
@@ -43,22 +47,23 @@ public class registrarPartidoController {
     public void setNuevoPartido(Partido nuevoPartido) {
         this.nuevoPartido = nuevoPartido;
     }
-    
-    
 
     public registrarPartidoController() {
     }
-    
-    
+
     @PostConstruct
-    public void init(){
-     nuevoPartido = new Partido();
+    public void init() {
+        nuevoPartido = new Partido();
     }
-    
-    
-    public void registrarPartido(){
-     pdfl.create(nuevoPartido);
-     init();
+
+    public void registrarPartido() {
+        if (sc.inicioSesion()) {
+            nuevoPartido.setNoIdentificacionProfesor(sc.getPersona());
+            pdfl.create(nuevoPartido);
+        }else{
+            System.out.println("Ha ocurrido un error al registrar la plantilla partido");
+        }
+        init();
     }
-    
+
 }

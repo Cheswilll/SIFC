@@ -15,12 +15,6 @@
                 <h:selectOneMenu class="form-control" converter="personaConverter" id="noIdentificacionJugador" value="#{registrarTestController.testFisico.noIdentificacionJugador}">
                     <f:selectItems value="#{listarPersonasJugadorController.personasJugadores}" var="pj" itemLabel="#{pj.noIdentificacion}"/>
                 </h:selectOneMenu>
-
-                <h:outputText value="No. identificacion del profesor: "/>
-
-                <h:selectOneMenu  class="form-control" converter="personaConverter" id="noIdentificacionProfesor" value="#{registrarTestController.testFisico.noIdentificacionProfesor}">
-                    <f:selectItems value="#{listarPersonasJugadorController.personasJugadores}" var="pju" itemLabel="#{pju.noIdentificacion}"/>
-                </h:selectOneMenu>
                 <h:outputText value="Velocidad: "/>
                 <b:inputText value="#{registrarTestController.testFisico.velocidad}"/>
                 <h:outputText value="Altura: "/>

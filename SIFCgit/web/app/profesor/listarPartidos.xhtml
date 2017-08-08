@@ -10,6 +10,7 @@
 
     <ui:define name="content" >
         <h:form id="tabla_personas" prependId="false" style="color: #080808; margin-left: 20%; width: 78%; background-color: #fff;">
+            <legend>Partidos</legend>
             <b:dataTable value="#{listarPartidoController.listarPartidosPorProfesor()}" var="p">
                 <b:dataTableColumn label="I.D" value="#{p.idPartido}"/>
                 <b:dataTableColumn label="Profesor" value="#{p.noIdentificacionProfesor}"/>

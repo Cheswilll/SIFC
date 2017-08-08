@@ -44,7 +44,6 @@ public class Asistencia implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "idAsistencia")
     private Integer idAsistencia;
     @Basic(optional = false)

@@ -9,38 +9,50 @@
 
 
     <ui:define name="content" >
-        
-        <b:form style="margin-left: 20%; margin-top: 7%; background-color: #fff; color: #080808; width: 75%;">
-            <legend>Registrar asistencia</legend>
-            <b:panelGrid colSm="12" columns="2">
 
-                <h:outputText value="Fecha:"/>
+        <div id="fondo" style="background-color: #16202f; width: 75%; height: 450px; margin-left: 20%;margin-top: 60px; border-radius: 5px 5px 5px 5px" >
+            <legend style="color: #fff; border-color: #fff; width:90%; margin-left: 4%;">Registrar asistencia</legend>
+            <b:form style="margin-left: 3%; margin-top: 6%; background-color: #16202f; color: #fff; width: 65%; position: absolute;">
+                <div id="info-asistencia" style="margin-top: -5%; margin-bottom: 5%;">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h:outputLabel>Profesor:</h:outputLabel>
+                            <b:inputText id="profe" style="width: 40%;" value="#{sessionController.persona.nombre1} #{sessionController.persona.nombre2}  #{sessionController.persona.apellido1} #{sessionController.persona.apellido2}" disabled="true" />
+                        </div>
+                        <div class="col-lg-6">
+                            <h:outputLabel>No. identificación</h:outputLabel>
+                            <b:inputText id="Noid" value="#{sessionController.persona.noIdentificacion}" disabled="true"/>
+                        </div>
+                    </div>    
 
-                <b:inputText class="form-control" placeholder="AAAA/MM/DD" id="fechaAsistencia" value="#{registrarAsistenciaController.asistenciaNueva.fechaAsistencia}"  required="true">
-                    <f:convertDateTime pattern="yyyy/MM/dd" />
-                </b:inputText>
+                </div>
+                <legend style="border-color: #fff;">Diligenciar</legend>
+                <b:panelGrid colSm="12" columns="2">
 
-                <h:outputText value="Nombre del jugador: "/>
+                    <h:outputText value="Fecha:"/>
 
-                <b:inputText value="#{registrarAsistenciaController.asistenciaNueva.nombreJugador}"/>
-
-
-                <h:outputText value="Asistencia: "/>
-
-                <b:inputText value="#{registrarAsistenciaController.asistenciaNueva.asistencia}" placeholder="(A-F-R-E)"/>
-
-                <h:outputText value="No. identificacion Jugador: "/>
-
-                <h:selectOneMenu class="form-control" converter="personaConverter" id="noIdentificacionJugador" value="#{registrarAsistenciaController.asistenciaNueva.noIdentificacionJugador}">
-                    <f:selectItems value="#{listarPersonasJugadorController.personasJugadores}" var="pju" itemLabel="#{pju.noIdentificacion}"/>
-                </h:selectOneMenu>
-
-
+                    <b:inputText class="form-control" placeholder="AAAA/MM/DD" id="fechaAsistencia" value="#{registrarAsistenciaController.asistenciaNueva.fechaAsistencia}"  required="true">
+                        <f:convertDateTime pattern="yyyy/MM/dd" />
+                    </b:inputText>
 
 
-                <b:commandButton value="Registrar" actionListener="#{registrarAsistenciaController.registrarAsistencia()}"/>
-            </b:panelGrid>
-        </b:form>
+                    <h:outputText value="Asistencia: "/>
+
+                    <b:inputText value="#{registrarAsistenciaController.asistenciaNueva.asistencia}" placeholder="(A-F-R-E)"/>
+
+                    <h:outputText value="Jugador: "/>
+
+                    <h:selectOneMenu class="form-control" converter="personaConverter" id="noIdentificacionJugador" value="#{registrarAsistenciaController.asistenciaNueva.noIdentificacionJugador}">
+                        <f:selectItems value="#{listarPersonasJugadorController.personasJugadores}" var="pju" itemLabel="#{pju.nombre1} #{pju.apellido1}"/>
+                    </h:selectOneMenu>
+
+
+
+
+                    <b:commandButton value="Registrar" actionListener="#{registrarAsistenciaController.registrarAsistencia()}"/>
+                </b:panelGrid>
+            </b:form>
+        </div>
     </ui:define>
 
 

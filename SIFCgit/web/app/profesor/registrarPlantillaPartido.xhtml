@@ -10,6 +10,7 @@
 
     <ui:define name="content" >
         <b:form style="margin-top: 5%; color: #080808; width: 75%; margin-left: 20%;">
+            <legend>Plantilla de partidos</legend>
             <b:panelGrid colSm="12" columns="4">
 
                 <h:outputText value="Tipo partido:"/>
@@ -17,13 +18,6 @@
                 <h:selectOneMenu class="form-control" converter="tipoPartidoConverter" id="idTipoPartido" value="#{registrarPartidoController.nuevoPartido.idTipoPartido}">
                     <f:selectItems value="#{listarTipoPartidoController.tiposPartidos}" var="tp" itemLabel="#{tp.nombreTipoPartido}"/>
                 </h:selectOneMenu>
-
-                <h:outputText value="No. identificacion profesor: "/>
-
-                <h:selectOneMenu class="form-control" converter="personaConverter" id="noIdentificacionProfesor" value="#{registrarPartidoController.nuevoPartido.noIdentificacionProfesor}">
-                    <f:selectItems value="#{listarPersonasJugadorController.personasJugadores}" var="pju" itemLabel="#{pju.noIdentificacion}"/>
-                </h:selectOneMenu>
-
 
                 <h:outputText value="Tiempo Jugado: "/>
                 <h:inputText class="form-control" id="tiempoJuado" value="#{registrarPartidoController.nuevoPartido.tiempoJuado}" >
@@ -47,7 +41,7 @@
 
                 <h:outputText value="Fecha del partido"/>
                 <h:inputText class="form-control" id="fechaDelPartido" value="#{registrarPartidoController.nuevoPartido.fechaDelPartido}"  required="true">
-                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                    <f:convertDateTime pattern="yyyy/MM/dd" />
                 </h:inputText>
 
                 <h:outputText  value="Tipo de alineacion: "/>
@@ -74,8 +68,10 @@
                 <h:outputText value="Dirección: "/>
                 <b:inputText value="#{registrarPartidoController.nuevoPartido.direccion}"/>
 
-                <b:commandButton value="Registrar" actionListener="#{registrarPartidoController.registrarPartido()}"/>
+
             </b:panelGrid>
+            
+                <b:commandButton value="Registrar" actionListener="#{registrarPartidoController.registrarPartido()}"/>
         </b:form>
     </ui:define>
 

@@ -129,6 +129,10 @@ public class Persona implements Serializable {
     private List<Seguimiento> seguimientosJugador;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "noIdentificacionProfesor", fetch = FetchType.LAZY)
     private List<Seguimiento> seguimientosProfesor;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "noIdentificacionJugador", fetch = FetchType.LAZY)
+    private List<Familia> familiasJugador;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "noIdentificacionPadre", fetch = FetchType.LAZY)
+    private List<Familia> familiasPadre;
     @JoinColumn(name = "idTipoIdentificacion", referencedColumnName = "idTipoDocumento")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private TipoDocumento idTipoIdentificacion;
@@ -197,6 +201,7 @@ public class Persona implements Serializable {
         this.direccion = direccion;
         this.roles = roles;
     }
+    
 
     
 
@@ -447,6 +452,23 @@ public class Persona implements Serializable {
         this.equiposProfesor = equiposProfesor;
     }
 
+    public List<Familia> getFamiliasJugador() {
+        return familiasJugador;
+    }
+
+    public void setFamiliasJugador(List<Familia> familiasJugador) {
+        this.familiasJugador = familiasJugador;
+    }
+
+    public List<Familia> getFamiliasPadre() {
+        return familiasPadre;
+    }
+
+    public void setFamiliasPadre(List<Familia> familiasPadre) {
+        this.familiasPadre = familiasPadre;
+    }
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;

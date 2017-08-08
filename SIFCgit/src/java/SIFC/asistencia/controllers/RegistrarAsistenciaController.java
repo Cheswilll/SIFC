@@ -9,6 +9,7 @@ import DAO.AsistenciaFacadeLocal;
 import Entities.Asistencia;
 import Entities.Persona;
 import SIFC.login.controllers.SessionController;
+import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -21,18 +22,17 @@ import javax.inject.Inject;
  */
 @Named(value = "registrarAsistenciaController")
 @RequestScoped
-public class RegistrarAsistenciaController {
+public class RegistrarAsistenciaController implements Serializable {
 
-    
     @EJB
     private AsistenciaFacadeLocal afl;
     private Asistencia asistenciaNueva;
-    
+
     private Persona persona;
-    
-    @Inject private SessionController sc;
-    
-    
+
+    @Inject
+    private SessionController sc;
+
     public RegistrarAsistenciaController() {
     }
 
@@ -51,16 +51,20 @@ public class RegistrarAsistenciaController {
     public void setAsistenciaNueva(Asistencia asistenciaNueva) {
         this.asistenciaNueva = asistenciaNueva;
     }
-    
+
     @PostConstruct
-    public void init(){
-    asistenciaNueva = new Asistencia();
+    public void init() {
+        asistenciaNueva = new Asistencia();
     }
-    
-    public void registrarAsistencia(){
-    asistenciaNueva.setNoIdentificacionProfesor(sc.usuarioSesion());
-    afl.create(asistenciaNueva);
+
+    public void registrarAsistencia() {
+        if (sc.inicioSesion()) {
+            asistenciaNueva.setNoIdentificacionProfesor(sc.getPersona());
+            afl.create(asistenciaNueva);
+        }else{
+            System.out.println("Ha ocurrido un error al registrar la asistencia");
+        }
         init();
     }
-    
+
 }

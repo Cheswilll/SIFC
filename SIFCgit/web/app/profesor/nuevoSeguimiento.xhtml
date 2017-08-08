@@ -10,9 +10,8 @@
 
     <ui:define name="content" >
         <b:form style="background-color: #fff; color: #080808; width: 80%; margin-left: 20%; margin-top: 4%;">
+            <legend>Registrar seguimiento</legend>
             <b:panelGrid colSm="12" columns="4">
-                <h:outputText value="Nombre del jugador: "/>
-                <b:inputText value="#{registrarSeguimientoController.nuevoSeguimiento.nombresJugador}"/>
                 <h:outputText value="No identificacion Jugador: "/>
                 <h:selectOneMenu class="form-control" converter="personaConverter" id="noIdentificacionJugador" value="#{registrarSeguimientoController.nuevoSeguimiento.noIdentificacionJugador}">
                     <f:selectItems value="#{listarPersonasJugadorController.personasJugadores}" var="pju" itemLabel="#{pju.noIdentificacion}"/>
@@ -32,15 +31,11 @@
                 <h:inputText class="form-control" id="fechaDelPartido" value="#{registrarSeguimientoController.nuevoSeguimiento.fechaIngreso}"  required="true">
                     <f:convertDateTime pattern="yyyy/MM/dd" />
                 </h:inputText>
-                <h:outputText value="Profesor: "/>
-                <h:selectOneMenu class="form-control" converter="personaConverter" id="noIdentificacionProfesor" value="#{registrarSeguimientoController.nuevoSeguimiento.noIdentificacionProfesor}">
-                    <f:selectItems value="#{listarPersonasJugadorController.personasJugadores}" var="pju" itemLabel="#{pju.noIdentificacion}"/>
-                </h:selectOneMenu>
 
 
 
             </b:panelGrid>
-            <b:commandButton value="Registrar" />
+            <b:commandButton value="Registrar" actionListener="#{registrarSeguimientoController.registrarSeguimiento()}"/>
         </b:form>
     </ui:define>
 

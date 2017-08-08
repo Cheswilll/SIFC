@@ -7,10 +7,13 @@ package SIFC.seguimiento.controllers;
 
 import DAO.SeguimientoFacadeLocal;
 import Entities.Seguimiento;
+import SIFC.login.controllers.SessionController;
+import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 
 /**
  *
@@ -18,48 +21,48 @@ import javax.enterprise.context.RequestScoped;
  */
 @Named(value = "registrarSeguimientoController")
 @RequestScoped
-public class RegistrarSeguimientoController {
-
+public class RegistrarSeguimientoController implements Serializable {
+    
     @EJB
     private SeguimientoFacadeLocal sfl;
     
     private Seguimiento nuevoSeguimiento;
-
+    
+    @Inject
+    private SessionController sc;
+    
     public SeguimientoFacadeLocal getSfl() {
         return sfl;
     }
-
+    
     public void setSfl(SeguimientoFacadeLocal sfl) {
         this.sfl = sfl;
     }
-
+    
     public Seguimiento getNuevoSeguimiento() {
         return nuevoSeguimiento;
     }
-
+    
     public void setNuevoSeguimiento(Seguimiento nuevoSeguimiento) {
         this.nuevoSeguimiento = nuevoSeguimiento;
     }
-            
-    
-    
     
     public RegistrarSeguimientoController() {
     }
     
-    
     @PostConstruct
-    public void init()
-    {
+    public void init() {
         nuevoSeguimiento = new Seguimiento();
     }
     
-    public void registrarSeguimiento()
-    {
-       sfl.create(nuevoSeguimiento);
-       init();
+    public void registrarSeguimiento() {
+        if (sc.inicioSesion()) {
+            nuevoSeguimiento.setNoIdentificacionProfesor(sc.getPersona());
+            sfl.create(nuevoSeguimiento);
+        }else{
+            System.out.println("Ha ocurrido un error al registrar el seguimiento");
+        }
+        init();
     }
-    
-    
     
 }

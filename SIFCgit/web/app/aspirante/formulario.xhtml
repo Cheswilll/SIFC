@@ -37,7 +37,7 @@
                 <b:inputText value="#{registrarFormularioController.formularioNuevo.jornadaEstudio}" placeholder="(Mañana-Tarde-Noche)"/>
                 <h:outputText value="Entidad de salud: "/> 
                 <h:selectOneMenu class="form-control" converter="entidadDeSaludConverter" id="idEntidad" value="#{registrarFormularioController.formularioNuevo.entidadSalud}">
-                    <f:selectItems value="#{listarEntidadesSaludController.entidadesDeSalud}" var="eds" itemLabel="#{eds.nombreEntidad}"/>
+                    <f:selectItems value="#{listarEntidadesDeSaludController.entidadesDeSalud}" var="eds" itemLabel="#{eds.nombreEntidad}"/>
                 </h:selectOneMenu>
 
 
