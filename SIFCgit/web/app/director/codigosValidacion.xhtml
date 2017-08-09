@@ -1,0 +1,47 @@
+<ui:composition template="/WEB-INF/resources/template/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ct="http://www.chartistjsf.org/charts">
+
+
+    <ui:define name="content" >
+        <div id="fondo" style="background-color: #16202f; width: 75%; height: 450px; margin-left: 20%;margin-top: 60px; border-radius: 5px 5px 5px 5px" >
+            <legend style="color: #fff; border-color: #fff; width:90%; margin-left: 4%;">Registrar nuevo codigo de validación </legend>
+            <h:form id="form-crear" style="margin-left: 20%; width: 75%; color: #fff;">
+                <b:panelGrid colSm="12" columns="2">
+
+                    <h:outputText value="Ingrese el codigo de validacion de formularios "/>
+                    <h:inputText id="cod" class="form-control" value="#{registrarCodigoController.nuevoCodigo.codigo}"/>
+
+
+                    <h:commandButton value="Registrar" style="margin-top: 5%;" class="btn btn-primary" actionListener="#{registrarCodigoController.registrarCodigo()}"/>
+                </b:panelGrid>
+            </h:form>
+
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+
+            <h:form id="tbl-equipos" prependId="false" style="margin-left: 20%; width: 70%; margin-top: 3%; color: #080808; 
+                    background-color: #fff;">
+                <b:dataTable value="#{listarCodigoValidacionController.codigosValidacion}" var="c">
+                    <b:dataTableColumn label="Codigo de validación" value="#{c.codigo}"/>
+                    <b:dataTableColumn label="Registrado por" value="#{c.noIdentificacionPersona}"/>
+                </b:dataTable>
+
+            </h:form>
+        </div>
+    </ui:define>
+
+
+
+</ui:composition>
