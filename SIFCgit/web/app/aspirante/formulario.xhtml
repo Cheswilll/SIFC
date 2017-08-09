@@ -5,26 +5,33 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-                xmlns:b="http://bootsfaces.net/ui">
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:p="http://primefaces.org/ui">
 
 
     <ui:define name="content" >
         <script type="text/javascript">
 
-            var txt;
-            var person = prompt("Por favor ingrese el codigo enviado a su correo personal");
-            if (person == null || person == "") {
-                window.location.href = 'aspirante.xhtml';
-            } else {
-                txt = "Formulario de inscripción.";
-            }
+            alertify.prompt('Validación', 'Por favor ingrese el codigo de validación enviado a su correo', '######'
+                    , function (evt, value) {
+                        if (value == 123456) {
+                            alertify.success('Codigo correcto: ' + value)
+                        } else {
+                            alertify.error('Codigo invalido')
+                            location.href = "aspirante.xhtml";
+                        }
 
-        </script> 
+                    }
+            , function () {
+                alertify.error('Cancelar')
+                location.href = "aspirante.xhtml";
+            });
 
+        </script>
 
         <h:form style="width: 75%; margin-left: 20%; margin-top: 4%; background-color: #fff; color: #080808; " enctype="multipart/form-data" id="form-crear">
             <b:panelGrid columns="2" colSm="12">
-
+                <h:outputText value="#{validarCodigoController}" style="display: none"/>
                 <h:outputText value="Nombres: "/>
                 <b:inputText value="#{registrarFormularioController.formularioNuevo.nombres}" placeholder="Nombres"/>
                 <h:outputText value="Apellidos: "/>

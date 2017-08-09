@@ -16,9 +16,23 @@ and open the template in the editor.
     </h:head>
     <h:body class="nav-md">
         
-        <ui:include src="/WEB-INF/resources/template/body/body.xhtml"/>
+        <!-- Esto es re Alertify !!!!!!!!!!!!!!!!-->
+        <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/alertify.min.js"></script>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/alertify.min.css"/>
+        <!-- Default theme -->
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/themes/default.min.css"/>
+        <!-- Semantic UI theme -->
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/themes/semantic.min.css"/>
+        <!-- Bootstrap theme -->
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/themes/bootstrap.min.css"/>
+        <!-- Hasta aqui inkeos de alertify-->
         
-         
+        
+        <ui:include src="/WEB-INF/resources/template/body/body.xhtml"/>
+
+
 
         <ui:include src="/WEB-INF/resources/template/scripts/scripts.xhtml"/>
     </h:body>
