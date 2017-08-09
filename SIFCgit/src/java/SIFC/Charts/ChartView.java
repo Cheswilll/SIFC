@@ -5,72 +5,104 @@
  */
 package SIFC.Charts;
 
-import java.io.Serializable;
 import javax.annotation.PostConstruct;
-import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.faces.bean.ManagedBean;
- 
-import org.primefaces.model.chart.DonutChartModel;
+import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
+import com.mysql.jdbc.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 
-@ManagedBean
-public class ChartView implements Serializable{
+@ManagedBean (name="charts") 
+@RequestScoped
+public class ChartView {
     
-    private DonutChartModel donutModel1;
-    private DonutChartModel donutModel2;
- 
+    private Double velocidad;
+    private Double altura;
+    private Double resistencia;
+    private Double fuerza;
+    private Double agilidad;
+    private Double peso;
+    
+    
     @PostConstruct
     public void init() {
-        createDonutModels();
+        try {
+            Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/sifcnuevo","administrador","123456789");
+            
+            Statement sql = con.createStatement();
+            ResultSet resultado = sql.executeQuery("SELECT velocidad, altura, resistencia, fuerza, agilidad, peso FROM testfisicos WHERE idTest=1;");
+            
+            while (resultado.next()) {
+                velocidad=resultado.getDouble("velocidad");
+                altura=resultado.getDouble("altura");
+                resistencia=resultado.getDouble("resistencia");
+                fuerza=resultado.getDouble("fuerza");
+                agilidad=resultado.getDouble("agilidad");
+                peso=resultado.getDouble("peso");
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ChartView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
+
+    public Double getVelocidad() {
+        return velocidad;
+    }
+
+    public void setVelocidad(Double velocidad) {
+        this.velocidad = velocidad;
+    }
+
+    public Double getAltura() {
+        return altura;
+    }
+
+    public void setAltura(Double altura) {
+        this.altura = altura;
+    }
+
+    public Double getResistencia() {
+        return resistencia;
+    }
+
+    public void setResistencia(Double resistencia) {
+        this.resistencia = resistencia;
+    }
+
+    public Double getFuerza() {
+        return fuerza;
+    }
+
+    public void setFuerza(Double fuerza) {
+        this.fuerza = fuerza;
+    }
+
+    public Double getAgilidad() {
+        return agilidad;
+    }
+
+    public void setAgilidad(Double agilidad) {
+        this.agilidad = agilidad;
+    }
+
+    public Double getPeso() {
+        return peso;
+    }
+
+    public void setPeso(Double peso) {
+        this.peso = peso;
+    }
+    
+    
+    
  
-    public DonutChartModel getDonutModel1() {
-        return donutModel1;
-    }
-     
-    public DonutChartModel getDonutModel2() {
-        return donutModel2;
-    }
-     
-    private void createDonutModels() {
-        donutModel1 = initDonutModel();
-        donutModel1.setTitle("Donut Chart");
-        donutModel1.setLegendPosition("w");
-         
-        donutModel2 = initDonutModel();
-        donutModel2.setTitle("Custom Options");
-        donutModel2.setLegendPosition("e");
-        donutModel2.setSliceMargin(5);
-        donutModel2.setShowDataLabels(true);
-        donutModel2.setDataFormat("value");
-        donutModel2.setShadow(false);
-    }
- 
-    private DonutChartModel initDonutModel() {
-        DonutChartModel model = new DonutChartModel();
-         
-        Map<String, Number> circle1 = new LinkedHashMap<String, Number>();
-        circle1.put("Brand 1", 150);
-        circle1.put("Brand 2", 400);
-        circle1.put("Brand 3", 200);
-        circle1.put("Brand 4", 10);
-        model.addCircle(circle1);
-         
-        Map<String, Number> circle2 = new LinkedHashMap<String, Number>();
-        circle2.put("Brand 1", 540);
-        circle2.put("Brand 2", 125);
-        circle2.put("Brand 3", 702);
-        circle2.put("Brand 4", 421);
-        model.addCircle(circle2);
-         
-        Map<String, Number> circle3 = new LinkedHashMap<String, Number>();
-        circle3.put("Brand 1", 40);
-        circle3.put("Brand 2", 325);
-        circle3.put("Brand 3", 402);
-        circle3.put("Brand 4", 421);
-        model.addCircle(circle3);
-         
-        return model;
-    }
 }

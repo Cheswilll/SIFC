@@ -40,6 +40,28 @@
 
             </h:form>
         </div>
+
+
+
+        <div class="well well-sm" style="width: 60%; height: 40%; margin-left: 30%;">
+            <h:form>
+
+                <h3 style="text-align: center; ">Contactenos</h3>
+                <h:panelGrid columns="4" style="margin-top: 5%;">
+
+                    <h:outputLabel value="Nombres y apellidos : "/>
+                    <h:inputText  class="input_field input_field-hoshi form-control" id="input-4" value="#{controllerCodigoValdacionEmail.nombresyAp}"/>
+                    <h:outputLabel style="margin-left: 3%;" value="Codigo"/>
+                    <h:inputText class="input_field input_field-hoshi form-control"  id="input-3"  value="#{controllerCodigoValdacionEmail.codigoValidacion}" />
+                    <h:outputLabel value="E-mail :"/>
+                    <h:inputText style="margin-top: 10%;" class="input_field input_field-hoshi form-control"  id="input-2" value="#{controllerCodigoValdacionEmail.email}" />
+                    </h:panelGrid>
+                <img src="#{request.contextPath}/resources/index/imgs/logonuevo.png" style="margin-left: 400px; margin-top: -100px; width: 150px; height: 150px;" />
+                <hr style="color: #000; border-bottom: 2px; background-color: #000; border-style: solid; border-width: 1px;"></hr>
+                <h:commandButton style="width: 100%; margin-top: 5%; background-color: yellow; color: #000;" class="btn btn-capsul btn-transparent-white" action="#{controllerCodigoValdacionEmail.enviarMensaje()}" value="Enviar"/>
+
+            </h:form>
+        </div> 
     </ui:define>
 
 
