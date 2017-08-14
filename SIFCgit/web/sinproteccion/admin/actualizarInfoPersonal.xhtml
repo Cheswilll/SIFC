@@ -17,39 +17,23 @@
         <b:form id="form-editar" prependId="false" style="width: 75%; color: #000; margin-left: 20%;">
             <b:panelGrid colSm="12" columns="4">
                 
-                <h:outputText value="Tipo documento: "/>
-                <b:inputText class="form-control" style="" value="#{sessionController.persona.idTipoIdentificacion.sigla}" disabled="true"/>
-                <h:outputText value="No. de documento: "/>
-                <b:inputText class="form-control" style="" value="#{sessionController.persona.noIdentificacion}" disabled="true"/>
-                <h:outputText value="Primer nombre: "/>
-                <b:inputText class="form-control" style="" value="#{sessionController.persona.nombre1}" disabled="true"/>
-                <h:outputText value="Segundo nombre: "/>
-                <b:inputText class="form-control" style="" value="#{sessionController.persona.nombre2}" disabled="true"/>
-                <h:outputText value="Primer apellido: "/>
-                <b:inputText class="form-control" style="" value="#{sessionController.persona.apellido1}" disabled="true"/>
-                <h:outputText value="Segundo apellido: "/>
-                <b:inputText class="form-control" style="" value="#{sessionController.persona.apellido2}" disabled="true"/>
-                <h:outputText value="Fecha de nacimiento: "/>
-                <b:inputText class="form-control" style="" value="#{sessionController.persona.fechaNacimiento}" disabled="true"/>
-                <h:outputText value="Correro electronico: "/>
-                <b:inputText class="form-control" style="" value="#{actualizarController.personaAct.correoElectronico}"/>
-                <h:outputText value="Contraseña: "/>
-                <b:inputText class="form-control" style="" value="#{actualizarController.personaAct.contrasena}"/>
-                <h:outputText value="Teléfono celular: "/>
-                <b:inputText class="form-control" style="" value="#{actualizarController.personaAct.telefonoCelular}"/>
-                <h:outputText value="Teléfono fijo: "/>
-                <b:inputText class="form-control" style="" value="#{actualizarController.personaAct.telefonoFijo}"/>
-                <h:outputText value="Localidad: "/>
-                <b:inputText class="form-control" style="" value="#{sessionController.persona.idLocalidad.nombreLocalidad}" disabled="true"/>
-                <h:outputText value="Dirección: "/>
-                <b:inputText class="form-control" style="" value="#{sessionController.persona.direccion}" disabled="true"/>
-                <h:outputText value="Barrio: "/>
-                <b:inputText class="form-control" style="" value="#{sessionController.persona.barrio}" disabled="true"/>
-
+               
+                
+                <h:outputText value="TElefono celular"/>
+                <h:inputText class="form-control" value="#{actualizarInformacionController.personaAct.telefonoCelular}"/>
+                
+                <h:outputText value="Telefono fijo"/>
+                <h:inputText value="#{actualizarInformacionController.personaAct.telefonoFijo}"/>
+               
+                
+                <h:outputText value="Correo"/>
+                <h:inputText value="#{actualizarInformacionController.personaAct.correoElectronico}"/>
+                
+                <h:commandButton style="margin-left: 5%;" value="Guardar"  actionListener="#{actualizarInformacionController.actualizarInfoPersonal()}"/>
+        
             </b:panelGrid>
             <h:link styleClass="btn btn-primary" outcome="/app/admin/informacionPersonal.xhtml" value="Volver"/>
-            <b:commandButton style="margin-left: 30%;" value="Guardar" icon="floppy-disk" actionListener="#{actualizarController.actualizarInfoPersonal}"/>
-        </b:form>
+            </b:form>
 
     </ui:define>
 
