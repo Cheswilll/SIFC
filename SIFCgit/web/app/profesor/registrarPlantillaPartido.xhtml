@@ -9,70 +9,119 @@
 
 
     <ui:define name="content" >
-        <b:form style="margin-top: 5%; color: #080808; width: 75%; margin-left: 20%;">
-            <legend>Plantilla de partidos</legend>
-            <b:panelGrid colSm="12" columns="4">
-
-                <h:outputText value="Tipo partido:"/>
-
-                <h:selectOneMenu class="form-control" converter="tipoPartidoConverter" id="idTipoPartido" value="#{registrarPartidoController.nuevoPartido.idTipoPartido}">
-                    <f:selectItems value="#{listarTipoPartidoController.tiposPartidos}" var="tp" itemLabel="#{tp.nombreTipoPartido}"/>
-                </h:selectOneMenu>
-
-                <h:outputText value="Tiempo Jugado: "/>
-                <h:inputText class="form-control" id="tiempoJuado" value="#{registrarPartidoController.nuevoPartido.tiempoJuado}" >
-                    <f:convertDateTime pattern="HH:mm:ss" />
-                </h:inputText>
-
-                <h:outputText value="Amonestaciones: "/>
-                <b:inputText value="#{registrarPartidoController.nuevoPartido.amonestaciones}"/>
-
-                <h:outputText value="Nombre equipo rival"/>
-                <b:inputText value="#{registrarPartidoController.nuevoPartido.nombreEquipoRival}"/>
-
-                <h:outputText value="Hora del partido"/>
-
-                <h:inputText class="form-control" id="horaDelPartido" value="#{registrarPartidoController.nuevoPartido.horaDelPartido}" required="true">
-                    <f:convertDateTime pattern="HH:mm:ss" />
-                </h:inputText>
-
-                <h:outputText value="Observaciones: "/>
-                <b:inputTextarea value="#{registrarPartidoController.nuevoPartido.observaciones}"/>
-
-                <h:outputText value="Fecha del partido"/>
-                <h:inputText class="form-control" id="fechaDelPartido" value="#{registrarPartidoController.nuevoPartido.fechaDelPartido}"  required="true">
-                    <f:convertDateTime pattern="yyyy/MM/dd" />
-                </h:inputText>
-
-                <h:outputText  value="Tipo de alineacion: "/>
-                <h:selectOneMenu class="form-control" converter="tipoAlineacionConverter" id="idTipoAlineacion" value="#{registrarPartidoController.nuevoPartido.idTipoAlineacion}">
-                    <f:selectItems value="#{listarTipoAlineacionController.tiposAlineaciones}" var="ta" itemLabel="#{ta.nombreAlineacion}"/>
-                </h:selectOneMenu>
+        <div id="fondo" style="background-color: #16202f; width: 75%; height: 100%; margin-left: 20%; border-radius: 5px 5px 5px 5px" >
+            <br/>
+            <legend style="color: #fff; border-color: #fff; width:90%; margin-left: 4%;">Plantilla de partidos</legend>
+            <b:form style="margin-top: 5%; color: #fff; width: 75%; margin-left: 5%;">
 
 
-                <h:outputText value="Goles a favor: "/>
-                <b:inputText value="#{registrarPartidoController.nuevoPartido.golesAfavor}" />
+                <div class="form-group">
+                    <h:outputText class="col-lg-2 control-label" value="Tipo partido:"/>
+                    <div class="col-lg-4">
+                        <h:selectOneMenu class="form-control" converter="tipoPartidoConverter" id="idTipoPartido" value="#{registrarPartidoController.nuevoPartido.idTipoPartido}">
+                            <f:selectItems value="#{listarTipoPartidoController.tiposPartidos}" var="tp" itemLabel="#{tp.nombreTipoPartido}"/>
+                        </h:selectOneMenu>
+                    </div>
+                </div>
 
-                <h:outputText value="Goles en contra: "/>
-                <b:inputText value="#{registrarPartidoController.nuevoPartido.golesEnContra}" />
+                <div class="form-group">
+                    <h:outputText class="col-lg-2 control-label" value="Tiempo Jugado: "/>
+                    <div class="col-lg-4">
+                        <h:inputText class="form-control" id="tiempoJuado" value="#{registrarPartidoController.nuevoPartido.tiempoJuado}" >
+                            <f:convertDateTime pattern="HH:mm:ss" />
+                        </h:inputText>
+                    </div>
+                </div>
+                <br/><br/><br/>
+                <div class="form-group" >
+                    <h:outputText class="col-lg-2" value="Amonestaciones: "/>
+                    <div class="col-lg-4">
+                        <b:inputText value="#{registrarPartidoController.nuevoPartido.amonestaciones}"/>
+                    </div>
+                </div>
 
+                <div class="form-group">
+                    <h:outputText style="margin-top: -10px;" class="col-lg-2" value="Equipo rival: "/>
+                    <div class="col-lg-4">
+                        <b:inputText style="margin-top: -10px;" value="#{registrarPartidoController.nuevoPartido.nombreEquipoRival}"/>
+                    </div>
+                </div>
+                <br/><br/><br/>
+                <div class="form-group">
+                    <h:outputText class="col-lg-2" value="Hora del partido"/>
+                    <div class="col-lg-4">
+                        <h:inputText class="form-control" id="horaDelPartido" value="#{registrarPartidoController.nuevoPartido.horaDelPartido}" required="true">
+                            <f:convertDateTime pattern="HH:mm:ss" />
+                        </h:inputText>
+                    </div>
+                </div>
 
-                <h:outputText value="Lugar del partido: "/>
-                <b:inputText value="#{registrarPartidoController.nuevoPartido.lugarPartido}"/>
+                <div class="form-group">
+                    <h:outputText style="margin-top: -15px;" class="col-lg-2" value="Fecha del partido"/>
+                    <div class="col-lg-4">
+                        <h:inputText style="margin-top: -15px;" class="form-control" id="fechaDelPartido" value="#{registrarPartidoController.nuevoPartido.fechaDelPartido}"  required="true">
+                            <f:convertDateTime pattern="yyyy/MM/dd" />
+                        </h:inputText>
+                    </div>
+                </div>
+                <br/><br/><br/>
+                <div class="form-group">
+                    <h:outputText class="col-lg-2"  value="Tipo de alineacion: "/>
+                    <div class="col-lg-4">
+                        <h:selectOneMenu class="form-control" converter="tipoAlineacionConverter" id="idTipoAlineacion" value="#{registrarPartidoController.nuevoPartido.idTipoAlineacion}">
+                            <f:selectItems value="#{listarTipoAlineacionController.tiposAlineaciones}" var="ta" itemLabel="#{ta.nombreAlineacion}"/>
+                        </h:selectOneMenu>
+                    </div>
+                </div>
 
-                <h:outputText value="Torneo: "/>
-                <h:selectOneMenu class="form-control" converter="torneoConverter" id="idTorneo" value="#{registrarPartidoController.nuevoPartido.idTorneo}">
-                    <f:selectItems value="#{listarTorneoController.torneos}" var="trn" itemLabel="#{trn.idTipoTorneo.nombreTipoTorneo}"/>
-                </h:selectOneMenu>
+                <div class="form-group">
+                    <h:outputText class="col-lg-2" value="Goles a favor: "/>
+                    <div class="col-lg-4">
+                        <b:inputText class="form-control" value="#{registrarPartidoController.nuevoPartido.golesAfavor}" />
+                    </div>
+                </div>
 
-                <h:outputText value="Dirección: "/>
-                <b:inputText value="#{registrarPartidoController.nuevoPartido.direccion}"/>
+                <div class="form-group">
+                    <h:outputText class="col-lg-2" value="Goles en contra: "/>
+                    <div class="col-lg-4">
+                        <b:inputText value="#{registrarPartidoController.nuevoPartido.golesEnContra}" />
+                    </div>
+                </div>
 
+                <div class="form-group">
 
-            </b:panelGrid>
-            
+                    <h:outputText class="col-lg-2" value="Lugar del partido: "/>
+                    <div class="col-lg-4">
+                        <b:inputText value="#{registrarPartidoController.nuevoPartido.lugarPartido}"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <h:outputText class="col-lg-2" value="Torneo: "/>
+                    <div class="col-lg-4">
+                        <h:selectOneMenu class="form-control" converter="torneoConverter" id="idTorneo" value="#{registrarPartidoController.nuevoPartido.idTorneo}">
+                            <f:selectItems value="#{listarTorneoController.torneos}" var="trn" itemLabel="#{trn.idTipoTorneo.nombreTipoTorneo}"/>
+                        </h:selectOneMenu>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <h:outputText class="col-lg-2" value="Dirección: "/>
+                    <div class="col-lg-4-">
+                        <b:inputText  value="#{registrarPartidoController.nuevoPartido.direccion}"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <h:outputText class="col-lg-2" value="Observaciones: "/>
+                    <div class="col-lg-4">
+                        <b:inputTextarea value="#{registrarPartidoController.nuevoPartido.observaciones}"/>
+                    </div>
+                </div>
+
                 <b:commandButton value="Registrar" actionListener="#{registrarPartidoController.registrarPartido()}"/>
-        </b:form>
+            </b:form>
+        </div>
     </ui:define>
 
 

@@ -36,7 +36,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Asistencia.findAll", query = "SELECT a FROM Asistencia a")
     , @NamedQuery(name = "Asistencia.findByIdAsistencia", query = "SELECT a FROM Asistencia a WHERE a.idAsistencia = :idAsistencia")
     , @NamedQuery(name = "Asistencia.findByFechaAsistencia", query = "SELECT a FROM Asistencia a WHERE a.fechaAsistencia = :fechaAsistencia")
-    , @NamedQuery(name = "Asistencia.findByNombreJugador", query = "SELECT a FROM Asistencia a WHERE a.nombreJugador = :nombreJugador")
     , @NamedQuery(name = "Asistencia.findByAsistencia", query = "SELECT a FROM Asistencia a WHERE a.asistencia = :asistencia")})
 public class Asistencia implements Serializable {
 
@@ -51,11 +50,6 @@ public class Asistencia implements Serializable {
     @Column(name = "fechaAsistencia")
     @Temporal(TemporalType.DATE)
     private Date fechaAsistencia;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "nombreJugador")
-    private String nombreJugador;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 4)
@@ -75,10 +69,9 @@ public class Asistencia implements Serializable {
         this.idAsistencia = idAsistencia;
     }
 
-    public Asistencia(Integer idAsistencia, Date fechaAsistencia, String nombreJugador, String asistencia) {
+    public Asistencia(Integer idAsistencia, Date fechaAsistencia, String asistencia) {
         this.idAsistencia = idAsistencia;
         this.fechaAsistencia = fechaAsistencia;
-        this.nombreJugador = nombreJugador;
         this.asistencia = asistencia;
     }
 
@@ -98,13 +91,7 @@ public class Asistencia implements Serializable {
         this.fechaAsistencia = fechaAsistencia;
     }
 
-    public String getNombreJugador() {
-        return nombreJugador;
-    }
-
-    public void setNombreJugador(String nombreJugador) {
-        this.nombreJugador = nombreJugador;
-    }
+    
 
     public String getAsistencia() {
         return asistencia;
