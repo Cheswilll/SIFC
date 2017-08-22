@@ -15,7 +15,7 @@ and open the template in the editor.
         <ui:include src="/WEB-INF/resources/template/head/head.xhtml"/> 
     </h:head>
     <h:body class="nav-md">
-        
+
         <!-- Esto es re Alertify !!!!!!!!!!!!!!!!-->
         <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/alertify.min.js"></script>
 
@@ -28,12 +28,17 @@ and open the template in the editor.
         <!-- Bootstrap theme -->
         <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/themes/bootstrap.min.css"/>
         <!-- Hasta aqui inkeos de alertify-->
-        
+
         <!-- Links de google charts api-->
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+        <link href="#{request.contextPath}/resources/frameworks/dropzone/css/dropzone.css" rel="stylesheet" type="text/css" />
+        <link href="#{request.contextPath}/resources/frameworks/dropzone/css/basic.css" type="text/css" rel="stylesheet"/>
+        
+    <script src="#{request.contextPath}/resources/frameworks/dropzone/js/dropzone.js" type="text/javascript"/>
         <!-- Link de google charts api-->
-        
-        
+
+
         <ui:include src="/WEB-INF/resources/template/body/body.xhtml"/>
 
 

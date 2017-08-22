@@ -9,17 +9,31 @@
 
 
     <ui:define name="content" >
-        <h:form  style="margin-left: 500px; background-color: #fff;" enctype="multipart/form-data" id="form" prependId="false">
+        
+        <div style="width: 80%; margin-left: 20%; color: #000;">
+            
+        <legend>Adjuntar boletin de calificaciones</legend>
+        <h:form  style=" width: 75%; background-color: #ccc; background-color: #fff;" class="dropzone" enctype="multipart/form-data" id="form" prependId="false">
 
 
+            <div class="fallback">
 
-            <h:outputLabel for="fileUpload" value="Archivo: "/>
-            <h:inputFile id="fileUpload" a:multiple="true"/>
+                <h:outputLabel for="fileUpload" value="Archivo: "/>
+                <h:inputFile id="fileUpload" a:multiple="true"/>
+            </div>
 
 
-            <h:commandButton value="Adjuntar" id="upload" actionListener="#{fileUploadFormulariosController.upload}">
-            </h:commandButton>
+            <b:commandButton class="btn btn-primary" value="Adjuntar" id="upload" actionListener="#{fileUploadFormulariosController.upload}"/>
+          
         </h:form>
+        
+        <div style="margin-top: 5%;">
+            <h4>Recomentaciones</h4>
+            <p>- Adjuntar el boletin en formato PDF</p>
+            <p>- Adjuntar un boletin reciente</p>
+        </div>
+        
+        </div>
     </ui:define>
 
 

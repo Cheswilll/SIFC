@@ -65,6 +65,36 @@ public class ActualizarInformacionController implements Serializable {
         return "/sinproteccion/admin/actualizarInfoPersonal.xhtml?faces-redirect=true";
     }
     
+    public String preModificarAspirante(){
+        p = sc.getPersona();
+        setPersonaAct(p);
+        return "/sinproteccion/aspirante/actualizarInfoAspirante.xhtml?faces-redirect=true";
+    }
+    
+    public String preModificarDirector(){
+        p = sc.getPersona();
+        setPersonaAct(p);
+        return "/sinproteccion/director/actualizarInfoPersonalDirector.xhtml?faces-redirect=true";
+    }
+    
+     public String preModificarJugador(){
+        p = sc.getPersona();
+        setPersonaAct(p);
+        return "/sinproteccion/jugador/actualizarInfoPersonalJugador.xhtml?faces-redirect=true";
+    }
+     
+    public String preModificarPadre(){
+        p = sc.getPersona();
+        setPersonaAct(p);
+        return "/sinproteccion/padre/actualizarInfoPersonalPadre.xhtml?faces-redirect=true";
+    }
+    
+    public String preModificarProfesor(){
+        p = sc.getPersona();
+        setPersonaAct(p);
+        return "/sinproteccion/profesor/actualizarInfoProfesor.xhtml?faces-redirect=true";
+    }
+    
     public void actualizarInfoPersonal() {
         try {
             pfl.edit(personaAct);

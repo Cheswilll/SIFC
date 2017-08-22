@@ -30,4 +30,7 @@ public interface AsistenciaFacadeLocal {
 
     int count();
     
+    
+     List<Asistencia> listarAsistencias();
+     List<Asistencia> listarAsistenciasPorJugador(Long a);
 }

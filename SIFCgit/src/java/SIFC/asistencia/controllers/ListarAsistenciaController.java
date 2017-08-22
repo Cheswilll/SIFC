@@ -31,7 +31,7 @@ public class ListarAsistenciaController implements Serializable{
     
     @PostConstruct
     public void init(){
-        asistencias = afl.findAll();
+        asistencias = afl.listarAsistencias();
     }
 
     public List<Asistencia> getAsistencias() {

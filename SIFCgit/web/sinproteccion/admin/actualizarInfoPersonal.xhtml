@@ -16,24 +16,53 @@
         <b:message for="form-editar" showSummary="true" show-detail="true"/>
         <b:form id="form-editar" prependId="false" style="width: 75%; color: #000; margin-left: 20%;">
             <b:panelGrid colSm="12" columns="4">
-                
-               
-                
-                <h:outputText value="TElefono celular"/>
-                <h:inputText class="form-control" value="#{actualizarInformacionController.personaAct.telefonoCelular}"/>
-                
+
+                <h:outputText value="Tipo de documento: "/>
+                <b:inputText class="form-control" value="#{actualizarInformacionController.personaAct.idTipoIdentificacion.sigla}" disabled="true"/>
+
+                <h:outputText value="No. de documento: "/>
+                <b:inputText class="form-control" value="#{actualizarInformacionController.personaAct.noIdentificacion}"  disabled="true"/>
+                    
+                <h:outputText value="Primer nombre: "/>
+                <b:inputText class="form-control" value="#{actualizarInformacionController.personaAct.nombre1}"  disabled="true"/>                
+                <h:outputText value="Segundo nombre: "/>
+                <b:inputText class="form-control" value="#{actualizarInformacionController.personaAct.nombre2}"  disabled="true"/>
+                <h:outputText value="Primer apellido: "/>
+                <b:inputText class="form-control" value="#{actualizarInformacionController.personaAct.apellido1}"  disabled="true"/>
+                <h:outputText value="Segundo apellido: "/>
+                <b:inputText class="form-control" value="#{actualizarInformacionController.personaAct.apellido2}"  disabled="true"/>
+
+                <h:outputText value="Fecha de nacimiento: "/>
+                <b:inputText class="form-control" value="#{actualizarInformacionController.personaAct.fechaNacimiento}"  disabled="true"/>
+
+                <h:outputText value="Correo electronico: "/>
+                <b:inputText class="form-control" value="#{actualizarInformacionController.personaAct.correoElectronico}"/>
+
+                <h:outputText value="Contraseña: "/>
+                <b:inputSecret class="form-control" value="#{actualizarInformacionController.personaAct.contrasena}"/>
+
+                <h:outputText value="Telefono celular"/>
+                <b:inputText class="form-control" value="#{actualizarInformacionController.personaAct.telefonoCelular}"/>
+
                 <h:outputText value="Telefono fijo"/>
-                <h:inputText value="#{actualizarInformacionController.personaAct.telefonoFijo}"/>
+                <b:inputText class="form-control" value="#{actualizarInformacionController.personaAct.telefonoFijo}"/>
+
+                <h:outputText value="Localidad: "/>
+                <b:inputText class="form-control" value="#{actualizarInformacionController.personaAct.idLocalidad.nombreLocalidad}"  disabled="true"/>
+
+                <h:outputText value="Dirección: "/>
+                <b:inputText class="form-control" value="#{actualizarInformacionController.personaAct.direccion}"  disabled="true"/>
+
+                <h:outputText value="Barrio: "/>
+                <b:inputText class="form-control" value="#{actualizarInformacionController.personaAct.barrio}"  disabled="true"/>
+
+
                
-                
-                <h:outputText value="Correo"/>
-                <h:inputText value="#{actualizarInformacionController.personaAct.correoElectronico}"/>
-                
-                <h:commandButton style="margin-left: 5%;" value="Guardar"  actionListener="#{actualizarInformacionController.actualizarInfoPersonal()}"/>
-        
             </b:panelGrid>
+            <b:commandButton style="" value="Guardar" icon="floppy-disk"  actionListener="#{actualizarInformacionController.actualizarInfoPersonal()}"/>
+
             <h:link styleClass="btn btn-primary" outcome="/app/admin/informacionPersonal.xhtml" value="Volver"/>
-            </b:form>
+        </b:form>
 
     </ui:define>
 

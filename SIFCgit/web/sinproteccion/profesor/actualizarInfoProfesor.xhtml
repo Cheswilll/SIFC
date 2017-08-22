@@ -15,38 +15,53 @@
         <b:message for="form-editar" showSummary="true" show-detail="true"/>
         <b:form id="form-editar" prependId="false">
             <b:panelGrid colSm="12" columns="4">
-                <h:outputText value="T.D: "/>
-                <b:inputText value="#{sessionController.persona.idTipoIdentificacion.sigla}" disabled="true"/>
+
+
+                <h:outputText value="Tipo de documento: "/>
+                <b:inputText class="form-control" value="#{actualizarInformacionController.personaAct.idTipoIdentificacion.sigla}" disabled="true"/>
+
                 <h:outputText value="No. de documento: "/>
-                <b:inputText value="#{sessionController.persona.noIdentificacion}" disabled="true"/>
+                <b:inputText class="form-control" value="#{actualizarInformacionController.personaAct.noIdentificacion}"  disabled="true"/>
+
                 <h:outputText value="Primer nombre: "/>
-                <b:inputText value="#{sessionController.persona.nombre1}" disabled="true"/>
+                <b:inputText class="form-control" value="#{actualizarInformacionController.personaAct.nombre1}"  disabled="true"/>                
                 <h:outputText value="Segundo nombre: "/>
-                <b:inputText value="#{modificarController.personaSeleccionada.nombre2}" placeholder="#{sessionController.persona.nombre2}"/>
-                <h:outputText value="Primer apellido"/>
-                <b:inputText value="#{sessionController.persona.apellido1}" disabled="true" />
-                <h:outputText value="Segundo apellido"/>
-                <b:inputText value="#{modificarController.personaSeleccionada.apellido2}" placeholder="#{sessionController.persona.apellido2}"/>
+                <b:inputText class="form-control" value="#{actualizarInformacionController.personaAct.nombre2}"  disabled="true"/>
+                <h:outputText value="Primer apellido: "/>
+                <b:inputText class="form-control" value="#{actualizarInformacionController.personaAct.apellido1}"  disabled="true"/>
+                <h:outputText value="Segundo apellido: "/>
+                <b:inputText class="form-control" value="#{actualizarInformacionController.personaAct.apellido2}"  disabled="true"/>
+
                 <h:outputText value="Fecha de nacimiento: "/>
-                <b:inputText value="#{sessionController.persona.fechaNacimiento}"  disabled="true"/>
+                <b:inputText class="form-control" value="#{actualizarInformacionController.personaAct.fechaNacimiento}"  disabled="true"/>
+
                 <h:outputText value="Correo electronico: "/>
-                <b:inputText value="#{modificarController.personaSeleccionada.correoElectronico}" placeholder="#{sessionController.persona.correoElectronico}"/>
+                <b:inputText class="form-control" value="#{actualizarInformacionController.personaAct.correoElectronico}"/>
+
                 <h:outputText value="Contraseña: "/>
-                <b:inputSecret value="#{modificarController.personaSeleccionada.contrasena}" placeholder="#{sessionController.persona.contrasena}" />
-                <h:outputText value="Teléfono celular: "/>
-                <b:inputText value="#{modificarController.personaSeleccionada.telefonoCelular}" placeholder="#{sessionController.persona.telefonoCelular}"/>
-                <h:outputText value="Teléfono fijo: "/>
-                <b:inputText value="#{modificarController.personaSeleccionada.telefonoFijo}" placeholder="#{sessionController.persona.telefonoFijo}"/>
+                <b:inputSecret class="form-control" value="#{actualizarInformacionController.personaAct.contrasena}"/>
+
+                <h:outputText value="Telefono celular"/>
+                <b:inputText class="form-control" value="#{actualizarInformacionController.personaAct.telefonoCelular}"/>
+
+                <h:outputText value="Telefono fijo"/>
+                <b:inputText class="form-control" value="#{actualizarInformacionController.personaAct.telefonoFijo}"/>
+
                 <h:outputText value="Localidad: "/>
-                <b:inputText value="#{modificarController.personaSeleccionada.idLocalidad}" placeholder="#{sessionController.persona.idLocalidad.nombreLocalidad}"/>
+                <b:inputText class="form-control" value="#{actualizarInformacionController.personaAct.idLocalidad.nombreLocalidad}"  disabled="true"/>
+
                 <h:outputText value="Dirección: "/>
-                <b:inputText value="#{modificarController.personaSeleccionada.direccion}" placeholder="#{sessionController.persona.direccion}"/>
+                <b:inputText class="form-control" value="#{actualizarInformacionController.personaAct.direccion}"  disabled="true"/>
+
                 <h:outputText value="Barrio: "/>
-                <b:inputText value="#{modificarController.personaSeleccionada.barrio}" placeholder="#{sessionController.persona.barrio}"/>
+                <b:inputText class="form-control" value="#{actualizarInformacionController.personaAct.barrio}"  disabled="true"/>
+
+
 
             </b:panelGrid>
+            <b:commandButton style="" value="Guardar" icon="floppy-disk"  actionListener="#{actualizarInformacionController.actualizarInfoPersonal()}"/>
+
             <h:link styleClass="btn btn-primary" outcome="/app/admin/admin.xhtml" value="Volver"/>
-            <b:commandButton value="Guardar" icon="floppy-disk" actionListener="#{modificarController.actulaizarDatos()}"/>
         </b:form>
     </ui:define>
 
