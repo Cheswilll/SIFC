@@ -13,10 +13,6 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import javax.ejb.EJB;
 
-/**
- *
- * @author Ismael
- */
 @Named(value = "modificarController")
 @SessionScoped
 public class ModificarController implements Serializable {

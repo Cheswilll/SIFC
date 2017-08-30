@@ -12,19 +12,16 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 
 /**
  *
  * @author cheswill
  */
 @Named(value = "verControlAsistenciaSemanal")
-@RequestScoped
+@SessionScoped
 public class VerControlAsistenciaSemanal implements Serializable{
     
 
@@ -37,6 +34,12 @@ public class VerControlAsistenciaSemanal implements Serializable{
     private Asistencia asistencia;
     
     private List<Asistencia> asistencias;
+    
+    private Long noidJug;
+    
+    public VerControlAsistenciaSemanal() {
+    }
+    
     
 
     public Asistencia getAsistencia() {
@@ -54,10 +57,24 @@ public class VerControlAsistenciaSemanal implements Serializable{
     public void setAsistencias(List<Asistencia> asistencias) {
         this.asistencias = asistencias;
     }
+
+    public Long getNoidJug() {
+        return noidJug;
+    }
+
+    public void setNoidJug(Long noidJug) {
+        this.noidJug = noidJug;
+    }
     
     
     
-    public VerControlAsistenciaSemanal() {
+    
+    
+    @PostConstruct
+    public void init(){
+        System.out.println("Get asistencia: "+getAsistencia());
+        System.out.println("Imprimiendo post: "+getNoidJug());
+        asistencias = afl.listarAsistenciasPorJugador(getNoidJug());
     }
     
     
@@ -66,14 +83,13 @@ public class VerControlAsistenciaSemanal implements Serializable{
     
     public String preConsultar(Asistencia a){
         setAsistencia(a);
+        noidJug = getAsistencia().getNoIdentificacionJugador().getNoIdentificacion();
+        System.out.println("No id jug: "+noidJug);
+        System.out.println("Con get"+" "+getNoidJug());
         return "/sinproteccion/profesor/verControlAsistencia.xhtml?faces-redirect=true";
     }
     
-    @PostConstruct
-    public void init(){
-        afl.find(getAsistencia());
-        asistencias = afl.listarAsistenciasPorJugador(getAsistencia().getNoIdentificacionJugador().getNoIdentificacion());
-    }
+    
 
     
     

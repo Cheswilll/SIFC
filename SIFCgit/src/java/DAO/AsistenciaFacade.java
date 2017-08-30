@@ -26,8 +26,8 @@ public class AsistenciaFacade extends AbstractFacade<Asistencia> implements Asis
     private EntityManager em;
 
     @Inject
-    private SessionController sc;     
-    
+    private SessionController sc;
+
     @Override
     protected EntityManager getEntityManager() {
         return em;
@@ -40,9 +40,9 @@ public class AsistenciaFacade extends AbstractFacade<Asistencia> implements Asis
     @Override
     public List<Asistencia> listarAsistencias() {
         System.out.println("Ejecutando metodo buscar");
-        Query q = em.createNativeQuery("SELECT a.* " +
-                                "FROM asistencias AS a " +
-                                " WHERE a.noIdentificacionProfesor= ?;", Asistencia.class);
+        Query q = em.createNativeQuery("SELECT a.* "
+                + "FROM asistencias AS a "
+                + " WHERE a.noIdentificacionProfesor= ?;", Asistencia.class);
         q.setParameter(1, sc.getPersona().getNoIdentificacion());
         List<Asistencia> asistencia = q.getResultList();
 
@@ -54,23 +54,21 @@ public class AsistenciaFacade extends AbstractFacade<Asistencia> implements Asis
     }
 
     @Override
-    public List<Asistencia> listarAsistenciasPorJugador(Long a) {
-        System.out.println("Ejecutando metodo buscar");
-        Query q = em.createNativeQuery("SELECT a.* " +
-                                "FROM asistencias AS a " +
-                                " WHERE a.noIdentificacionJugador= ?;", Asistencia.class);
-        q.setParameter(1, a);
-        List<Asistencia> asistencias = q.getResultList();
+    public List<Asistencia> listarAsistenciasPorJugador(Long noIdJug) {
 
-        for (Asistencia p : asistencias) {
-            System.out.println("Listando Asistencia Correspondiente");
-        }
-        System.out.println(asistencias);
-        return asistencias;
-    
+            System.out.println("Ejecutando metodo buscar");
+            Query q = em.createNativeQuery("SELECT a.* "
+                    + "FROM asistencias AS a "
+                    + " WHERE a.noIdentificacionJugador= ?;", Asistencia.class);
+            q.setParameter(1, noIdJug);
+            List<Asistencia> asistencias = q.getResultList();
+
+            for (Asistencia p : asistencias) {
+                System.out.println("Listando Asistencia Correspondiente");
+            }
+            System.out.println(asistencias);
+            return asistencias;
+        
     }
 
-    
-    
-    
 }
