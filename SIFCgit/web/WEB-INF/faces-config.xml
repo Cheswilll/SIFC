@@ -13,5 +13,9 @@
             <base-name>SIFC.properties.App</base-name>
             <var>msjApp</var>
         </resource-bundle>
+        <resource-bundle>
+            <base-name>SIFC.properties.Admin</base-name>
+            <var>msjAdmin</var>
+        </resource-bundle>
     </application>
 </faces-config>
