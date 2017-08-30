@@ -35,11 +35,11 @@
         <b:message for="tabla_personas" show-summary="true" show-detail="true"/>
         <h:form id="tabla_personas" prependId="false" style="margin-left: 20%; width: 75%; margin-top: 4%; background-color: #fff; color: #080808;">
             <b:dataTable value="#{listarPersonasController.listarRolNormal()}" var="p">
-                <b:dataTableColumn label="T.D" value="#{p.idTipoIdentificacion.sigla}"/>
-                <b:dataTableColumn label="No. identificación" value="#{p.noIdentificacion}"/>
-                <b:dataTableColumn label="Nombres" value="#{p.nombre1} #{p.nombre2}"/>
-                <b:dataTableColumn label="Apellidos" value="#{p.apellido1} #{p.apellido2}"/>
-                <b:dataTableColumn label="Roles" value="#{p.roles}"/>
+                <b:dataTableColumn label="#{msjAdmin.tblTipoDoc}" value="#{p.idTipoIdentificacion.sigla}"/>
+                <b:dataTableColumn label="#{msjAdmin.tblDocumento}" value="#{p.noIdentificacion}"/>
+                <b:dataTableColumn label="#{msjAdmin.tblNombres}" value="#{p.nombre1} #{p.nombre2}"/>
+                <b:dataTableColumn label="#{msjAdmin.tblApellidos}" value="#{p.apellido1} #{p.apellido2}"/>
+                <b:dataTableColumn label="#{msjAdmin.tblRol}" value="#{p.roles}"/>
             </b:dataTable>
 
         </h:form>

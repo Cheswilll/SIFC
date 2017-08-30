@@ -15,39 +15,39 @@
         <b:form style="margin-left:20%; color: #080808; margin-top: 4%; background-color: #fff; width: 75%;" id="info-personal" >
             <b:panelGrid col-sm="12" columns="4">
 
-                <h:outputText value="Tipo documento: "/>
+                <h:outputText value="#{msjAdmin.txtTipoDoc} "/>
                 <b:inputText class="form-control" style="" value="#{sessionController.persona.idTipoIdentificacion.sigla}" disabled="true"/>
-                <h:outputText value="No. de documento: "/>
+                <h:outputText value="#{msjAdmin.txtDocumento} "/>
                 <b:inputText class="form-control" style="" value="#{sessionController.persona.noIdentificacion}" disabled="true"/>
-                <h:outputText value="Primer nombre: "/>
+                <h:outputText value="#{msjAdmin.txtPrimerNombre} "/>
                 <b:inputText class="form-control" style="" value="#{sessionController.persona.nombre1}" disabled="true"/>
-                <h:outputText value="Segundo nombre: "/>
+                <h:outputText value="#{msjAdmin.txtSegundoNombre} "/>
                 <b:inputText class="form-control" style="" value="#{sessionController.persona.nombre2}" disabled="true"/>
-                <h:outputText value="Primer apellido: "/>
+                <h:outputText value="#{msjAdmin.txtApellido} "/>
                 <b:inputText class="form-control" style="" value="#{sessionController.persona.apellido1}" disabled="true"/>
-                <h:outputText value="Segundo apellido: "/>
+                <h:outputText value="#{msjAdmin.txtSegundoApellido} "/>
                 <b:inputText class="form-control" style="" value="#{sessionController.persona.apellido2}" disabled="true"/>
-                <h:outputText value="Fecha de nacimiento: "/>
+                <h:outputText value="#{msjAdmin.txtFechaNacimiento} "/>
                 <b:inputText class="form-control" style="" value="#{sessionController.persona.fechaNacimiento}" disabled="true"/>
-                <h:outputText value="Correro electronico: "/>
+                <h:outputText value="#{msjAdmin.txtCorreo} "/>
                 <b:inputText class="form-control" style="" value="#{sessionController.persona.correoElectronico}" disabled="true"/>
-                <h:outputText value="Contraseña: "/>
+                <h:outputText value="#{msjAdmin.txtContraseña} "/>
                 <b:inputText class="form-control" style="" value="#{sessionController.persona.contrasena}" disabled="true"/>
-                <h:outputText value="Teléfono celular: "/>
+                <h:outputText value="#{msjAdmin.txtCelular} "/>
                 <b:inputText class="form-control" style="" value="#{sessionController.persona.telefonoCelular}" disabled="true"/>
-                <h:outputText value="Teléfono fijo: "/>
+                <h:outputText value="#{msjAdmin.txtFijo} "/>
                 <b:inputText class="form-control" style="" value="#{sessionController.persona.telefonoFijo}" disabled="true"/>
-                <h:outputText value="Localidad: "/>
+                <h:outputText value="#{msjAdmin.txtLocalidad}"/>
                 <b:inputText class="form-control" style="" value="#{sessionController.persona.idLocalidad.nombreLocalidad}" disabled="true"/>
-                <h:outputText value="Dirección: "/>
+                <h:outputText value="#{msjAdmin.txtDireccion}"/>
                 <b:inputText class="form-control" style="" value="#{sessionController.persona.direccion}" disabled="true"/>
-                <h:outputText value="Barrio: "/>
+                <h:outputText value="#{msjAdmin.txtBarrio}"/>
                 <b:inputText class="form-control" style="" value="#{sessionController.persona.barrio}" disabled="true"/>
 
 
             </b:panelGrid>
             <br></br>
-            <h:commandButton  style="" styleClass="btn btn-primary" action="#{actualizarInformacionController.preModificar()}" value="Actualizar Información personal"/>
+            <h:commandButton  style="" styleClass="btn btn-primary" action="#{actualizarInformacionController.preModificar()}" value="#{msjAdmin.btnActualizarInfo}"/>
             
 
         </b:form>

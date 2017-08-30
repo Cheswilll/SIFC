@@ -11,10 +11,10 @@
     <ui:define name="content" >
         <h:form id="tabla_torneos" prependId="false" style="color: #080808; margin-left: 20%; width: 78%; background-color: #fff;">
             <b:dataTable value="#{listarTorneoController.torneos}" var="t">
-                <b:dataTableColumn label="I.D" value="#{t.idTorneo}"/>
-                <b:dataTableColumn label="Lugar" value="#{t.lugarTorneo}"/>
-                <b:dataTableColumn label="Duración" value="#{t.duracion} "/>
-                <b:dataTableColumn label="Tipo de torneo" value="#{t.idTipoTorneo.nombreTipoTorneo}"/>
+                <b:dataTableColumn label="#{msjAdmin.txtIdTorneo}" value="#{t.idTorneo}"/>
+                <b:dataTableColumn label="#{msjAdmin.tblLugar}" value="#{t.lugarTorneo}"/>
+                <b:dataTableColumn label="#{msjAdmin.tblDuracion}" value="#{t.duracion} "/>
+                <b:dataTableColumn label="#{msjAdmin.tblTipoTorneo}" value="#{t.idTipoTorneo.nombreTipoTorneo}"/>
 
             </b:dataTable>
 

@@ -11,29 +11,29 @@
 
     <ui:define name="content" >
         <h:form id="form-usuarios" prependId="false" style="margin-left: 20%; width: 75%; color: #000;">
-        <legend>Usuarios registrados en el sistema </legend>
+            <legend>#{msjAdmin.txtUsuariosRegistrados}</legend>
             <p:dataTable class="table-striped" value="#{ReporteJasperController.personas}" var="p">
                 <p:column>
-                    <f:facet name="header">No. identificación</f:facet>
+                    <f:facet name="header">#{msjAdmin.txtDocumento}</f:facet>
                     <h:outputText value="#{p.noIdentificacion}"/>
                 </p:column>
                 <p:column>
-                    <f:facet name="header">Nombres</f:facet>
+                    <f:facet name="header">#{msjAdmin.tblNombres}</f:facet>
                     <h:outputText value="#{p.nombre1} #{p.nombre2} "/>
                 </p:column>
                 <p:column>
-                    <f:facet name="header">Apellidos</f:facet>
+                    <f:facet name="header">#{msjAdmin.tblApellidos}</f:facet>
                     <h:outputText value="#{p.apellido1} #{p.apellido2} "/>
                 </p:column>
                 <p:column>
-                    <f:facet name="header">Correo Electronico</f:facet>
+                    <f:facet name="header">#{msjAdmin.txtCorreo}</f:facet>
                     <h:outputText value="#{p.correoElectronico}"/>
                 </p:column>
 
             </p:dataTable>
         </h:form>
         <h:form style="margin-left: 20%;">
-            <h:commandButton id="btn-reporte-usuarios" class="btn btn-primary" style="margin-top: 3%;" value="Exportar PDF"
+            <h:commandButton id="btn-reporte-usuarios" class="btn btn-primary" style="margin-top: 3%;" value="#{msjAdmin.txtExportar}"
                              actionListener="#{ReporteJasperController.exportarPDF()}"/>
         </h:form>
         

@@ -11,24 +11,24 @@
     <ui:define name="content" >
         <div id="fondo" style="background-color: #16202f; width: 75%; height: 450px; margin-left: 20%;margin-top: 60px; border-radius: 5px 5px 5px 5px" >
             <br/>
-            <legend style="color: #fff; border-color: #fff; width:90%; margin-left: 4%;">Registrar un nuevo torneo</legend>
+            <legend style="color: #fff; border-color: #fff; width:90%; margin-left: 4%;">#{msjAdmin.txtRegTorneo}</legend>
             <h:form style="margin-left: 20%; color: #fff;">
                 <div id="crear-torneo" style="margin-top: -5px; margin-bottom: 5%;">
                     <div class="row">
                         <div class="col-lg-6">
-                            <h:outputLabel>Lugar del torneo:</h:outputLabel>
+                            <h:outputLabel>#{msjAdmin.inputLugar}</h:outputLabel>
                             <b:inputText class="form-control" value="#{registrarTorneoController.nuevoTorneo.lugarTorneo}" style="width: 100%;"/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
-                            <h:outputLabel>Duración:</h:outputLabel>
+                            <h:outputLabel>#{msjAdmin.inputDuracion}</h:outputLabel>
                             <b:inputText class="form-control" value="#{registrarTorneoController.nuevoTorneo.duracion}" style="width:100%;"/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
-                            <h:outputLabel>Tipo de torneo:</h:outputLabel>
+                            <h:outputLabel>#{msjAdmin.inputTipoTorneo}</h:outputLabel>
                             <h:selectOneMenu  class="form-control" converter="tipoTorneoConverter" id="TipoTorneo" value="#{registrarTorneoController.nuevoTorneo.idTipoTorneo}" style="width: 100%;">
                                 <f:selectItems value="#{listarTipoTorneo.tiposDeTorneo}" var="tt" itemLabel="#{tt.nombreTipoTorneo}"/>
                             </h:selectOneMenu>
@@ -37,7 +37,7 @@
                     <br/>
                     <div class="row">
                         <div class="col-lg-6">
-                            <b:commandButton class="btn btn-primary btn-lg" value="Registrar" actionListener="#{registrarTorneoController.registrarTorneo()}"/>
+                            <b:commandButton class="btn btn-primary btn-lg" value="#{msjAdmin.txtRegistrar}" actionListener="#{registrarTorneoController.registrarTorneo()}"/>
                         </div>
                     </div>
                 </div>
