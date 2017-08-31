@@ -54,13 +54,15 @@ public class AsistenciaFacade extends AbstractFacade<Asistencia> implements Asis
     }
 
     @Override
-    public List<Asistencia> listarAsistenciasPorJugador(Long noIdJug) {
+    public List<Asistencia> listarAsistenciasPorJugador(Long noidJug) {
 
+           try {
+            getEntityManager().getEntityManagerFactory().getCache().evictAll();
             System.out.println("Ejecutando metodo buscar");
             Query q = em.createNativeQuery("SELECT a.* "
                     + "FROM asistencias AS a "
                     + " WHERE a.noIdentificacionJugador= ?;", Asistencia.class);
-            q.setParameter(1, noIdJug);
+            q.setParameter(1, noidJug);
             List<Asistencia> asistencias = q.getResultList();
 
             for (Asistencia p : asistencias) {
@@ -68,6 +70,11 @@ public class AsistenciaFacade extends AbstractFacade<Asistencia> implements Asis
             }
             System.out.println(asistencias);
             return asistencias;
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Fallo la busqueda de la inscripcion por torneo");
+            return null;
+        }
         
     }
 

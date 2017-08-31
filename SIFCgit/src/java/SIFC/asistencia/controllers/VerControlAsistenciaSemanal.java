@@ -41,6 +41,18 @@ public class VerControlAsistenciaSemanal implements Serializable{
     }
     
     
+    public String preConsultar(Asistencia a){
+        setAsistencia(a);
+        noidJug = getAsistencia().getNoIdentificacionJugador().getNoIdentificacion();
+        System.out.println("No id jug: "+noidJug);
+        System.out.println("Con get"+" "+getNoidJug());
+        
+        asistencias = afl.listarAsistenciasPorJugador(noidJug);
+        System.out.println(asistencias);
+        return "/sinproteccion/profesor/verControlAsistencia.xhtml?faces-redirect=true";
+    }
+    
+    
 
     public Asistencia getAsistencia() {
         return asistencia;
@@ -81,13 +93,6 @@ public class VerControlAsistenciaSemanal implements Serializable{
     
     
     
-    public String preConsultar(Asistencia a){
-        setAsistencia(a);
-        noidJug = getAsistencia().getNoIdentificacionJugador().getNoIdentificacion();
-        System.out.println("No id jug: "+noidJug);
-        System.out.println("Con get"+" "+getNoidJug());
-        return "/sinproteccion/profesor/verControlAsistencia.xhtml?faces-redirect=true";
-    }
     
     
 
