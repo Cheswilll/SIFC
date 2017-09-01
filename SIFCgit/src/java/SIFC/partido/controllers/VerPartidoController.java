@@ -39,7 +39,7 @@ public class VerPartidoController implements Serializable {
     
     public String verPartido(Partido p){
     this.partido  = p;
-    return "verPartido.xhtml?faces-redirect=true";
+    return "/sinproteccion/profesor/verPartido.xhtml?faces-redirect=true";
     }
     
     

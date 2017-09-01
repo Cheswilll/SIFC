@@ -1,0 +1,53 @@
+<ui:composition template="/WEB-INF/resources/template/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:b="http://bootsfaces.net/ui">
+
+
+    <ui:define name="content" >
+        
+        <h:form id="tabla_personas" prependId="false" style="margin-left: 20%; width: 75%; color: #000;">
+            <legend>Información del partido</legend>
+            <b:panelGrid colSm="12" columns="2">
+                <h:outputText value="ID: "/>
+                <b:inputText value="#{verPartidoController.partido.idPartido}" disabled="true"/>
+                <h:outputText value="Tipo de partido: "/>
+                <b:inputText value="#{verPartidoController.partido.idTipoPartido.nombreTipoPartido}" disabled="true"/>
+                <h:outputText value="Profesor: "/>
+                <b:inputText value="#{verPartidoController.partido.noIdentificacionProfesor.nombre1} #{verPartidoController.partido.noIdentificacionProfesor.apellido1}" disabled="true"/>
+                <h:outputText value="Tiempo jugado: "/>
+                <b:inputText value="#{verPartidoController.partido.tiempoJuado}" disabled="true"/>
+                <h:outputText value="Amonestaciones: "/>
+                <b:inputText value="#{verPartidoController.partido.amonestaciones}" disabled="true"/>
+                <h:outputText value="Rival: "/>
+                <b:inputText value="#{verPartidoController.partido.nombreEquipoRival}" disabled="true"/>
+                <h:outputText value="Hora del partido: "/>
+                <b:inputText value="#{verPartidoController.partido.horaDelPartido}" disabled="true"/>
+                <h:outputText value="Observaciones: "/>
+                <b:inputText value="#{verPartidoController.partido.observaciones}" disabled="true"/>
+                <h:outputText value="Fecha del partido: "/>
+                <b:inputText value="#{verPartidoController.partido.fechaDelPartido}" disabled="true"/>
+                <h:outputText value="Tipo de alineación: "/>
+                <b:inputText value="#{verPartidoController.partido.idTipoAlineacion.nombreAlineacion}" disabled="true"/>
+                <h:outputText value="GF"/>
+                <b:inputText value="#{verPartidoController.partido.golesAfavor}" disabled="true"/>
+                <h:outputText value="GC"/>
+                <b:inputText value="#{verPartidoController.partido.golesEnContra}" disabled="true"/>
+                <h:outputText value="Lugar del partido: "/>
+                <b:inputText value="#{verPartidoController.partido.lugarPartido}" disabled="true"/>
+                <h:outputText value="Dirección: "/>
+                <b:inputText value="#{verPartidoController.partido.direccion}" disabled="true"/>
+                <h:outputText value="Torneo: "/>
+                <b:inputText value="#{verPartidoController.partido.idTorneo.idTipoTorneo.nombreTipoTorneo}" disabled="true"/>
+            </b:panelGrid>
+            <h:link styleClass="btn btn-primary" outcome="/app/profesor/listarPartidos.xhtml?faces-redirect=true" value="Volver"/>
+        </h:form>
+    </ui:define>
+
+
+
+</ui:composition>

@@ -38,7 +38,7 @@ public class EquipoFacade extends AbstractFacade<Equipo> implements EquipoFacade
         super(Equipo.class);
     }
     
-     @Override
+    @Override
     public List<Equipo> listarCategoria() {
         
         System.out.println("Ejecutando metodo buscar");
@@ -53,6 +53,11 @@ public class EquipoFacade extends AbstractFacade<Equipo> implements EquipoFacade
         }
         System.out.println(categoria);
         return categoria;
+    }
+
+    @Override
+    public List<Equipo> listarJugadoresPorEquipo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

@@ -37,6 +37,9 @@ public class VerControlAsistenciaSemanal implements Serializable{
     
     private Long noidJug;
     
+    
+    private Integer asistenciaA;
+    
     public VerControlAsistenciaSemanal() {
     }
     
@@ -46,9 +49,11 @@ public class VerControlAsistenciaSemanal implements Serializable{
         noidJug = getAsistencia().getNoIdentificacionJugador().getNoIdentificacion();
         System.out.println("No id jug: "+noidJug);
         System.out.println("Con get"+" "+getNoidJug());
-        
         asistencias = afl.listarAsistenciasPorJugador(noidJug);
         System.out.println(asistencias);
+        
+        System.out.println("Aqui imprime: "+getNoidJug());
+        asistenciaA = afl.listarAsistenciasA(getNoidJug());
         return "/sinproteccion/profesor/verControlAsistencia.xhtml?faces-redirect=true";
     }
     
@@ -77,6 +82,18 @@ public class VerControlAsistenciaSemanal implements Serializable{
     public void setNoidJug(Long noidJug) {
         this.noidJug = noidJug;
     }
+
+    public Integer getAsistenciaA() {
+        return asistenciaA;
+    }
+
+    public void setAsistenciaA(Integer asistenciaA) {
+        this.asistenciaA = asistenciaA;
+    }
+    
+    
+    
+    
     
     
     

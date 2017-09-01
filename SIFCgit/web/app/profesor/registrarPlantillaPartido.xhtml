@@ -27,7 +27,7 @@
                 <div class="form-group">
                     <h:outputText class="col-lg-2 control-label" value="Tiempo Jugado: "/>
                     <div class="col-lg-4">
-                        <h:inputText class="form-control" id="tiempoJuado" value="#{registrarPartidoController.nuevoPartido.tiempoJuado}" >
+                        <h:inputText class="form-control" id="tiempoJuado" value="#{registrarPartidoController.nuevoPartido.tiempoJuado}" a:placeholder="HH:MM:SS" >
                             <f:convertDateTime pattern="HH:mm:ss" />
                         </h:inputText>
                     </div>
@@ -36,7 +36,7 @@
                 <div class="form-group" >
                     <h:outputText class="col-lg-2" value="Amonestaciones: "/>
                     <div class="col-lg-4">
-                        <b:inputText value="#{registrarPartidoController.nuevoPartido.amonestaciones}"/>
+                        <b:inputText value="#{registrarPartidoController.nuevoPartido.amonestaciones}" a:placeholder="A, R"/>
                     </div>
                 </div>
 
@@ -50,7 +50,7 @@
                 <div class="form-group">
                     <h:outputText class="col-lg-2" value="Hora del partido"/>
                     <div class="col-lg-4">
-                        <h:inputText class="form-control" id="horaDelPartido" value="#{registrarPartidoController.nuevoPartido.horaDelPartido}" required="true">
+                        <h:inputText class="form-control" id="horaDelPartido" value="#{registrarPartidoController.nuevoPartido.horaDelPartido}" required="true" a:placeholder="HH:MM:SS">
                             <f:convertDateTime pattern="HH:mm:ss" />
                         </h:inputText>
                     </div>
@@ -59,7 +59,7 @@
                 <div class="form-group">
                     <h:outputText style="margin-top: -15px;" class="col-lg-2" value="Fecha del partido"/>
                     <div class="col-lg-4">
-                        <h:inputText style="margin-top: -15px;" class="form-control" id="fechaDelPartido" value="#{registrarPartidoController.nuevoPartido.fechaDelPartido}"  required="true">
+                        <h:inputText style="margin-top: -15px;" class="form-control" id="fechaDelPartido" value="#{registrarPartidoController.nuevoPartido.fechaDelPartido}"  required="true" a:placeholder="AAAA/MM/DD" > 
                             <f:convertDateTime pattern="yyyy/MM/dd" />
                         </h:inputText>
                     </div>
@@ -107,7 +107,7 @@
 
                 <div class="form-group">
                     <h:outputText class="col-lg-2" value="Dirección: "/>
-                    <div class="col-lg-4-">
+                    <div class="col-lg-4">
                         <b:inputText  value="#{registrarPartidoController.nuevoPartido.direccion}"/>
                     </div>
                 </div>

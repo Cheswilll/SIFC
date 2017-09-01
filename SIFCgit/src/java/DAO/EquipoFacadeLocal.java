@@ -29,7 +29,9 @@ public interface EquipoFacadeLocal {
     List<Equipo> findRange(int[] range);
 
     int count();
+         
     
-     List<Equipo> listarCategoria();
+    List<Equipo> listarCategoria();
+    List<Equipo> listarJugadoresPorEquipo();
     
 }

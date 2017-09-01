@@ -56,12 +56,12 @@ public class AsistenciaFacade extends AbstractFacade<Asistencia> implements Asis
     @Override
     public List<Asistencia> listarAsistenciasPorJugador(Long noidJug) {
 
-           try {
+        try {
             getEntityManager().getEntityManagerFactory().getCache().evictAll();
             System.out.println("Ejecutando metodo buscar");
             Query q = em.createNativeQuery("SELECT a.* "
                     + "FROM asistencias AS a "
-                    + " WHERE a.noIdentificacionJugador= ?;", Asistencia.class);
+                    + " WHERE fechaAsistencia>= date_sub(curdate(), interval 7 day) AND a.noIdentificacionJugador= ?;", Asistencia.class);
             q.setParameter(1, noidJug);
             List<Asistencia> asistencias = q.getResultList();
 
@@ -75,7 +75,28 @@ public class AsistenciaFacade extends AbstractFacade<Asistencia> implements Asis
             System.out.println("Fallo la busqueda de la inscripcion por torneo");
             return null;
         }
-        
+
+    }
+
+    @Override
+    public Integer listarAsistenciasA(Long noidJug) {
+
+        try {
+            getEntityManager().getEntityManagerFactory().getCache().evictAll();
+            System.out.println("Ejecutando metodo buscar");
+            Query q = em.createNativeQuery("SELECT a.count(asistencia) "
+                    + "FROM asistencias AS a "
+                    + " WHERE fechaAsistencia>= date_sub(curdate(), interval 7 day) AND a.asistencia='a' AND a.noIdentificacionJugador= ?;", Asistencia.class);
+            q.setParameter(1, noidJug);
+            Integer asistenciaA = (Integer) q.getSingleResult();
+
+            System.out.println(asistenciaA);
+            return asistenciaA;
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Fallo la busqueda de lA ASISTENCIA");
+            return null;
+        }
     }
 
 }
