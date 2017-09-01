@@ -5,8 +5,11 @@
  */
 package SIFC.formulario.controllers;
 
+import DAO.CodigoValidacionFacadeLocal;
 import DAO.FormularioFacadeLocal;
+import Entities.CodigoValidacion;
 import Entities.Formulario;
+import SIFC.login.controllers.SessionController;
 import com.mysql.jdbc.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -18,6 +21,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 
 /**
  *
@@ -28,61 +32,33 @@ import javax.enterprise.context.RequestScoped;
 public class ValidarCodigoController {
 
     @EJB
-    private FormularioFacadeLocal ffl;
-    private Formulario formulario;
-    private int codigo;
+    private CodigoValidacionFacadeLocal cvfl;
+    @Inject    
+    private SessionController sc;
     
+    private CodigoValidacion cv;
+    
+
     public ValidarCodigoController() {
     }
-
-    public FormularioFacadeLocal getFfl() {
-        return ffl;
-    }
-
-    public void setFfl(FormularioFacadeLocal ffl) {
-        this.ffl = ffl;
-    }
-
-    public Formulario getFormulario() {
-        return formulario;
-    }
-
-    public void setFormulario(Formulario formulario) {
-        this.formulario = formulario;
-    }
-
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
-    
     
     
     @PostConstruct
-    public void init(){
-    try {
-            Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/sifcnuevo","administrador","123456789");
-            
-            Statement sql = con.createStatement();
-            ResultSet resultado = sql.executeQuery("select codigo from codigosvalidacion where codigo= 123456");
-            
-            while (resultado.next()) {
-                System.out.println(resultado.getInt("codigo"));
-                
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(ValidarCodigoController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    
-        
-            
-        }
-    
-    
-    
+    public void init() {
+       cv = cvfl.findByUsuario(sc.getNoidentificacion());
+
+    }
+
+    public CodigoValidacion getCv() {
+        return cv;
+    }
+
+    public void setCv(CodigoValidacion cv) {
+        this.cv = cv;
     }
     
     
+
+
+   
+}

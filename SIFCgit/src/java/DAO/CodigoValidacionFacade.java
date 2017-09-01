@@ -9,6 +9,7 @@ import Entities.CodigoValidacion;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -27,6 +28,19 @@ public class CodigoValidacionFacade extends AbstractFacade<CodigoValidacion> imp
 
     public CodigoValidacionFacade() {
         super(CodigoValidacion.class);
+    }
+
+    @Override
+    public CodigoValidacion findByUsuario(Long documento) {
+        try {
+            getEntityManager().getEntityManagerFactory().getCache().evictAll();
+            TypedQuery<CodigoValidacion> c = getEntityManager().createNamedQuery("CodigoValidacion.findByUsuario", CodigoValidacion.class);
+            c.setParameter("noIdentificacionPersona", documento);
+            return c.getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
     
 }

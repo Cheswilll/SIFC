@@ -14,7 +14,7 @@
 
             alertify.prompt('Validación', 'Por favor ingrese el codigo de validación enviado a su correo', '######'
                     , function (evt, value) {
-                        if (value == 123456) {
+                        if (value == #{validarCodigoController.cv.codigo}) {
                             alertify.success('Codigo correcto: ' + value)
                         } else {
                             alertify.error('Codigo invalido')

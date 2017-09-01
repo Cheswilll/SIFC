@@ -30,4 +30,6 @@ public interface CodigoValidacionFacadeLocal {
 
     int count();
     
+    CodigoValidacion findByUsuario (Long documento);
+    
 }
