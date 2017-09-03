@@ -1,0 +1,43 @@
+<ui:composition template="/WEB-INF/resources/template/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:b="http://bootsfaces.net/ui">
+
+
+    <ui:define name="content" >
+
+        <h:form id="info-seguimiento" prependId="false" style="margin-left: 20%; width: 75%; color: #000;">
+            <legend>Información del test físico</legend>
+            <b:panelGrid colSm="12" columns="2">
+                <h:outputText value="ID: "/>
+                <b:inputText value="#{verTestController.testFisico.idTest}" disabled="true"/>
+                <h:outputText value="Jugador: "/>
+                <b:inputText value="#{verTestController.testFisico.noIdentificacionJugador.nombre1} #{verTestController.testFisico.noIdentificacionJugador.apellido1}" disabled="true"/>
+                <h:outputText value="Documento del jugador: "/>
+                <b:inputText value="#{verTestController.testFisico.noIdentificacionJugador.noIdentificacion}" disabled="true"/>
+                <h:outputText value="Profesor: "/>
+                <b:inputText value="#{verTestController.testFisico.noIdentificacionProfesor.nombre1} #{verTestController.testFisico.noIdentificacionProfesor.apellido1}" disabled="true"/>
+                <h:outputText value="Velocidad:  "/>
+                <b:inputText value="#{verTestController.testFisico.velocidad}" disabled="true"/>
+                <h:outputText value="Altura: "/>
+                <b:inputText value="#{verTestController.testFisico.altura} " disabled="true"/>
+                <h:outputText value="Resistencia: "/>
+                <b:inputText value="#{verTestController.testFisico.resistencia}" disabled="true"/>
+                <h:outputText value="Fuerza:  "/>
+                <b:inputText value="#{verTestController.testFisico.fuerza}" disabled="true"/>
+                <h:outputText value="Agilidad:  "/>
+                <b:inputText value="#{verTestController.testFisico.agilidad}" disabled="true"/>
+                <h:outputText value="Peso: "/>
+                <b:inputText value="#{verTestController.testFisico.peso}" disabled="true"/>
+            </b:panelGrid>
+            <h:link styleClass="btn btn-primary" outcome="/app/profesor/listarTest.xhtml?faces-redirect=true" value="Volver"/>
+        </h:form>
+    </ui:define>
+
+
+
+</ui:composition>

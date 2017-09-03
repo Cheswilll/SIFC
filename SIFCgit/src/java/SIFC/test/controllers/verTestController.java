@@ -37,7 +37,7 @@ public class verTestController implements Serializable {
     
     public String verTestFisico(TestFisico tf){
     this.testFisico = tf;
-    return "verTest.xhtml?faces-redirect=true";
+    return "/sinproteccion/profesor/verTest.xhtml?faces-redirect=true";
     }
     
 }

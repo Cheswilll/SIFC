@@ -44,7 +44,7 @@ public class TestFisicoFacade extends AbstractFacade<TestFisico> implements Test
         System.out.println("Ejecutando metodo buscar");
         Query q = em.createNativeQuery("SELECT t.* " +
                                 "FROM testfisicos AS t " +
-                                "WHERE t.noIdentificacionProfesor = ?;", Seguimiento.class);
+                                "WHERE t.noIdentificacionProfesor = ?;", TestFisico.class);
         q.setParameter(1, sc.getPersona().getNoIdentificacion() );
         List<TestFisico> testfisicos = q.getResultList();
 
