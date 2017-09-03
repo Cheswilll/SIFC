@@ -75,13 +75,6 @@ public class RegistroDeAsistencias {
     
     @Before
     public void setUp() {
-
-        asistencia.setIdAsistencia(1);
-        asistencia.setFechaAsistencia(fecha);
-        asistencia.setNombreJugador("Pedro Julian");
-        asistencia.setAsistencia("A");
-        asistencia.setNoIdentificacionJugador(pfl.find(11111111));
-        asistencia.setNoIdentificacionProfesor(pfl.find(22222222));
     }
 
     @After
@@ -93,12 +86,7 @@ public class RegistroDeAsistencias {
     //
      @Test
      public void Nulo() {
-         assertNotNull("Valor nulo", asistencia.getIdAsistencia());
-         assertNotNull("Valor nulo", asistencia.getFechaAsistencia());
-         assertNotNull("Valor nulo", asistencia.getNombreJugador());
-         assertNotNull("Valor nulo", asistencia.getAsistencia());
-         assertNotNull("Valor nulo", asistencia.getNoIdentificacionJugador());
-         assertNotNull("Valor nulo", asistencia.getNoIdentificacionProfesor());
+  
      }
      
      @Test

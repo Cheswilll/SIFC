@@ -9,34 +9,61 @@
 
 
     <ui:define name="content" >
-        <b:form style="background-color: #fff; color: #080808; width: 80%; margin-left: 20%; margin-top: 4%;">
-            <legend>Registrar seguimiento</legend>
-            <b:panelGrid colSm="12" columns="4">
-                <h:outputText value="No identificacion Jugador: "/>
-                <h:selectOneMenu class="form-control" converter="personaConverter" id="noIdentificacionJugador" value="#{registrarSeguimientoController.nuevoSeguimiento.noIdentificacionJugador}">
-                    <f:selectItems value="#{listarPersonasJugadorController.personasJugadores}" var="pju" itemLabel="#{pju.noIdentificacion}"/>
-                </h:selectOneMenu>
-
-                <h:outputText value="Partidos jugados: "/>
-                <b:inputText value="#{registrarSeguimientoController.nuevoSeguimiento.partidosJugados}"/>
-                <h:outputText value="Talla guayos:  "/>
-                <b:inputText value="#{registrarSeguimientoController.nuevoSeguimiento.tallaGuayos}"/>
-                <h:outputText value="Test realizados:  "/>
-                <b:inputText value="#{registrarSeguimientoController.nuevoSeguimiento.testRealizados}"/>
-                <h:outputText value="Talla camisa:  "/>
-                <b:inputText value="#{registrarSeguimientoController.nuevoSeguimiento.tallaCamisa}"/>
-                <h:outputText value="Talla pantaloneta: "/>
-                <b:inputText value="#{registrarSeguimientoController.nuevoSeguimiento.tallaPantaloneta}"/>
-                <h:outputText value="Fecha de ingreso: "/>
-                <h:inputText class="form-control" id="fechaDelPartido" value="#{registrarSeguimientoController.nuevoSeguimiento.fechaIngreso}"  required="true">
-                    <f:convertDateTime pattern="yyyy/MM/dd" />
-                </h:inputText>
 
 
 
-            </b:panelGrid>
-            <b:commandButton value="Registrar" actionListener="#{registrarSeguimientoController.registrarSeguimiento()}"/>
-        </b:form>
+
+        <div id="fondo" style="background-color: #16202f; width: 75%; height: 630px; margin-left: 20%;margin-top: 60px; border-radius: 5px 5px 5px 5px" >
+            <legend style="color: #fff; border-color: #fff; width:90%; margin-left: 4%;">Registrar seguimiento</legend>
+            <b:form style="margin-left: 3%; margin-top: 6%; background-color: #16202f; color: #fff; width: 65%; position: absolute;">
+                <div id="info-asistencia" style="margin-top: -5%; margin-bottom: 5%;">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h:outputLabel>Profesor:</h:outputLabel>
+                            <b:inputText id="profe" style="width: 40%;" value="#{sessionController.persona.nombre1} #{sessionController.persona.nombre2}  #{sessionController.persona.apellido1} #{sessionController.persona.apellido2}" disabled="true" />
+                        </div>
+                        <div class="col-lg-6">
+                            <h:outputLabel>No. identificación</h:outputLabel>
+                            <b:inputText id="Noid" value="#{sessionController.persona.noIdentificacion}" disabled="true"/>
+                        </div>
+                    </div>    
+
+                </div>
+                <legend style="border-color: #fff;">Diligenciar</legend>
+                <b:panelGrid colSm="12" columns="2">
+                    <h:outputText style="margin-bottom: 10px;" value="No identificacion Jugador: "/>
+                    <h:selectOneMenu style="margin-bottom: 10px;" class="form-control" converter="personaConverter" id="noIdentificacionJugador" value="#{registrarSeguimientoController.nuevoSeguimiento.noIdentificacionJugador}">
+                        <f:selectItems value="#{listarEquipoController.jugadoresCategoria}" var="pju" itemLabel="#{pju.noIdentificacion}"/>
+                    </h:selectOneMenu>
+
+                    <h:outputText value="Partidos jugados: "/>
+                    <b:inputText value="#{registrarSeguimientoController.nuevoSeguimiento.partidosJugados}"/>
+                    <h:outputText value="Talla guayos:  "/>
+                    <b:inputText value="#{registrarSeguimientoController.nuevoSeguimiento.tallaGuayos}"/>
+                    <h:outputText value="Test realizados:  "/>
+                    <b:inputText value="#{registrarSeguimientoController.nuevoSeguimiento.testRealizados}"/>
+                    <h:outputText value="Talla camisa:  "/>
+                    <b:inputText value="#{registrarSeguimientoController.nuevoSeguimiento.tallaCamisa}"/>
+                    <h:outputText value="Talla pantaloneta: "/>
+                    <b:inputText value="#{registrarSeguimientoController.nuevoSeguimiento.tallaPantaloneta}"/>
+                    <h:outputText value="Fecha de ingreso: "/>
+                    <h:inputText class="form-control" id="fechaDelPartido" value="#{registrarSeguimientoController.nuevoSeguimiento.fechaIngreso}"  required="true">
+                        <f:convertDateTime pattern="yyyy/MM/dd" />
+                    </h:inputText>
+
+
+
+                </b:panelGrid>
+                <b:commandButton value="Registrar" actionListener="#{registrarSeguimientoController.registrarSeguimiento()}"/>
+                
+            </b:form>
+        </div>
+
+
+
+
+
+
     </ui:define>
 
 

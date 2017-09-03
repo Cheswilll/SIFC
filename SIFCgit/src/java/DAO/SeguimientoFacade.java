@@ -6,8 +6,11 @@
 package DAO;
 
 import Entities.Seguimiento;
+import SIFC.login.controllers.SessionController;
+import java.io.Serializable;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -17,10 +20,13 @@ import javax.persistence.Query;
  * @author Cheswill
  */
 @Stateless
-public class SeguimientoFacade extends AbstractFacade<Seguimiento> implements SeguimientoFacadeLocal {
+public class SeguimientoFacade extends AbstractFacade<Seguimiento> implements SeguimientoFacadeLocal, Serializable {
 
     @PersistenceContext(unitName = "SIFCgitPU")
     private EntityManager em;
+    
+    @Inject
+    private SessionController sc;
 
     @Override
     protected EntityManager getEntityManager() {
@@ -38,11 +44,11 @@ public class SeguimientoFacade extends AbstractFacade<Seguimiento> implements Se
         Query q = em.createNativeQuery("SELECT s.* " +
                                 "FROM seguimientos AS s " +
                                 "WHERE s.noIdentificacionProfesor = ?;", Seguimiento.class);
-        q.setParameter(1, 44444444);
+        q.setParameter(1, sc.getPersona().getNoIdentificacion() );
         List<Seguimiento> seguimientos = q.getResultList();
 
         for (Seguimiento s : seguimientos) {
-            System.out.println("Listando usuarios Administrador");
+            System.out.println("Listando seguimientos");
         }
         System.out.println(seguimientos);
         return seguimientos;

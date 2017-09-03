@@ -31,7 +31,7 @@ public class listarTestFisicoController {
     
     @PostConstruct
     public void init(){
-    testFisicos = tfsl.findAll();
+    testFisicos = tfsl.listarTestPorProfesor();
     }
 
     public List<TestFisico> getTestFisicos() {

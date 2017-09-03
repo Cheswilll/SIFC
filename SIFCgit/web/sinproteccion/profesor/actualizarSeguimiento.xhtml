@@ -1,0 +1,44 @@
+<ui:composition template="/WEB-INF/resources/template/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:b="http://bootsfaces.net/ui">
+
+
+    <ui:define name="content" >
+
+        <h:form id="form-editar" prependId="false" style="margin-left: 20%; width: 75%; color: #000;">
+            <legend>Actualizar la información del seguimiento</legend>
+            <b:panelGrid colSm="12" columns="2">
+                <h:outputText value="ID: "/>
+                <b:inputText value="#{modificarSeguimientoController.seguimientoSeleccionado.idSeguimiento}" disabled="true"/>
+                <h:outputText value="Jugador: "/>
+                <b:inputText value="#{modificarSeguimientoController.seguimientoSeleccionado.noIdentificacionJugador.nombre1} #{modificarSeguimientoController.seguimientoSeleccionado.noIdentificacionJugador.apellido1}" disabled="true"/>
+                <h:outputText value="Documento del jugador: "/>
+                <b:inputText value="#{modificarSeguimientoController.seguimientoSeleccionado.noIdentificacionJugador.noIdentificacion}" disabled="true"/>
+                <h:outputText value="Profesor: "/>
+                <b:inputText value="#{modificarSeguimientoController.seguimientoSeleccionado.noIdentificacionProfesor.nombre1} #{modificarSeguimientoController.seguimientoSeleccionado.noIdentificacionProfesor.apellido1}" disabled="true"/>
+                <h:outputText value="Fecha de ingreso: "/>
+                <b:inputText value="#{modificarSeguimientoController.seguimientoSeleccionado.fechaIngreso}" disabled="true"/>
+                <h:outputText value="Partido jugados: "/>
+                <b:inputText value="#{modificarSeguimientoController.seguimientoSeleccionado.partidosJugados} "/>
+                <h:outputText value="Test realizados: "/>
+                <b:inputText value="#{modificarSeguimientoController.seguimientoSeleccionado.testRealizados}" disabled="true"/>
+                <h:outputText value="Talla pantaloneta: "/>
+                <b:inputText value="#{modificarSeguimientoController.seguimientoSeleccionado.tallaPantaloneta}"/>
+                <h:outputText value="Talla camisa: "/>
+                <b:inputText value="#{modificarSeguimientoController.seguimientoSeleccionado.tallaCamisa}"/>
+                <h:outputText value="Talla guayos: "/>
+                <b:inputText value="#{modificarSeguimientoController.seguimientoSeleccionado.tallaGuayos}"/>
+            </b:panelGrid>
+            <h:link styleClass="btn btn-primary" outcome="/app/profesor/listarSeguimientos.xhtml?faces-redirect=true" value="Volver"/>
+            <b:commandButton class="btn btn-success" value="Guardar"  icon="floppy-disk" actionListener="#{modificarSeguimientoController.actulaizarDatosSeguimiento()}"/>
+        </h:form>
+    </ui:define>
+
+
+
+</ui:composition>

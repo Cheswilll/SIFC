@@ -1,0 +1,43 @@
+<ui:composition template="/WEB-INF/resources/template/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:b="http://bootsfaces.net/ui">
+
+
+    <ui:define name="content" >
+
+        <h:form id="info-seguimiento" prependId="false" style="margin-left: 20%; width: 75%; color: #000;">
+            <legend>Información del seguimiento</legend>
+            <b:panelGrid colSm="12" columns="2">
+                <h:outputText value="ID: "/>
+                <b:inputText value="#{verSeguimientoController.seguimiento.idSeguimiento}" disabled="true"/>
+                <h:outputText value="Jugador: "/>
+                <b:inputText value="#{verSeguimientoController.seguimiento.noIdentificacionJugador.nombre1} #{verSeguimientoController.seguimiento.noIdentificacionJugador.apellido1}" disabled="true"/>
+                <h:outputText value="Documento del jugador: "/>
+                <b:inputText value="#{verSeguimientoController.seguimiento.noIdentificacionJugador.noIdentificacion}" disabled="true"/>
+                <h:outputText value="Profesor: "/>
+                <b:inputText value="#{verSeguimientoController.seguimiento.noIdentificacionProfesor.nombre1} #{verSeguimientoController.seguimiento.noIdentificacionProfesor.apellido1}" disabled="true"/>
+                <h:outputText value="Fecha de ingreso: "/>
+                <b:inputText value="#{verSeguimientoController.seguimiento.fechaIngreso}" disabled="true"/>
+                <h:outputText value="Partido jugados: "/>
+                <b:inputText value="#{verSeguimientoController.seguimiento.partidosJugados} " disabled="true"/>
+                <h:outputText value="Test realizados: "/>
+                <b:inputText value="#{verSeguimientoController.seguimiento.testRealizados}" disabled="true"/>
+                <h:outputText value="Talla pantaloneta: "/>
+                <b:inputText value="#{verSeguimientoController.seguimiento.tallaPantaloneta}" disabled="true"/>
+                <h:outputText value="Talla camisa: "/>
+                <b:inputText value="#{verSeguimientoController.seguimiento.tallaCamisa}" disabled="true"/>
+                <h:outputText value="Talla guayos: "/>
+                <b:inputText value="#{verSeguimientoController.seguimiento.tallaGuayos}" disabled="true"/>
+            </b:panelGrid>
+            <h:link styleClass="btn btn-primary" outcome="/app/profesor/listarSeguimientos.xhtml?faces-redirect=true" value="Volver"/>
+        </h:form>
+    </ui:define>
+
+
+
+</ui:composition>

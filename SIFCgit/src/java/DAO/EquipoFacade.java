@@ -55,10 +55,6 @@ public class EquipoFacade extends AbstractFacade<Equipo> implements EquipoFacade
         return categoria;
     }
 
-    @Override
-    public List<Equipo> listarJugadoresPorEquipo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     
 }

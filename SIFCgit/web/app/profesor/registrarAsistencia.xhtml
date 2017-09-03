@@ -43,7 +43,7 @@
                     <h:outputText value="Jugador: "/>
 
                     <h:selectOneMenu class="form-control" converter="personaConverter" id="noIdentificacionJugador" value="#{registrarAsistenciaController.asistenciaNueva.noIdentificacionJugador}">
-                        <f:selectItems value="#{listarPersonasJugadorController.personasJugadores}" var="pju" itemLabel="#{pju.nombre1} #{pju.apellido1}"/>
+                        <f:selectItems value="#{listarEquipoController.jugadoresCategoria}" var="j" itemLabel="#{j.noIdentificacion}"/>
                     </h:selectOneMenu>
 
 

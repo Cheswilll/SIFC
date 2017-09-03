@@ -32,6 +32,5 @@ public interface EquipoFacadeLocal {
          
     
     List<Equipo> listarCategoria();
-    List<Equipo> listarJugadoresPorEquipo();
     
 }

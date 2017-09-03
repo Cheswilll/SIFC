@@ -34,7 +34,7 @@ public class listarSeguimientoController implements Serializable{
     
     @PostConstruct
     public void init(){
-    seguimientos =  sfl.findAll();
+    seguimientos = sfl.seguimeintosPorProfesor();
     }
 
     public SeguimientoFacadeLocal getSfl() {
@@ -51,11 +51,6 @@ public class listarSeguimientoController implements Serializable{
 
     public void setSeguimientos(List<Seguimiento> seguimientos) {
         this.seguimientos = seguimientos;
-    }
-    
-    public List<Seguimiento> listarSeguimientoPorProfesor(){
-    seguimientos = sfl.seguimeintosPorProfesor();
-    return seguimientos;
     }
     
     

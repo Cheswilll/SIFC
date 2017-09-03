@@ -6,8 +6,11 @@
 package DAO;
 
 import Entities.Persona;
+import SIFC.login.controllers.SessionController;
+import java.io.Serializable;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -18,11 +21,16 @@ import javax.persistence.TypedQuery;
  * @author Cheswill
  */
 @Stateless
-public class PersonaFacade extends AbstractFacade<Persona> implements PersonaFacadeLocal {
+public class PersonaFacade extends AbstractFacade<Persona> implements PersonaFacadeLocal, Serializable {
 
     @PersistenceContext(unitName = "SIFCgitPU")
     private EntityManager em;
 
+    
+    @Inject
+    private SessionController sc;
+
+    
     @Override
     protected EntityManager getEntityManager() {
         return em;
@@ -118,6 +126,25 @@ public class PersonaFacade extends AbstractFacade<Persona> implements PersonaFac
         }
         System.out.println(personas);
         return personas;
+    }
+
+    @Override
+    public List<Persona> listarJugadoresPorProfesor() {
+        
+        
+        System.out.println("Ejecutando metodo buscar");
+        Query q = em.createNativeQuery("SELECT p.* " +
+                                "FROM personas AS p JOIN equipos " +
+                                "ON p.noIdentificacion = equipos.noIdentificacionJugador AND  "
+                                + "equipos.noIdentificacionnProfesor = ?;", Persona.class);
+        q.setParameter(1, sc.getPersona().getNoIdentificacion());
+        List<Persona> personasJugadores = q.getResultList();
+
+        for (Persona p : personasJugadores) {
+            System.out.println("Listando usuarios Jugadores");
+        }
+        System.out.println(personasJugadores);
+        return personasJugadores;
     }
     
 }

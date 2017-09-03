@@ -12,19 +12,14 @@
     <ui:define name="content" >
         <h:form id="tabla_personas" prependId="false" style="width: 75%; background-color: #fff; color: #080808; margin-left: 20%; margin-top: 4%;">
             <legend>Seguimientos registrados</legend>
-            <b:dataTable value="#{listarSeguimientoController.listarSeguimientoPorProfesor()}" var="s">
-                <b:dataTableColumn label="T.D" value="#{s.idSeguimiento}"/>
-                <b:dataTableColumn label="No. identificación" value="#{s.nombresJugador}"/>
-                <b:dataTableColumn label="Nombres" value="#{s.partidosJugados}"/>
-                <b:dataTableColumn label="Apellidos" value="#{s.tallaGuayos}"/>
-                <b:dataTableColumn label="Test realizados" value="#{s.testRealizados}"/>
-                <b:dataTableColumn label="Talla camisa" value="#{s.tallaCamisa}"/>
-                <b:dataTableColumn label="Talla pantaloneta" value="#{s.tallaPantaloneta}"/>
+            <b:dataTable value="#{listarSeguimientoController.seguimientos}" var="s">
+                <b:dataTableColumn label="ID" value="#{s.idSeguimiento}"/>
+                <b:dataTableColumn label="No. identificación jugador" value="#{s.noIdentificacionJugador}"/>
                 <b:dataTableColumn label="Fecha de ingreso" value="#{s.fechaIngreso}"/>
-                <b:dataTableColumn label="Jugador" value="#{s.noIdentificacionJugador}"/>
-                <b:dataTableColumn label="Profesor" value="#{s.noIdentificacionProfesor}"/>
+                <b:dataTableColumn label="Profesor" value="#{s.noIdentificacionProfesor.nombre1} #{s.noIdentificacionProfesor.apellido1}"/>
                 <b:dataTableColumn label="Más" value="">
                     <b:commandButton look="primary" value="" iconAwesome="pencil" action="#{modificarSeguimientoController.preModificarSeguimiento(s)}"/>
+                    <b:commandButton look="success" value="" iconAwesome="eye" action="#{verSeguimientoController.verSeguimiento(s)}"/>
                 </b:dataTableColumn>
             </b:dataTable>
 

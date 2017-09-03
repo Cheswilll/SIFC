@@ -20,19 +20,27 @@ import javax.faces.view.ViewScoped;
  */
 @Named(value = "listarPartidoController")
 @ViewScoped
-public class listarPartidoController  implements Serializable{
+public class listarPartidoController implements Serializable {
 
     @EJB
     private PartidoFacadeLocal pofl;
-    
+
     private List<Partido> partidos;
-    
+
     public listarPartidoController() {
     }
-    
+
+    public List<Partido> getPartidos() {
+        return partidos;
+    }
+
+    public void setPartidos(List<Partido> partidos) {
+        this.partidos = partidos;
+    }
+
     @PostConstruct
-    public void init(){
-    partidos = pofl.findAll();
+    public void init() {
+        partidos = pofl.listarPartidosPorProfesor();
     }
 
     public PartidoFacadeLocal getPofl() {
@@ -42,9 +50,5 @@ public class listarPartidoController  implements Serializable{
     public void setPofl(PartidoFacadeLocal pofl) {
         this.pofl = pofl;
     }
-    
-    public List<Partido> listarPartidosPorProfesor(){
-    partidos = pofl.listarPartidosPorProfesor();
-    return partidos;
-    }
+
 }

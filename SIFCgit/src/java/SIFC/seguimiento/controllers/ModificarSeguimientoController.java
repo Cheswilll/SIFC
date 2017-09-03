@@ -40,7 +40,7 @@ public class ModificarSeguimientoController implements Serializable {
     
     public String preModificarSeguimiento(Seguimiento s){
         setSeguimientoSeleccionado(s);
-        return "/app/profesor/actualizarSeguimiento.xhtml?faces-redirect=true";
+        return "/sinproteccion/profesor/actualizarSeguimiento.xhtml?faces-redirect=true";
     }
     
     public void actulaizarDatosSeguimiento(){

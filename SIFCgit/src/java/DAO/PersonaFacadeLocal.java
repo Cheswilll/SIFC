@@ -38,4 +38,5 @@ public interface PersonaFacadeLocal {
     List<Persona> buscarPorRolJugador();
     List<Persona> buscarPorRolProfesor();
     List<Persona> buscarPorRolNormal();
+    List<Persona> listarJugadoresPorProfesor();
 }
