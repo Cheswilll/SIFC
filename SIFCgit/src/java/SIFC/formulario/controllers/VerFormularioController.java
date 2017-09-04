@@ -38,7 +38,7 @@ public class VerFormularioController implements Serializable {
     
     public String verFormulario(Formulario f){
     this.formulario = f;
-    return "/sinproteccion/admin/verFormulario.xhtml?faces-redirect=true";
+    return "/sinproteccion/director/verFormulario.xhtml?faces-redirect=true";
     }
     
 }

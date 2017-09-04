@@ -11,41 +11,82 @@
 
 
     <ui:define name="content" >
+
         <div id="fondo" style="background-color: #16202f; width: 75%; height: 450px; margin-left: 20%;margin-top: 60px; border-radius: 5px 5px 5px 5px" >
-            <legend style="color: #fff; border-color: #fff; width:90%; margin-left: 4%;">Registrar relación de familia </legend>
-            <h:form id="form-crear" style="margin-left: 20%; width: 75%; color: #fff;">
+            <legend style="color: #fff; border-color: #fff; width:90%; margin-left: 4%;">Registrar un nuevo equipo</legend>
+            <b:form style="margin-left: 3%; margin-top: 6%; background-color: #16202f; color: #fff; width: 65%; position: absolute;">
+                <div id="info-asistencia" style="margin-top: -5%; margin-bottom: 5%;">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h:outputLabel>Director: </h:outputLabel>
+                            <b:inputText id="profe" style="width: 70%;" value="#{sessionController.persona.nombre1} #{sessionController.persona.nombre2}  #{sessionController.persona.apellido1} #{sessionController.persona.apellido2}" disabled="true" />
+                        </div>
+                        <div class="col-lg-6">
+                            <h:outputLabel>No. identificación: </h:outputLabel>
+                            <b:inputText id="Noid" value="#{sessionController.persona.noIdentificacion}" disabled="true"/>
+                        </div>
+                    </div>    
+
+                </div>
+                <legend style="border-color: #fff;">Diligenciar</legend>
                 <b:panelGrid colSm="12" columns="2">
 
-                    <h:outputText value="No. identificación del jugador: "/>
-                    <h:selectOneMenu class="form-control" converter="personaConverter" id="noIdentificacionJugador" value="#{registrarFamiliaController.familiaNueva.noIdentificacionJugador}">
-                        <f:selectItems value="#{listarPersonasJugadorController.personasJugadores}" var="pju" itemLabel="#{pju.noIdentificacion}"/>
+
+                    <h:outputText style="margin-bottom: 10px;" value="No. identificación del jugador: "/>
+                    <h:selectOneMenu style="margin-bottom: 10px;" class="form-control" converter="personaConverter" id="noIdentificacionJugador" value="#{registrarFamiliaController.familiaNueva.noIdentificacionJugador}">
+                        <f:selectItems value="#{listarPersonasController.personasJugadores}" var="pju" itemLabel="#{pju.noIdentificacion}"/>
                     </h:selectOneMenu>
-                    <h:outputText value="No. identificación del padre: "/>
-                    <h:selectOneMenu class="form-control" converter="personaConverter" id="noIdentificacionPadre" value="#{registrarFamiliaController.familiaNueva.noIdentificacionPadre}">
-                        <f:selectItems value="#{listarPersonasJugadorController.personasJugadores}" var="pju" itemLabel="#{pju.noIdentificacion}"/>
+                    <h:outputText style="margin-bottom: 10px;" value="No. identificación del padre: "/>
+                    <h:selectOneMenu style="margin-bottom: 10px;" class="form-control" converter="personaConverter" id="noIdentificacionPadre" value="#{registrarFamiliaController.familiaNueva.noIdentificacionPadre}">
+                        <f:selectItems value="#{listarPersonasController.personasPadres}" var="pju" itemLabel="#{pju.noIdentificacion}"/>
                     </h:selectOneMenu>
 
 
-                    <h:commandButton value="Registrar" style="margin-top: 5%;" class="btn btn-primary" actionListener="#{registrarFamiliaController.registrarFamilia()}"/>
+
                 </b:panelGrid>
-            </h:form>
 
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
+                <b:commandButton value="Registrar" style="margin-top: 5%;" class="btn btn-primary" actionListener="#{registrarFamiliaController.registrarFamilia()}"/>
 
-            <h:form id="tbl-equipos" prependId="false" style="margin-left: 20%; width: 70%; margin-top: 3%; color: #080808; 
-                    background-color: #fff;">
-                <b:dataTable value="#{listarFamiliaController.familias}" var="f">
-                    <b:dataTableColumn label="Jugador" value="#{f.noIdentificacionJugador}"/>
-                    <b:dataTableColumn label="Padre" value="#{f.noIdentificacionPadre}"/>
-                </b:dataTable>
-
-            </h:form>
+            </b:form>
         </div>
+
+
+        <h:form id="tbl-equipos" prependId="false" style="margin-left: 20%; width: 75%; margin-top: 3%; color: #080808; 
+                background-color: #fff;">
+            <b:dataTable value="#{listarFamiliaController.familias}" var="f">
+                <b:dataTableColumn label="Jugador" value="#{f.noIdentificacionJugador}"/>
+                <b:dataTableColumn label="Padre" value="#{f.noIdentificacionPadre}"/>
+                <b:dataTableColumn label="Más">
+                    <b:commandButton look="danger" value=""
+                                     iconAwesome="trash" tooltip="Eliminar"
+                                     onclick="$('.modalPseudoClass').modal();">
+                        <f:ajax event="click" render=":message-modal-confirm"
+                                listener="#{listarFamiliaController.setFamiliaSeleccionada(f)}"/>
+                    </b:commandButton>
+                </b:dataTableColumn>
+            </b:dataTable>
+
+        </h:form>
+        
+        
+        
+
+
+        <b:modal id="amodal" title="Antes de eliminar..." styleClass="modalPseudoClass">
+            <h:panelGroup id="message-modal-confirm" layout="block">
+                <p>¿Está seguro de eliminar la relación entre el padre #{listarFamiliaController.familiaSeleccionada.noIdentificacionPadre.noIdentificacion}  y el jugador #{listarFamiliaController.familiaSeleccionada.noIdentificacionJugador.noIdentificacion}?
+                </p>
+            </h:panelGroup>
+            <f:facet name="footer">
+                <h:form id="form-eliminar" prependId="false">
+                    <b:button value="Close" dismiss="modal" />
+                    <b:commandButton value="Ok" look="primary"
+                                     actionListener="#{listarFamiliaController.eliminarFamilia()}"/>
+
+                </h:form>
+            </f:facet>
+        </b:modal>
+
     </ui:define>
 
 

@@ -33,10 +33,11 @@ public interface PersonaFacadeLocal {
     Persona login(Long noidentificacion, String contraseña);
     
    
-    
+     List<Persona> listarJugadoresPorProfesor();
     List<Persona> buscarPorRol();
     List<Persona> buscarPorRolJugador();
     List<Persona> buscarPorRolProfesor();
     List<Persona> buscarPorRolNormal();
-    List<Persona> listarJugadoresPorProfesor();
+    List<Persona> buscarPorRolPadre();
+   
 }

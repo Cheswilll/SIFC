@@ -36,6 +36,8 @@ public class ListarPersonasController implements Serializable {
     
     private List<Persona> personas;
     private Persona personaSelecionada;
+    
+    private List<Persona> personasPadres;
     private List<Persona> personasAdmins;
     private List<Persona> personasProfes;
     private List<Persona> personasJugadores;
@@ -48,6 +50,11 @@ public class ListarPersonasController implements Serializable {
     
     @PostConstruct
     public void init(){
+        personasProfes = pfl.buscarPorRolProfesor();
+        personasAdmins = pfl.buscarPorRol();    
+        personasJugadores = pfl.buscarPorRolJugador();
+        personasNormales = pfl.buscarPorRolNormal();
+        personasPadres = pfl.buscarPorRolPadre();
     recargarPersonas();
     }
     
@@ -82,6 +89,57 @@ public class ListarPersonasController implements Serializable {
         System.out.println(personaSeleccionada.getNoIdentificacion());
         this.personaSelecionada = personaSeleccionada;
     }
+
+    public Persona getPersonaSelecionada() {
+        return personaSelecionada;
+    }
+
+    public void setPersonaSelecionada(Persona personaSelecionada) {
+        this.personaSelecionada = personaSelecionada;
+    }
+
+    public List<Persona> getPersonasProfes() {
+        return personasProfes;
+    }
+
+    public void setPersonasProfes(List<Persona> personasProfes) {
+        this.personasProfes = personasProfes;
+    }
+
+    public List<Persona> getPersonasJugadores() {
+        return personasJugadores;
+    }
+
+    public void setPersonasJugadores(List<Persona> personasJugadores) {
+        this.personasJugadores = personasJugadores;
+    }
+
+    public List<Persona> getPersonasNormales() {
+        return personasNormales;
+    }
+
+    public void setPersonasNormales(List<Persona> personasNormales) {
+        this.personasNormales = personasNormales;
+    }
+
+    public List<Persona> getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(List<Persona> categoria) {
+        this.categoria = categoria;
+    }
+
+    public List<Persona> getPersonasPadres() {
+        return personasPadres;
+    }
+
+    public void setPersonasPadres(List<Persona> personasPadres) {
+        this.personasPadres = personasPadres;
+    }
+    
+     
+    
     
     public void eliminarPersona(){
     Persona pS = sc.getPersona();
@@ -95,21 +153,6 @@ public class ListarPersonasController implements Serializable {
         }
     }
     
-    public List<Persona> listarRolAdmin(){
-        personasAdmins = pfl.buscarPorRol();
-        return personasAdmins;
-    }
-    public List<Persona> listarRolProfesor(){
-        personasProfes = pfl.buscarPorRolProfesor();
-        return personasProfes;
-    }
-    public List<Persona> listarRolJugador(){
-        personasJugadores = pfl.buscarPorRolJugador();
-        return personasJugadores;
-    }
-    public List<Persona> listarRolNormal(){
-        personasNormales = pfl.buscarPorRolNormal();
-        return personasNormales;
-    }
+   
    
 }

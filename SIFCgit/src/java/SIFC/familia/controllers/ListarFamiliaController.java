@@ -7,6 +7,7 @@ package SIFC.familia.controllers;
 
 import DAO.FamiliaFacadeLocal;
 import Entities.Familia;
+import SIFC.util.MessageUtil;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -20,11 +21,12 @@ import javax.faces.view.ViewScoped;
  */
 @Named(value = "listarFamiliaController")
 @ViewScoped
-public class ListarFamiliaController implements Serializable{
+public class ListarFamiliaController implements Serializable {
 
     @EJB
     private FamiliaFacadeLocal ffl;
-    private Familia familia;
+
+    private Familia familiaSeleccionada;
     private List<Familia> familias;
 
     public FamiliaFacadeLocal getFfl() {
@@ -43,21 +45,35 @@ public class ListarFamiliaController implements Serializable{
         this.familias = familias;
     }
 
-    public Familia getFamilia() {
-        return familia;
+    public Familia getFamiliaSeleccionada() {
+        return familiaSeleccionada;
     }
 
-    public void setFamilia(Familia familia) {
-        this.familia = familia;
+    public void setFamiliaSeleccionada(Familia familiaSeleccionada) {
+        this.familiaSeleccionada = familiaSeleccionada;
     }
+
     
-    
+
     @PostConstruct
-    private void init(){
+    private void init() {
+        recargarPersonas();
+    }
+
+    public ListarFamiliaController() {
+    }
+
+    private void recargarPersonas() {
         familias = ffl.findAll();
     }
     
-    public ListarFamiliaController() {
+    public void eliminarFamilia(){
+        if (familiaSeleccionada.getId() != null) {
+            ffl.remove(familiaSeleccionada);
+            recargarPersonas();
+        }else{
+            MessageUtil.enviarMensajeError(null, "Error", "No se puede eliminar usted mismo");
+        }
     }
-    
+
 }

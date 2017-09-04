@@ -80,7 +80,7 @@ public class PersonaFacade extends AbstractFacade<Persona> implements PersonaFac
                                 "FROM personas AS p join rolesdepersonas join roles " +
                                 "on p.noIdentificacion = rolesdepersonas.noIdentificacion and rolesdepersonas.idRol "
                                 + "= roles.idRol AND roles.idRol=?;", Persona.class);
-        q.setParameter(1, 3);
+        q.setParameter(1, 6);
         List<Persona> personas = q.getResultList();
 
         for (Persona p : personas) {
@@ -145,6 +145,24 @@ public class PersonaFacade extends AbstractFacade<Persona> implements PersonaFac
         }
         System.out.println(personasJugadores);
         return personasJugadores;
+    }
+
+    @Override
+    public List<Persona> buscarPorRolPadre() {
+        
+        System.out.println("Ejecutando metodo buscar");
+        Query q = em.createNativeQuery("SELECT p.* " +
+                                "FROM personas AS p join rolesdepersonas join roles " +
+                                "on p.noIdentificacion = rolesdepersonas.noIdentificacion and rolesdepersonas.idRol "
+                                + "= roles.idRol AND roles.idRol= ?;", Persona.class);
+        q.setParameter(1, 5);
+        List<Persona> personas = q.getResultList();
+
+        for (Persona p : personas) {
+            System.out.println("Listando usuarios padres");
+        }
+        System.out.println(personas);
+        return personas;
     }
     
 }

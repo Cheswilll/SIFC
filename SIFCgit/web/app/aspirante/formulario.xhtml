@@ -30,26 +30,56 @@
         </script>
 
         <h:form style="width: 75%; margin-left: 20%; margin-top: 4%; background-color: #fff; color: #080808; " enctype="multipart/form-data" id="form-crear">
-            <b:panelGrid columns="2" colSm="12">
-                <h:outputText value="#{validarCodigoController}" style="display: none"/>
+            <legend>Formularió de inscripción</legend>
+            <b:panelGrid columns="4" colSm="12">
+
+                <legend style="background-color: #000; color: #fff; width: 950px; text-align: center;">Información general escuela</legend>
+                <h:outputLabel value=""/>
+                <h:outputLabel value=""/>
+                <h:outputLabel value=""/>
+                <h:outputLabel value="Escuela deportiva local de: "/>
+                <b:inputText value="Barrios unidos" disabled="true"/>
+                <h:outputLabel value="Sede:  "/>
+                <b:inputText value="Salitre" disabled="true"/>
+                <h:outputLabel value="Barrio o zona:   "/>
+                <b:inputText value="Salitre" disabled="true"/>
+                <h:outputLabel value="Dirección:  "/>
+                <b:inputText value="Crr 60 #63- 65" disabled="true"/>
+                <h:outputLabel value="Teléfono: "/>
+                <b:inputText value="6600672" disabled="true"/>
+                <h:outputLabel value="Correo: "/>
+                <b:inputText value="caterpillar.motor@gmail.com" disabled="true"/>
+
+
+                <legend style="background-color: #000; color: #fff; width: 950px; text-align: center;">Información personal</legend>
+                <h:outputLabel value=""/>
+                <h:outputLabel value=""/>
+                <h:outputLabel value=""/>
                 <h:outputText value="Nombres: "/>
                 <b:inputText value="#{registrarFormularioController.formularioNuevo.nombres}" placeholder="Nombres"/>
                 <h:outputText value="Apellidos: "/>
                 <b:inputText value="#{registrarFormularioController.formularioNuevo.apellidos}" placeholder="Apellidos"/>
+                <h:outputText value="No. identificación: "/>
+                <b:inputText value="#{sessionController.persona.noIdentificacion}" disabled="true"/>
                 <h:outputText value="Fecha de nacimiento: "/>
                 <b:inputText id="fechaN" value="#{registrarFormularioController.formularioNuevo.fechaNacimiento}"  required="true" placeholder="yyyy/mm/dd">
                     <f:convertDateTime pattern="yyyy/MM/dd" />
                 </b:inputText>
+                <h:outputText value="Dirección: "/>
+                <b:inputText value="#{sessionController.persona.direccion}" disabled="true"/>
                 <h:outputText value="Jornada de estudio: "/>
                 <b:inputText value="#{registrarFormularioController.formularioNuevo.jornadaEstudio}" placeholder="(Mañana-Tarde-Noche)"/>
+
+
+                <legend style="background-color: #000; color: #fff; width: 950px; text-align: center;">Información medica</legend>
+                <h:outputLabel value=""/>
+                <h:outputLabel value=""/>
+                <h:outputLabel value=""/>
                 <h:outputText value="Entidad de salud: "/> 
                 <h:selectOneMenu class="form-control" converter="entidadDeSaludConverter" id="idEntidad" value="#{registrarFormularioController.formularioNuevo.entidadSalud}">
                     <f:selectItems value="#{listarEntidadesDeSaludController.entidadesDeSalud}" var="eds" itemLabel="#{eds.nombreEntidad}"/>
                 </h:selectOneMenu>
-
-
                 <h:outputText value="RH: "/>
-
                 <h:selectOneMenu class="form-control" converter="tipoDeSangreConverter" id="idRH" value="#{registrarFormularioController.formularioNuevo.rh}">
                     <f:selectItems value="#{listarRhController.tiposDeSangre}" var="tds" itemLabel="#{tds.rh}"/>
                 </h:selectOneMenu>
@@ -58,6 +88,14 @@
                 <b:inputText value="#{registrarFormularioController.formularioNuevo.alergias}" placeholder="Alergias"/>
                 <h:outputText value="Lesiones: "/> 
                 <b:inputText value="#{registrarFormularioController.formularioNuevo.lesiones}" placeholder="Lesiones"/>
+                
+                
+                <legend style="background-color: #000; color: #fff; width: 950px; text-align: center;">Información familiar</legend>
+                <h:outputLabel value=""/>
+                <h:outputLabel value=""/>
+                <h:outputLabel value=""/>
+                
+                
                 <h:outputText value="Nombre de la madre: "/> 
                 <b:inputText value="#{registrarFormularioController.formularioNuevo.nombreMama}" placeholder="Nombre de la madre"/>
                 <h:outputText value="Empresa donde labora: "/> 

@@ -11,47 +11,65 @@
 
 
     <ui:define name="content" >
-        <div id="fondo" style="background-color: #16202f; width: 75%; height: 450px; margin-left: 20%;margin-top: 60px; border-radius: 5px 5px 5px 5px" >
-            <legend style="color: #fff; border-color: #fff; width:90%; margin-left: 4%;">Registrar equipos</legend>
-            <h:form style="margin-left: 20%; width: 75%; color: #fff;">
 
+        <div id="fondo" style="background-color: #16202f; width: 75%; height: 550px; margin-left: 20%;margin-top: 60px; border-radius: 5px 5px 5px 5px" >
+            <legend style="color: #fff; border-color: #fff; width:90%; margin-left: 4%;">Registrar un nuevo equipo</legend>
+            <b:form style="margin-left: 3%; margin-top: 6%; background-color: #16202f; color: #fff; width: 65%; position: absolute;">
+                <div id="info-asistencia" style="margin-top: -5%; margin-bottom: 5%;">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h:outputLabel>Director: </h:outputLabel>
+                            <b:inputText id="profe" style="width: 70%;" value="#{sessionController.persona.nombre1} #{sessionController.persona.nombre2}  #{sessionController.persona.apellido1} #{sessionController.persona.apellido2}" disabled="true" />
+                        </div>
+                        <div class="col-lg-6">
+                            <h:outputLabel>No. identificación: </h:outputLabel>
+                            <b:inputText id="Noid" value="#{sessionController.persona.noIdentificacion}" disabled="true"/>
+                        </div>
+                    </div>    
+
+                </div>
+                <legend style="border-color: #fff;">Diligenciar</legend>
                 <b:panelGrid colSm="12" columns="2">
 
                     <h:outputText value="Codigo de equipo: "/>
-                    <h:inputText class="form-control" value="#{registrarEquipoController.nuevoEquipo.codigoEquipo}"/>
+                    <b:inputText class="form-control" value="#{registrarEquipoController.nuevoEquipo.codigoEquipo}"/>
 
-                    <h:outputText value="No. identificación jugador: "/>
-                    <h:selectOneMenu class="form-control" converter="personaConverter" id="noIdentificacionJugador" value="#{registrarEquipoController.nuevoEquipo.noIdentificacionJugador}">
-                        <f:selectItems value="#{listarPersonasJugadorController.personasJugadores}" var="pju" itemLabel="#{pju.noIdentificacion}"/>
+                    <h:outputText style="margin-bottom: 10px;" value="No. identificación jugador: "/>
+                    <h:selectOneMenu style="margin-bottom: 10px;" class="form-control" converter="personaConverter" id="noIdentificacionJugador" value="#{registrarEquipoController.nuevoEquipo.noIdentificacionJugador}">
+                        <f:selectItems value="#{listarPersonasController.personasJugadores}" var="pju" itemLabel="#{pju.noIdentificacion} #{pju.nombre1}  #{pju.apellido1}"/>
                     </h:selectOneMenu>
 
-                    <h:outputText value="Categoria: "/>
-                    <h:selectOneMenu class="form-control" converter="categoriaConverter" id="categoria" value="#{registrarEquipoController.nuevoEquipo.categoria}">
+                    <h:outputText style="margin-bottom: 10px;" value="Categoria: "/>
+                    <h:selectOneMenu style="margin-bottom: 10px;" class="form-control" converter="categoriaConverter" id="categoria" value="#{registrarEquipoController.nuevoEquipo.categoria}">
                         <f:selectItems value="#{listarCategoriaController.categorias}" var="cat" itemLabel="#{cat.nombreCategoria}"/>
                     </h:selectOneMenu>
-                    <h:outputText value="No. identificación profesor: "/>
-                    <h:selectOneMenu class="form-control" converter="personaConverter" id="noIdentificacionProfesor" value="#{registrarEquipoController.nuevoEquipo.noIdentificacionnProfesor}">
-                        <f:selectItems value="#{listarPersonasJugadorController.personasJugadores}" var="pju" itemLabel="#{pju.noIdentificacion}"/>
+                    <h:outputText style="margin-bottom: 10px;" value="No. identificación profesor: "/>
+                    <h:selectOneMenu style="margin-bottom: 10px;" class="form-control" converter="personaConverter" id="noIdentificacionProfesor" value="#{registrarEquipoController.nuevoEquipo.noIdentificacionnProfesor}">
+                        <f:selectItems value="#{listarPersonasController.personasProfes}" var="pp" itemLabel="#{pp.noIdentificacion}"/>
                     </h:selectOneMenu>
 
-                    <h:commandButton value="Registrar" style="margin-top: 5%;" class="btn btn-primary" actionListener="#{registrarEquipoController.registrarEquipo()}"/>
-                </b:panelGrid>
-            </h:form>
-
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
 
 
+
+                    </b:panelGrid>
+                
+                    <b:commandButton value="Registrar" style="margin-top: 5%;" class="btn btn-primary" actionListener="#{registrarEquipoController.registrarEquipo()}"/>
+                
+            </b:form>
         </div>
-        <h:form id="tbl-equipos" prependId="false" style="margin-left: 20%; width: 70%; margin-top: 3%; color: #080808; 
+
+
+
+
+        <h:form id="tbl-equipos" prependId="false" style="margin-left: 20%; width: 75%; margin-top: 7%; color: #080808; 
                 background-color: #fff;">
             <b:dataTable value="#{listarEquipoController.equipos()}" var="p">
-                <b:dataTableColumn label="Codigo equipo" value="#{p.codigoEquipo}"/>
-                <b:dataTableColumn label="Jugador" value="#{p.noIdentificacionJugador}"/>
+                <b:dataTableColumn label="Codigo del equipo" value="#{p.codigoEquipo}"/>
+                <b:dataTableColumn label="Jugador" value="#{p.noIdentificacionJugador.nombre1} #{p.noIdentificacionJugador.apellido1}"/>
+                <b:dataTableColumn label="No. identificación J." value="#{p.noIdentificacionJugador.noIdentificacion}"/>
+                <b:dataTableColumn label="Profesor" value="#{p.noIdentificacionnProfesor.nombre1} #{p.noIdentificacionnProfesor.apellido1}"/>
+                <b:dataTableColumn label="No. identificación P." value="#{p.noIdentificacionnProfesor.noIdentificacion} "/>
+                <b:dataTableColumn label="Categoría" value="#{p.categoria.nombreCategoria} "/>
             </b:dataTable>
 
         </h:form>
