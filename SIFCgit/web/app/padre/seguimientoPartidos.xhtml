@@ -9,7 +9,22 @@
 
 
     <ui:define name="content" >
-       Padre
+       <h:form id="tabla_partidos" prependId="false" style="margin-left: 20%; width: 75%; background-color: #fff; color: #080808; margin-top: 4%;">
+            <legend>Historial de partidos jugados </legend>
+            <b:dataTable value="#{listarSeguimientoPartidosController.seguimientoPartidos}" var="p">
+
+                <b:dataTableColumn label="Profesor" value="#{p.noIdentificacionProfesor.nombre1} #{p.noIdentificacionProfesor.apellido1}"/>
+                <b:dataTableColumn label="No. identificación del P." value="#{p.noIdentificacionProfesor.noIdentificacion}"/>
+                <b:dataTableColumn label="Tiempo jugado" value="#{p.tiempoJuado}"/>
+                <b:dataTableColumn label="Rival" value="#{p.nombreEquipoRival}"/>
+                <b:dataTableColumn label="Observaciones" value="#{p.observaciones}"/>
+                <b:dataTableColumn label="Fecha del partido" value="#{p.fechaDelPartido}"/>
+
+
+            </b:dataTable>
+
+        </h:form>
+
     </ui:define>
 
 

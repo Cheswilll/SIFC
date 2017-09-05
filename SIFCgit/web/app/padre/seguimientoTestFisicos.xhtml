@@ -9,7 +9,23 @@
 
 
     <ui:define name="content" >
-       Padre
+       <h:form id="tbl-testfisicos" prependId="false" style="margin-left: 20%; width: 75%; background-color: #fff; color: #080808; margin-top: 4%;">
+            <legend>Historial de test físicos </legend>
+            <b:dataTable value="#{listarSeguimientoTestController.seguimientoTestFisicos}" var="t">
+
+                <b:dataTableColumn label="Jugador" value="#{t.noIdentificacionJugador.nombre1} #{t.noIdentificacionJugador.apellido1}"/>
+                <b:dataTableColumn label="No. identificación del J." value="#{t.noIdentificacionJugador.noIdentificacion}"/>
+                <b:dataTableColumn label="Velocidad" value="#{t.velocidad}"/>
+                <b:dataTableColumn label="Altura" value="#{t.altura}"/>
+                <b:dataTableColumn label="Resistencia" value="#{t.resistencia}"/>
+                <b:dataTableColumn label="Fuerza" value="#{t.fuerza}"/>
+                <b:dataTableColumn label="Agilidad" value="#{t.agilidad}"/>
+                <b:dataTableColumn label="Peso" value="#{t.peso}"/>
+
+
+            </b:dataTable>
+
+        </h:form>
     </ui:define>
 
 

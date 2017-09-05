@@ -31,5 +31,6 @@ public interface SeguimientoFacadeLocal {
     int count();
     
     List<Seguimiento> seguimeintosPorProfesor();
+    List<Seguimiento> listarSeguimientosDeSeguimientos();
     
 }

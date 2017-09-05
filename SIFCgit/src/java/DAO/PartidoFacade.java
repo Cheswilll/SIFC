@@ -24,10 +24,10 @@ public class PartidoFacade extends AbstractFacade<Partido> implements PartidoFac
 
     @PersistenceContext(unitName = "SIFCgitPU")
     private EntityManager em;
-    
+
     @Inject
     private SessionController sc;
-    
+
     @Override
     protected EntityManager getEntityManager() {
         return em;
@@ -36,15 +36,14 @@ public class PartidoFacade extends AbstractFacade<Partido> implements PartidoFac
     public PartidoFacade() {
         super(Partido.class);
     }
-    
-    
+
     @Override
     public List<Partido> listarPartidosPorProfesor() {
-        
+
         System.out.println("Ejecutando metodo buscar");
-        Query q = em.createNativeQuery("SELECT p.* " +
-                                "FROM partidos AS p " +
-                                "WHERE p.noIdentificacionProfesor= ?;", Partido.class);
+        Query q = em.createNativeQuery("SELECT p.* "
+                + "FROM partidos AS p "
+                + "WHERE p.noIdentificacionProfesor= ?;", Partido.class);
         q.setParameter(1, sc.getPersona().getNoIdentificacion());
         List<Partido> partidos = q.getResultList();
 
@@ -54,5 +53,43 @@ public class PartidoFacade extends AbstractFacade<Partido> implements PartidoFac
         System.out.println(partidos);
         return partidos;
     }
-    
+
+    @Override
+    public List<Partido> listarSeguimientoPartidos() {
+
+        System.out.println("Ejecutando metodo buscar");
+        Query q = em.createNativeQuery("SELECT p.* "
+                + "FROM partidos AS p JOIN familias JOIN personas "
+                + "ON personas.noIdentificacion = p.noIdentificacionProfesor AND personas.noIdentificacion = familias.noIdentificacionJugador AND personas.noIdentificacion = familias.noIdentificacionPadre  "
+                + "AND familias.noIdentificacionPadre= ?;", Partido.class);
+        q.setParameter(1, sc.getPersona().getNoIdentificacion());
+        List<Partido> partidos = q.getResultList();
+
+        for (Partido p : partidos) {
+            System.out.println("Listando usuarios Administrador");
+        }
+        System.out.println(partidos);
+        return partidos;
+    }
+
+    @Override
+    public List<Partido> listarPartidosPorEquipo(Integer codigoEquipo) {
+
+        System.out.println("Ejecutando metodo buscar");
+        Query q = em.createNativeQuery("SELECT p.* FROM partidos AS p JOIN personas JOIN equipos "
+                + "ON personas.noIdentificacion = equipos.noIdentificacionJugador "
+                + "AND equipos.codigoEquipo= ? GROUP BY p.idPartido;", Partido.class);
+        q.setParameter(1,codigoEquipo);
+        List<Partido> partidos = q.getResultList();
+
+        for (Partido p : partidos) {
+            System.out.println("Listando usuarios Administrador");
+        }
+        System.out.println(partidos);
+        return partidos;
+
+    }
+
+   
+
 }

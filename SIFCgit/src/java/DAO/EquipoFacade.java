@@ -24,8 +24,7 @@ public class EquipoFacade extends AbstractFacade<Equipo> implements EquipoFacade
 
     @PersistenceContext(unitName = "SIFCgitPU")
     private EntityManager em;
-    
-    
+
     @Inject
     private SessionController sc;
 
@@ -37,14 +36,14 @@ public class EquipoFacade extends AbstractFacade<Equipo> implements EquipoFacade
     public EquipoFacade() {
         super(Equipo.class);
     }
-    
+
     @Override
     public List<Equipo> listarCategoria() {
-        
+
         System.out.println("Ejecutando metodo buscar");
-        Query q = em.createNativeQuery("SELECT e.* " +
-                                "FROM equipos AS e " +
-                                " WHERE e.noIdentificacionnProfesor= ?;", Equipo.class);
+        Query q = em.createNativeQuery("SELECT e.* "
+                + "FROM equipos AS e "
+                + " WHERE e.noIdentificacionnProfesor= ?;", Equipo.class);
         q.setParameter(1, sc.getPersona().getNoIdentificacion());
         List<Equipo> categoria = q.getResultList();
 
@@ -56,5 +55,5 @@ public class EquipoFacade extends AbstractFacade<Equipo> implements EquipoFacade
     }
 
     
-    
+
 }

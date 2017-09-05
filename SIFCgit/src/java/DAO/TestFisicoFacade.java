@@ -5,7 +5,6 @@
  */
 package DAO;
 
-import Entities.Seguimiento;
 import Entities.TestFisico;
 import SIFC.login.controllers.SessionController;
 import java.io.Serializable;
@@ -25,10 +24,10 @@ public class TestFisicoFacade extends AbstractFacade<TestFisico> implements Test
 
     @PersistenceContext(unitName = "SIFCgitPU")
     private EntityManager em;
-    
+
     @Inject
     private SessionController sc;
-    
+
     @Override
     protected EntityManager getEntityManager() {
         return em;
@@ -40,12 +39,12 @@ public class TestFisicoFacade extends AbstractFacade<TestFisico> implements Test
 
     @Override
     public List<TestFisico> listarTestPorProfesor() {
-        
+
         System.out.println("Ejecutando metodo buscar");
-        Query q = em.createNativeQuery("SELECT t.* " +
-                                "FROM testfisicos AS t " +
-                                "WHERE t.noIdentificacionProfesor = ?;", TestFisico.class);
-        q.setParameter(1, sc.getPersona().getNoIdentificacion() );
+        Query q = em.createNativeQuery("SELECT t.* "
+                + "FROM testfisicos AS t "
+                + "WHERE t.noIdentificacionProfesor = ?;", TestFisico.class);
+        q.setParameter(1, sc.getPersona().getNoIdentificacion());
         List<TestFisico> testfisicos = q.getResultList();
 
         for (TestFisico s : testfisicos) {
@@ -54,5 +53,24 @@ public class TestFisicoFacade extends AbstractFacade<TestFisico> implements Test
         System.out.println(testfisicos);
         return testfisicos;
     }
-    
+
+    @Override
+    public List<TestFisico> listarSeguimientoTestFisico() {
+
+        System.out.println("Ejecutando metodo buscar");
+        Query q = em.createNativeQuery("SELECT t.* FROM testfisicos as t JOIN familias JOIN personas "
+                + "ON personas.noIdentificacion = t.noIdentificacionJugador "
+                + "AND personas.noIdentificacion = t.noIdentificacionJugador "
+                + "AND personas.noIdentificacion = familias.noIdentificacionJugador "
+                + "AND familias.noIdentificacionPadre= ?;", TestFisico.class);
+        q.setParameter(1, sc.getPersona().getNoIdentificacion());
+        List<TestFisico> testFisicos = q.getResultList();
+
+        for (TestFisico t : testFisicos) {
+            System.out.println("Listando usuarios Administrador");
+        }
+        System.out.println(testFisicos);
+        return testFisicos;
+    }
+
 }

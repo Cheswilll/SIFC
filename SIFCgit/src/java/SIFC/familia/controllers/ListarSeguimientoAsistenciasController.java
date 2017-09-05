@@ -57,8 +57,6 @@ public class ListarSeguimientoAsistenciasController implements Serializable{
         this.seguimientoAsistencias = seguimientoAsistencias;
     }
 
-    
-    
     @PostConstruct
     public void init(){
     seguimientoAsistencias = afl.listarSeguimientoAsistencias();

@@ -53,5 +53,23 @@ public class SeguimientoFacade extends AbstractFacade<Seguimiento> implements Se
         System.out.println(seguimientos);
         return seguimientos;
     }
+
+    @Override
+    public List<Seguimiento> listarSeguimientosDeSeguimientos() {
+        
+        System.out.println("Ejecutando metodo buscar");
+        Query q = em.createNativeQuery("SELECT s.* "
+                + "FROM seguimientos AS s JOIN familias JOIN personas "
+                + "ON personas.noIdentificacion = s.noIdentificacionJugador AND personas.noIdentificacion = s.noIdentificacionJugador AND personas.noIdentificacion = familias.noIdentificacionJugador  "
+                + "AND familias.noIdentificacionPadre= ?;", Seguimiento.class);
+        q.setParameter(1, sc.getPersona().getNoIdentificacion());
+        List<Seguimiento> seguimientos = q.getResultList();
+
+        for (Seguimiento s : seguimientos) {
+            System.out.println("Listando usuarios Administrador");
+        }
+        System.out.println(seguimientos);
+        return seguimientos;
+    }
     
 }

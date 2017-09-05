@@ -39,4 +39,5 @@ public interface AsistenciaFacadeLocal {
      Integer listarAsistenciasA(Long noidJug);
      
      
+     
 }

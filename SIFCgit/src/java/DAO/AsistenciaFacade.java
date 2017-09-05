@@ -101,12 +101,12 @@ public class AsistenciaFacade extends AbstractFacade<Asistencia> implements Asis
 
     @Override
     public List<Asistencia> listarSeguimientoAsistencias() {
-        
+
         System.out.println("Ejecutando metodo buscar");
-        Query q = em.createNativeQuery("SELECT a.* " +
-                                "FROM asistencias AS a JOIN familias JOIN personas " +
-                                "ON personas.noIdentificacion = a.noIdentificacionJugador AND personas.noIdentificacion = a.noIdentificacionJugador "
-                                + "AND familias.noIdentificacionPadre= ? GROUP BY familias.noIdentificacionJugador;", Asistencia.class);
+        Query q = em.createNativeQuery("SELECT a.* "
+                + "FROM asistencias AS a JOIN familias JOIN personas "
+                + "ON personas.noIdentificacion = a.noIdentificacionJugador AND personas.noIdentificacion = a.noIdentificacionJugador AND personas.noIdentificacion = familias.noIdentificacionJugador "
+                + "AND familias.noIdentificacionPadre= ?;", Asistencia.class);
         q.setParameter(1, sc.getPersona().getNoIdentificacion());
         List<Asistencia> asistencias = q.getResultList();
 
@@ -116,5 +116,7 @@ public class AsistenciaFacade extends AbstractFacade<Asistencia> implements Asis
         System.out.println(asistencias);
         return asistencias;
     }
+
+    
 
 }

@@ -33,4 +33,5 @@ public interface EquipoFacadeLocal {
     
     List<Equipo> listarCategoria();
     
+    
 }

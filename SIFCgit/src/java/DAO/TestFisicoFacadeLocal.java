@@ -31,5 +31,6 @@ public interface TestFisicoFacadeLocal {
     int count();
     
     List<TestFisico> listarTestPorProfesor();
+    List<TestFisico> listarSeguimientoTestFisico();
     
 }

@@ -32,5 +32,10 @@ public interface PartidoFacadeLocal {
     
     
     List<Partido> listarPartidosPorProfesor();
+    List<Partido> listarSeguimientoPartidos();
+    
+    
+    List<Partido> listarPartidosPorEquipo(Integer codigoEquipo);
+    
     
 }

@@ -14,9 +14,8 @@
         <h:form id="tabla_partidos" prependId="false" style="margin-left: 20%; width: 70%; margin-top: 3%; color: #080808; 
                 background-color: #fff;">
             <legend>Tabla de partidos</legend>
-            <b:dataTable value="#{listarEquipoController.listarCategoria()}" var="p">
-                <b:dataTableColumn label="Codigo equipo" value="#{p.codigoEquipo}"/>
-                <b:dataTableColumn label="Jugador" value="#{p.noIdentificacionJugador}"/>
+            <b:dataTable value="#{listarEquipoPorJugadorController.partidosPorJugador}" var="p">
+                <b:dataTableColumn label="Codigo equipo" value="#{p.idPartido}"/>
             </b:dataTable>
 
         </h:form>
