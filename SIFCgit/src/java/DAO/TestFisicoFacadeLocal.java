@@ -33,4 +33,6 @@ public interface TestFisicoFacadeLocal {
     List<TestFisico> listarTestPorProfesor();
     List<TestFisico> listarSeguimientoTestFisico();
     
+    List<TestFisico> seguimientoGeneralTestFisico(Long noIdJug);
+    
 }

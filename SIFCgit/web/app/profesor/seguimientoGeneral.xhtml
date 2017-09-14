@@ -11,21 +11,20 @@
 
     <ui:define name="content" >
         <h:form id="tabla_personas" prependId="false" style="width: 75%; background-color: #fff; color: #080808; margin-left: 20%; margin-top: 4%;">
-            <legend>Dotaciones registradas</legend>
-            <b:dataTable value="#{listarSeguimientoController.seguimientos}" var="s">
-                <b:dataTableColumn label="ID" value="#{s.idSeguimiento}"/>
-                <b:dataTableColumn label="No. identificación jugador" value="#{s.noIdentificacionJugador}"/>
-                <b:dataTableColumn label="Fecha de ingreso" value="#{s.fechaIngreso}"/>
-                <b:dataTableColumn label="Profesor" value="#{s.noIdentificacionProfesor.nombre1} #{s.noIdentificacionProfesor.apellido1}"/>
+            <legend>Seguimiento de los jugadores</legend>
+            <b:dataTable value="#{listarEquipoController.categoria}" var="e">
+                <b:dataTableColumn label="Documento" value="#{e.noIdentificacionJugador.noIdentificacion}"/>
+                <b:dataTableColumn label="Nombres" value="#{e.noIdentificacionJugador.nombre1} #{e.noIdentificacionJugador.nombre2}"/>
+                <b:dataTableColumn label="Apellidos" value="#{e.noIdentificacionJugador.apellido1} #{e.noIdentificacionJugador.apellido2}"/>
                 <b:dataTableColumn label="Más" value="">
-                    <b:commandButton look="primary" value="" iconAwesome="pencil" action="#{modificarSeguimientoController.preModificarSeguimiento(s)}"/>
-                    <b:commandButton look="success" value="" iconAwesome="eye" action="#{verSeguimientoController.verSeguimiento(s)}"/>
+                    <b:commandButton look="success" value=" Ver seguimiento" iconAwesome="eye" action="#{listarSeguimientoGeneral.preConsultarSeguimiento(e)}"/>
                 </b:dataTableColumn>
             </b:dataTable>
 
         </h:form>
 
 
+       
 
     </ui:define>
 

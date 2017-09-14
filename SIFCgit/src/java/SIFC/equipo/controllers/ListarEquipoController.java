@@ -84,6 +84,8 @@ public class ListarEquipoController implements Serializable{
     
     @PostConstruct
     public void init(){
+        listarCategoria();
+        equipos();
         jugadoresCategoria = pfl.listarJugadoresPorProfesor();
     }
     

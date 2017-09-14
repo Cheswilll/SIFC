@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Asistencia.findAll", query = "SELECT a FROM Asistencia a")
     , @NamedQuery(name = "Asistencia.findByIdAsistencia", query = "SELECT a FROM Asistencia a WHERE a.idAsistencia = :idAsistencia")
+    , @NamedQuery(name = "Asistencia.findByAsistenciaJug", query = "SELECT COUNT(a.asistencia) FROM Asistencia a WHERE a.asistencia = :asistencia AND a.noIdentificacionJugador= :noidJug")
     , @NamedQuery(name = "Asistencia.findByFechaAsistencia", query = "SELECT a FROM Asistencia a WHERE a.fechaAsistencia = :fechaAsistencia")
     , @NamedQuery(name = "Asistencia.findByAsistencia", query = "SELECT a FROM Asistencia a WHERE a.asistencia = :asistencia")})
 public class Asistencia implements Serializable {

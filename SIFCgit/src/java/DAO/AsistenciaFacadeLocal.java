@@ -32,6 +32,8 @@ public interface AsistenciaFacadeLocal {
     
     
      List<Asistencia> listarAsistencias();
+     List<Asistencia> listarJugadorDeAsistencias();
+     
      List<Asistencia> listarAsistenciasPorJugador(Long noidJug);
      List<Asistencia> listarSeguimientoAsistencias();
      

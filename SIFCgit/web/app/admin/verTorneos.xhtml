@@ -10,6 +10,7 @@
 
     <ui:define name="content" >
         <h:form id="tabla_torneos" prependId="false" style="color: #080808; margin-left: 20%; width: 78%; background-color: #fff;">
+            <legend>Torneos registrados</legend>
             <b:dataTable value="#{listarTorneoController.torneos}" var="t">
                 <b:dataTableColumn label="#{msjAdmin.txtIdTorneo}" value="#{t.idTorneo}"/>
                 <b:dataTableColumn label="#{msjAdmin.tblLugar}" value="#{t.lugarTorneo}"/>

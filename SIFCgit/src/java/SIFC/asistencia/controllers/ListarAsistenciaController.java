@@ -25,6 +25,7 @@ public class ListarAsistenciaController implements Serializable{
     @EJB
     private AsistenciaFacadeLocal afl;
     private List<Asistencia> asistencias;
+    private List<Asistencia> jugadoresAsistencia;
     
     public ListarAsistenciaController() {
     }
@@ -32,11 +33,22 @@ public class ListarAsistenciaController implements Serializable{
     @PostConstruct
     public void init(){
         asistencias = afl.listarAsistencias();
+        jugadoresAsistencia= afl.listarJugadorDeAsistencias();
     }
 
     public List<Asistencia> getAsistencias() {
         return asistencias;
     }
+
+    public List<Asistencia> getJugadoresAsistencia() {
+        return jugadoresAsistencia;
+    }
+
+    public void setJugadoresAsistencia(List<Asistencia> jugadoresAsistencia) {
+        this.jugadoresAsistencia = jugadoresAsistencia;
+    }
+    
+    
     
     
 

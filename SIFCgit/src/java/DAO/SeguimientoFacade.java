@@ -24,7 +24,7 @@ public class SeguimientoFacade extends AbstractFacade<Seguimiento> implements Se
 
     @PersistenceContext(unitName = "SIFCgitPU")
     private EntityManager em;
-    
+
     @Inject
     private SessionController sc;
 
@@ -36,15 +36,15 @@ public class SeguimientoFacade extends AbstractFacade<Seguimiento> implements Se
     public SeguimientoFacade() {
         super(Seguimiento.class);
     }
-    
+
     @Override
     public List<Seguimiento> seguimeintosPorProfesor() {
-        
+
         System.out.println("Ejecutando metodo buscar");
-        Query q = em.createNativeQuery("SELECT s.* " +
-                                "FROM seguimientos AS s " +
-                                "WHERE s.noIdentificacionProfesor = ?;", Seguimiento.class);
-        q.setParameter(1, sc.getPersona().getNoIdentificacion() );
+        Query q = em.createNativeQuery("SELECT s.* "
+                + "FROM seguimientos AS s "
+                + "WHERE s.noIdentificacionProfesor = ?;", Seguimiento.class);
+        q.setParameter(1, sc.getPersona().getNoIdentificacion());
         List<Seguimiento> seguimientos = q.getResultList();
 
         for (Seguimiento s : seguimientos) {
@@ -56,7 +56,7 @@ public class SeguimientoFacade extends AbstractFacade<Seguimiento> implements Se
 
     @Override
     public List<Seguimiento> listarSeguimientosDeSeguimientos() {
-        
+
         System.out.println("Ejecutando metodo buscar");
         Query q = em.createNativeQuery("SELECT s.* "
                 + "FROM seguimientos AS s JOIN familias JOIN personas "
@@ -71,5 +71,22 @@ public class SeguimientoFacade extends AbstractFacade<Seguimiento> implements Se
         System.out.println(seguimientos);
         return seguimientos;
     }
-    
+
+    @Override
+    public List<Seguimiento> seguimientosEnGeneral(Long noIdJug) {
+
+        System.out.println("Ejecutando metodo buscar");
+        Query q = em.createNativeQuery("SELECT s.* "
+                + "FROM seguimientos AS s "
+                + " WHERE s.noIdentificacionJugador= ?;", Seguimiento.class);
+        q.setParameter(1, noIdJug);
+        List<Seguimiento> seguimientos = q.getResultList();
+
+        for (Seguimiento s : seguimientos) {
+            System.out.println("Listando seguimientos");
+        }
+        System.out.println(seguimientos);
+        return seguimientos;
+    }
+
 }

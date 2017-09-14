@@ -13,7 +13,7 @@
             <legend>Asistencias registradas</legend>
             <b:dataTable value="#{listarAsistenciaController.asistencias}" var="a">
                 <b:dataTableColumn label="I.D" value="#{a.idAsistencia}"/>
-                <b:dataTableColumn label="Fecha" value="#{a.fechaAsistencia}"/>
+                <b:dataTableColumn label="Fecha" value="#{a.fechaAsistencia}"  />
                 <b:dataTableColumn label="Asistencia" value="#{a.asistencia}"/>
                 <b:dataTableColumn label="Jugador" value="#{a.noIdentificacionJugador}"/>
                 
@@ -27,7 +27,7 @@
         
         <h:form id="tabla_control" prependId="false" style="margin-left: 20%; width: 75%; background-color: #fff; color: #080808; margin-top: 4%;">
             <legend>Control de asistencias semanales</legend>
-            <b:dataTable value="#{listarAsistenciaController.asistencias}" var="a">
+            <b:dataTable value="#{listarAsistenciaController.jugadoresAsistencia}" var="a">
                 <b:dataTableColumn label="I.D" value="#{a.idAsistencia}"/>
                 <b:dataTableColumn label="Jugador" value="#{a.noIdentificacionJugador}"/>
                 <b:dataTableColumn label="Más" value="">

@@ -33,4 +33,6 @@ public interface SeguimientoFacadeLocal {
     List<Seguimiento> seguimeintosPorProfesor();
     List<Seguimiento> listarSeguimientosDeSeguimientos();
     
+    List<Seguimiento> seguimientosEnGeneral(Long noIdJug);
+    
 }

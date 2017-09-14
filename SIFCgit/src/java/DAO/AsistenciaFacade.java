@@ -84,9 +84,9 @@ public class AsistenciaFacade extends AbstractFacade<Asistencia> implements Asis
         try {
             getEntityManager().getEntityManagerFactory().getCache().evictAll();
             System.out.println("Ejecutando metodo buscar");
-            Query q = em.createNativeQuery("SELECT a.count(asistencia) "
-                    + "FROM asistencias AS a "
-                    + " WHERE fechaAsistencia>= date_sub(curdate(), interval 7 day) AND a.asistencia='a' AND a.noIdentificacionJugador= ?;", Asistencia.class);
+            Query q = em.createNativeQuery("SELECT COUNT(a.asistencia) "
+                    + " FROM asistencias AS a "
+                    + " WHERE a.asistencia='a' AND a.noIdentificacionJugador= ?;", Asistencia.class);
             q.setParameter(1, noidJug);
             Integer asistenciaA = (Integer) q.getSingleResult();
 
@@ -115,6 +115,22 @@ public class AsistenciaFacade extends AbstractFacade<Asistencia> implements Asis
         }
         System.out.println(asistencias);
         return asistencias;
+    }
+
+    @Override
+    public List<Asistencia> listarJugadorDeAsistencias() {
+        System.out.println("Ejecutando metodo buscar");
+        Query q = em.createNativeQuery("SELECT a.* "
+                + "FROM asistencias AS a JOIN personas"
+                + " WHERE personas.noIdentificacion = a.noIdentificacionJugador AND a.noIdentificacionProfesor= ? GROUP BY a.noIdentificacionJugador;", Asistencia.class);
+        q.setParameter(1, sc.getPersona().getNoIdentificacion());
+        List<Asistencia> asistencia = q.getResultList();
+
+        for (Asistencia p : asistencia) {
+            System.out.println("Listando Asistencia Correspondiente");
+        }
+        System.out.println(asistencia);
+        return asistencia;
     }
 
     

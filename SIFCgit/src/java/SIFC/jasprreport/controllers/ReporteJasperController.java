@@ -56,7 +56,7 @@ public class ReporteJasperController {
     private void prepararExport() throws JRException {
         Map<String, Object> params = new HashMap<>();
         JRBeanCollectionDataSource bcds = new JRBeanCollectionDataSource(personas, false);
-        String reportPath = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/") + "/WEB-INF/reportes/jasper/reporteusuarios.jasper";
+        String reportPath = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/") + "/WEB-INF/reportes/jasper/reporteUsuarios.jasper";
         jp = JasperFillManager.fillReport(reportPath, params, bcds);
     }
     public void exportarPDF() throws IOException, JRException {

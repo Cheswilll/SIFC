@@ -73,4 +73,20 @@ public class TestFisicoFacade extends AbstractFacade<TestFisico> implements Test
         return testFisicos;
     }
 
+    @Override
+    public List<TestFisico> seguimientoGeneralTestFisico(Long noIdJug) {
+        
+        System.out.println("Ejecutando metodo buscar");
+        Query q = em.createNativeQuery("SELECT t.* FROM testfisicos AS t "
+                + "WHERE t.noIdentificacionJugador = ?;", TestFisico.class);
+        q.setParameter(1, noIdJug);
+        List<TestFisico> testFisicos = q.getResultList();
+
+        for (TestFisico t : testFisicos) {
+            System.out.println("Listando test del jugador");
+        }
+        System.out.println(testFisicos);
+        return testFisicos;
+    }
+
 }
