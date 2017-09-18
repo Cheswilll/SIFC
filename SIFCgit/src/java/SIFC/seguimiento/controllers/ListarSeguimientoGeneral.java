@@ -17,6 +17,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -122,6 +123,18 @@ public class ListarSeguimientoGeneral implements Serializable{
     private Double altura8;
     private Double altura9;
     private Double altura10;
+    
+    
+    private Date fecha1;
+    private Date fecha2;
+    private Date fecha3;
+    private Date fecha4;
+    private Date fecha5;
+    private Date fecha6;
+    private Date fecha7;
+    private Date fecha8;
+    private Date fecha9;
+    private Date fecha10;
     
     private Equipo equipo;
     private List<TestFisico> testFisicosDelJugador;
@@ -640,6 +653,91 @@ public class ListarSeguimientoGeneral implements Serializable{
     public void setAltura10(Double altura10) {
         this.altura10 = altura10;
     }
+
+    public Date getFecha1() {
+        return fecha1;
+    }
+
+    public void setFecha1(Date fecha1) {
+        this.fecha1 = fecha1;
+    }
+
+    public Date getFecha2() {
+        return fecha2;
+    }
+
+    public void setFecha2(Date fecha2) {
+        this.fecha2 = fecha2;
+    }
+
+    public Date getFecha3() {
+        return fecha3;
+    }
+
+    public void setFecha3(Date fecha3) {
+        this.fecha3 = fecha3;
+    }
+
+    public Date getFecha4() {
+        return fecha4;
+    }
+
+    public void setFecha4(Date fecha4) {
+        this.fecha4 = fecha4;
+    }
+
+    public Date getFecha5() {
+        return fecha5;
+    }
+
+    public void setFecha5(Date fecha5) {
+        this.fecha5 = fecha5;
+    }
+
+    public Date getFecha6() {
+        return fecha6;
+    }
+
+    public void setFecha6(Date fecha6) {
+        this.fecha6 = fecha6;
+    }
+
+    public Date getFecha7() {
+        return fecha7;
+    }
+
+    public void setFecha7(Date fecha7) {
+        this.fecha7 = fecha7;
+    }
+
+    public Date getFecha8() {
+        return fecha8;
+    }
+
+    public void setFecha8(Date fecha8) {
+        this.fecha8 = fecha8;
+    }
+
+    public Date getFecha9() {
+        return fecha9;
+    }
+
+    public void setFecha9(Date fecha9) {
+        this.fecha9 = fecha9;
+    }
+
+    public Date getFecha10() {
+        return fecha10;
+    }
+
+    public void setFecha10(Date fecha10) {
+        this.fecha10 = fecha10;
+    }
+    
+    
+    
+    
+    
     
     
     
@@ -673,6 +771,7 @@ public class ListarSeguimientoGeneral implements Serializable{
                fuerza1 = resultado.getDouble("fuerza");
                peso1 = resultado.getDouble("peso");
                altura1 = resultado.getDouble("altura");
+               fecha1 = resultado.getDate("fechaTestFisico");
                
                 
             }
@@ -694,6 +793,7 @@ public class ListarSeguimientoGeneral implements Serializable{
                fuerza2 = resultado.getDouble("fuerza");
                peso2 = resultado.getDouble("peso");
                altura2 = resultado.getDouble("altura");
+               fecha2 = resultado.getDate("fechaTestFisico");
                 
             }
         } catch (SQLException ex) {
@@ -714,6 +814,7 @@ public class ListarSeguimientoGeneral implements Serializable{
                fuerza3 = resultado.getDouble("fuerza");
                peso3 = resultado.getDouble("peso");
                altura3 = resultado.getDouble("altura");
+               fecha3 = resultado.getDate("fechaTestFisico");
                 
             }
         } catch (SQLException ex) {
@@ -734,6 +835,7 @@ public class ListarSeguimientoGeneral implements Serializable{
                fuerza4 = resultado.getDouble("fuerza");
                peso4 = resultado.getDouble("peso");
                altura4 = resultado.getDouble("altura");
+               fecha4 = resultado.getDate("fechaTestFisico");
                 
             }
         } catch (SQLException ex) {
@@ -755,6 +857,7 @@ public class ListarSeguimientoGeneral implements Serializable{
                fuerza5 = resultado.getDouble("fuerza");
                peso5 = resultado.getDouble("peso");
                altura5 = resultado.getDouble("altura");
+               fecha5 = resultado.getDate("fechaTestFisico");
                 
             }
         } catch (SQLException ex) {
@@ -774,6 +877,7 @@ public class ListarSeguimientoGeneral implements Serializable{
                fuerza6 = resultado.getDouble("fuerza");
                peso6 = resultado.getDouble("peso");
                altura6 = resultado.getDouble("altura");
+               fecha6 = resultado.getDate("fechaTestFisico");
                 
             }
         } catch (SQLException ex) {
@@ -794,6 +898,7 @@ public class ListarSeguimientoGeneral implements Serializable{
                fuerza7 = resultado.getDouble("fuerza");
                peso7 = resultado.getDouble("peso");
                altura7 = resultado.getDouble("altura");
+               fecha7 = resultado.getDate("fechaTestFisico");
                 
             }
         } catch (SQLException ex) {
@@ -815,6 +920,7 @@ public class ListarSeguimientoGeneral implements Serializable{
                fuerza8 = resultado.getDouble("fuerza");
                peso8 = resultado.getDouble("peso");
                altura8 = resultado.getDouble("altura");
+               fecha8 = resultado.getDate("fechaTestFisico");
             }
         } catch (SQLException ex) {
             Logger.getLogger(ChartView.class.getName()).log(Level.SEVERE, null, ex);
@@ -834,6 +940,7 @@ public class ListarSeguimientoGeneral implements Serializable{
                fuerza9 = resultado.getDouble("fuerza");
                peso9 = resultado.getDouble("peso");
                altura9 = resultado.getDouble("altura");
+               fecha9 = resultado.getDate("fechaTestFisico");
                
                 
             }
@@ -855,6 +962,7 @@ public class ListarSeguimientoGeneral implements Serializable{
                fuerza10 = resultado.getDouble("fuerza");
                peso10 = resultado.getDouble("peso");
                altura10 = resultado.getDouble("altura");
+               fecha10 = resultado.getDate("fechaTestFisico");
                 
             }
         } catch (SQLException ex) {

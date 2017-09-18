@@ -11,7 +11,7 @@
     <ui:define name="content" >
 
 
-        <div id="fondo" style="background-color: #16202f; width: 75%; height: 620px; margin-left: 20%;margin-top: 60px; border-radius: 5px 5px 5px 5px" >
+        <div id="fondo" style="background-color: #16202f; width: 75%; height: 655px; margin-left: 20%;margin-top: 60px; border-radius: 5px 5px 5px 5px" >
             <legend style="color: #fff; border-color: #fff; width:90%; margin-left: 4%;">Registrar test físico</legend>
             <b:form style="margin-left: 3%; margin-top: 6%; background-color: #16202f; color: #fff; width: 65%; position: absolute;">
                 <div id="info-asistencia" style="margin-top: -5%; margin-bottom: 5%;">
@@ -33,6 +33,10 @@
                     <h:selectOneMenu style="margin-bottom: 10px;" class="form-control" converter="personaConverter" id="noIdentificacionJugador" value="#{registrarTestController.testFisico.noIdentificacionJugador}">
                         <f:selectItems value="#{listarEquipoController.jugadoresCategoria}" var="pj" itemLabel="#{pj.noIdentificacion} #{pj.nombre1} #{pj.apellido1}"/>
                     </h:selectOneMenu>
+                    
+                    <h:outputLabel value="Fecha:" />
+                    <b:dateTimePicker value="#{registrarTestController.testFisico.fechaTestFisico}" format="YYYY/MM/DD"/>
+                    
                     
                     <h:outputText value="Velocidad: "/>
                     <b:inputText value="#{registrarTestController.testFisico.velocidad}"/>

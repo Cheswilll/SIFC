@@ -50,39 +50,48 @@ public class Seguimiento implements Serializable {
     @Basic(optional = false)
     @Column(name = "idSeguimiento")
     private Integer idSeguimiento;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "nombresJugador")
     private String nombresJugador;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "partidosJugados")
     private int partidosJugados;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "tallaGuayos")
     private int tallaGuayos;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "testRealizados")
     private int testRealizados;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "tallaCamisa")
     private int tallaCamisa;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "tallaPantaloneta")
     private int tallaPantaloneta;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "fechaIngreso")
     @Temporal(TemporalType.DATE)
     private Date fechaIngreso;
+    
     @JoinColumn(name = "noIdentificacionJugador", referencedColumnName = "noIdentificacion")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Persona noIdentificacionJugador;
+    
     @JoinColumn(name = "noIdentificacionProfesor", referencedColumnName = "noIdentificacion")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Persona noIdentificacionProfesor;

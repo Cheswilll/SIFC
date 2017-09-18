@@ -6,6 +6,7 @@
 package Entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,6 +19,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -69,6 +72,13 @@ public class TestFisico implements Serializable {
     @NotNull
     @Column(name = "peso")
     private double peso;
+    
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "fechaTestFisico")
+    @Temporal(TemporalType.DATE)
+    private Date fechaTestFisico;
+    
     @JoinColumn(name = "noIdentificacionJugador", referencedColumnName = "noIdentificacion")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Persona noIdentificacionJugador;
@@ -92,6 +102,19 @@ public class TestFisico implements Serializable {
         this.agilidad = agilidad;
         this.peso = peso;
     }
+
+    public TestFisico(Integer idTest, double velocidad, double altura, double resistencia, double fuerza, double agilidad, double peso, Date fechaTestFisico) {
+        this.idTest = idTest;
+        this.velocidad = velocidad;
+        this.altura = altura;
+        this.resistencia = resistencia;
+        this.fuerza = fuerza;
+        this.agilidad = agilidad;
+        this.peso = peso;
+        this.fechaTestFisico = fechaTestFisico;
+    }
+    
+    
 
     public Integer getIdTest() {
         return idTest;
@@ -164,6 +187,16 @@ public class TestFisico implements Serializable {
     public void setNoIdentificacionProfesor(Persona noIdentificacionProfesor) {
         this.noIdentificacionProfesor = noIdentificacionProfesor;
     }
+
+    public Date getFechaTestFisico() {
+        return fechaTestFisico;
+    }
+
+    public void setFechaTestFisico(Date fechaTestFisico) {
+        this.fechaTestFisico = fechaTestFisico;
+    }
+    
+    
 
     @Override
     public int hashCode() {

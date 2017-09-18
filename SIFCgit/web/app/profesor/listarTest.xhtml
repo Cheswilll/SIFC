@@ -15,6 +15,7 @@
                 <b:dataTableColumn label="No. documento del jugador" value="#{tf.noIdentificacionJugador.noIdentificacion}"/>
                 <b:dataTableColumn label="Nombre" value="#{tf.noIdentificacionJugador.nombre1} #{tf.noIdentificacionJugador.apellido1}"/>
                 <b:dataTableColumn label="Profesor" value="#{tf.noIdentificacionProfesor.nombre1} #{tf.noIdentificacionProfesor.apellido1} "/>
+                <b:dataTableColumn label="Fecha" value="#{tf.fechaTestFisico} "/>
                 <b:dataTableColumn label="Más" value="">
                     <b:commandButton look="primary" value="" iconAwesome="eye" action="#{verTestController.verTestFisico(tf)}"/>
                 </b:dataTableColumn>
