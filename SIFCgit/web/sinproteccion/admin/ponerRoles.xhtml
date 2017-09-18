@@ -12,12 +12,13 @@
     <ui:define name="content" >
         <b:messages showSummary="true" show-detail="true"/>
         <b:message for="form-editar" showSummary="true" show-detail="true"/>
-        <b:form id="form-editar" prependId="false" style="margin-left: 20%; margin-top: 4%; background-color: #fff; width: 75%; color: #080808;">
+        <b:form id="form-editar" prependId="false" style="margin-left: 20%; margin-top: 4%; background-color: #fff; width: 75%; color: #000;">
+            <legend>Actulizar los roles del usuario</legend>
             <b:panelGrid colSm="12" columns="4">
                 <h:outputText value="T.D: "/>
                 <h:selectOneMenu value="#{modificarController.personaSeleccionada.idTipoIdentificacion}" class="form-control" 
                                  converter="tipoDocumentoConverter" disabled="true">
-                    <f:selectItems value="#{tipoDocumentoController.itemsAvailableSelectOne}" var="td" itemValue="#{TipoDocumento}"/>
+                    <f:selectItems value="#{tipoDocumentoController.itemsAvailableSelectOne}" var="td" itemValue="#{sigla}"/>
                 </h:selectOneMenu>
                 <h:outputText value="Documento: "/>
                 <b:inputText value="#{modificarController.personaSeleccionada.noIdentificacion}" disabled="true"/>

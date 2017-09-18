@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="27b68061-563f-468f-8bfb-06eff7fea43b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM personas, rolesdepersonas, roles 
+WHERE personas.noIdentificacion = rolesdepersonas.noIdentificacion AND rolesdepersonas.idRol = roles.idRol 
+AND roles.idRol=1;]]>
+	</queryString>
+	<field name="noIdentificacion" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre1" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apellido1" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefonoCelular" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="correoElectronico" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombreRol" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="132" splitType="Stretch">
+			<image>
+				<reportElement x="456" y="0" width="99" height="132" uuid="d8cc42a2-594e-459a-a550-a59ce46598b5"/>
+				<imageExpression><![CDATA["cherry.jpg"]]></imageExpression>
+			</image>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="451" height="95" backcolor="#000000" uuid="741fcb70-4b4f-445f-b2f7-bb9679ffd3b6"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="370" height="66" uuid="44f0719b-44eb-49b9-a1e4-18b285b01221"/>
+					<textElement>
+						<font fontName="Serif" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Cherry Title]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="157" y="66" width="249" height="29" uuid="25cc9216-11d0-4b08-8bd1-3095c861b6b1"/>
+					<textElement>
+						<font fontName="Serif" size="22" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Cherry SubTitle]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="100" width="451" height="32" forecolor="#000000" backcolor="#CC0000" uuid="eeb3761a-3317-4cd1-b9d4-170c913990ce"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="307" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="eb399e29-ec5f-465d-b1af-ebcb34f858f2"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="7" width="92" height="18" forecolor="#000000" uuid="977cd89b-df9b-467c-862c-bd62a93abc17"/>
+				<textElement>
+					<font fontName="Serif" isBold="false"/>
+				</textElement>
+				<text><![CDATA[noIdentificacion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="92" y="7" width="92" height="18" forecolor="#000000" uuid="deaefec1-7a51-4156-9584-0eabca5985b0"/>
+				<textElement>
+					<font fontName="Serif" isBold="false"/>
+				</textElement>
+				<text><![CDATA[nombre1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="184" y="7" width="92" height="18" forecolor="#000000" uuid="09fd3cc1-99c8-4e15-bc1e-86ac72b897c1"/>
+				<textElement>
+					<font fontName="Serif" isBold="false"/>
+				</textElement>
+				<text><![CDATA[apellido1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="276" y="7" width="92" height="18" forecolor="#000000" uuid="2d734059-91e8-4a99-bf96-eeeabe9ad530"/>
+				<textElement>
+					<font fontName="Serif" isBold="false"/>
+				</textElement>
+				<text><![CDATA[telefonoCelular]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="368" y="7" width="92" height="18" forecolor="#000000" uuid="3c840f27-972e-4b6f-8d24-63bf81a61776"/>
+				<textElement>
+					<font fontName="Serif" isBold="false"/>
+				</textElement>
+				<text><![CDATA[correoElectronico]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="460" y="7" width="92" height="18" forecolor="#000000" uuid="38fab996-09b5-40a2-be98-58ade2ed7077"/>
+				<textElement>
+					<font fontName="Serif" isBold="false"/>
+				</textElement>
+				<text><![CDATA[nombreRol]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="18" uuid="4eb64e6c-2fc6-46f6-9473-cb630329e71a"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="92" height="18" uuid="7d6142fa-2c24-4b2f-974e-e8f1e37b15b6"/>
+					<textElement>
+						<font fontName="Serif" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{noIdentificacion}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="92" y="0" width="92" height="18" uuid="4168daea-6378-40fa-b12d-4b1f273ccb9f"/>
+					<textElement>
+						<font fontName="Serif" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nombre1}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="184" y="0" width="92" height="18" uuid="a91cd973-3422-4b94-ab86-c43597247f76"/>
+					<textElement>
+						<font fontName="Serif" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{apellido1}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="276" y="0" width="92" height="18" uuid="e80b595c-8998-48a4-95a1-e87b2387e8e8"/>
+					<textElement>
+						<font fontName="Serif" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{telefonoCelular}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="368" y="0" width="92" height="18" uuid="211db1e2-79b0-4ba6-8512-2eb454cac2a0"/>
+					<textElement>
+						<font fontName="Serif" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{correoElectronico}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="460" y="0" width="92" height="18" uuid="8a93c60c-31f1-4f4e-a7c3-bb9b9b761e3b"/>
+					<textElement>
+						<font fontName="Serif" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nombreRol}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="0f4ec5bb-a4d4-41ce-bec4-3d9d0397445f"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="1" width="555" height="24" forecolor="#D0B48E" backcolor="#000000" uuid="15787093-76b5-453f-bbbf-28ae759bc7bc"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="513" y="0" width="40" height="20" forecolor="#FFFFFF" uuid="b89b307f-771a-41f3-87bb-20e0a9085b1e"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Serif" size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="433" y="0" width="80" height="20" forecolor="#FFFFFF" uuid="e834b565-1984-418d-81bb-d57a01228ea6"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Serif" size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="1" width="197" height="20" forecolor="#FFFFFF" uuid="9c7dad92-ef32-4e4a-adf7-e412d7608fc7"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Serif" size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

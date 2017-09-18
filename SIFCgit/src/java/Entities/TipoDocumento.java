@@ -122,7 +122,7 @@ public class TipoDocumento implements Serializable {
 
     @Override
     public String toString() {
-        return "Entities.TipoDocumento[ idTipoDocumento=" + idTipoDocumento + " ]";
+        return sigla;
     }
     
 }
