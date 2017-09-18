@@ -218,7 +218,7 @@
     <header>
         <nav class="navbar navbar-inverse" id="navbarsita">
             <div class="container"> <!-- Container -->
-                <div class="nav navbar-nav navbar-left">
+                <div class="nav navbar-nav navbar-left" style="margin-left: -6%;">
                     <a class="" href="indexResponsive.html">
                         <img src="#{request.contextPath}/resources/index/imgs/logonuevo.png" class="img-circle profile_img" id="logo" />
 
@@ -230,8 +230,8 @@
                         </button>
                     </a>
                 </div>
-                <div class="collapse navbar-collapse" id="navbar-collapse-2">
-                    <ul class="nav navbar-nav navbar-right">
+                <div class="collapse navbar-collapse" id="navbar-collapse-2"  >
+                    <ul class="nav navbar-nav navbar-right"  style="margin-right: 120px;">
                         <li >
                             <a href="#" class="mision_scroll text-center" name="btnTxtMision" id="mision" >
                                 <span>
@@ -247,7 +247,25 @@
                                 </span>#{msjApp.btnTxtReseña}</a></li>
                         <li><a href="#" class="torneos_scroll text-center" name="btnTxtTorneos"> <span><i class="fa fa-trophy" aria-hidden="true" id="icon_reseña"></i></span>#{msjApp.btnTxtTorneos}</a></li>
                         <li><a href="#" class="ubicacion_scroll text-center" name="btnTxtUbicanos"><span><i class="fa fa-globe" aria-hidden="true" id="icon_ubicacion"></i></span>#{msjApp.btnTxtUbicanos}</a></li>
-
+                        <f:view locale="#{languageController.selectedLanguage}">
+                            <b:container style="position: absolute; margin-left: 70%; margin-top: 5px;">
+                                <b:form class="form-login" prependId="false">
+                                    <div class="btn-group">
+                                        <button type="button" id="idioma" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            #{msjApp.idioma} <span class="caret"></span></button>
+                                        <ul class="dropdown-menu" style="color: #000;">
+                                            <c:forEach items="#{languageController.supportLanguages}" var="l">
+                                                <li style="color: #000;">
+                                                    <h:commandLink value="#{msjApp[l.displayLanguage]}" action="#{languageController.cambiarIdioma(l)}" style="color: #000;">
+                                                        <img src="#{request.contextPath}/resources/imgs/languages/#{l.language}.png" width="25px" alt="#{msjApp[l.displayLanguage]}"/>
+                                                    </h:commandLink>
+                                                </li>
+                                            </c:forEach>
+                                        </ul>
+                                    </div>
+                                </b:form>
+                            </b:container>
+                        </f:view>
                     </ul>
                 </div>        
             </div><!-- Container -->
@@ -257,25 +275,7 @@
     <br/>
     <br/>
     <br/>
-    <f:view locale="#{languageController.selectedLanguage}">
-        <b:container>
-            <b:form class="form-login" prependId="false">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        #{msjApp.idioma} <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                        <c:forEach items="#{languageController.supportLanguages}" var="l">
-                            <li>
-                                <h:commandLink value="#{msjApp[l.displayLanguage]}" action="#{languageController.cambiarIdioma(l)}">
-                                    <img src="#{request.contextPath}/resources/imgs/languages/#{l.language}.png" width="25px" alt="#{msjApp[l.displayLanguage]}"/>
-                                </h:commandLink>
-                            </li>
-                        </c:forEach>
-                    </ul>
-                </div>
-            </b:form>
-        </b:container>
-    </f:view>
+
     <div id="logop" class="circle">
         <img src="#{request.contextPath}/resources/index/imgs/logonuevo.png" class="img-circle profile_img" id="logomap"/>
     </div>
